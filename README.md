@@ -6,4 +6,4 @@
 4- Tanos, Facundo Leal.</br>
 
 # Link de la pagina: 
-# Link de Trello: 
+# Link de Trello: https://trello.com/b/waXiGwRT/grupo-4-proyecto-final-rolling
