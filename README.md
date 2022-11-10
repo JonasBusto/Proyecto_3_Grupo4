@@ -7,7 +7,3 @@
 
 # Link de la pagina: 
 # Link de Trello: 
-
-# Por si tira error del eslint, ejecutar:
-
-npm update eslint
