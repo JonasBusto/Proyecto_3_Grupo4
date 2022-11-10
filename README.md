@@ -8,4 +8,6 @@
 # Link de la pagina: 
 # Link de Trello: 
 
-# Instrucciones para usar la pagina.
+# Por si tira error del eslint, ejecutar:
+
+npm update eslint
