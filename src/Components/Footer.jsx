@@ -1,12 +1,16 @@
-import React from 'react'
+import React from "react";
+import "../Styles/footer.css";
 
-// ACÁ SOLO IRA EL FOOTER
 const Footer = () => {
   return (
     <>
-      <div>Footer</div>
+      <div
+        style={{ border: "1px black solid", width: "80%", marginTop: "1rem" }}
+      >
+        Footer
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

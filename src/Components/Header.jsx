@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
+import "../Styles/header.css";
 
-
-// ACA IRA SOLAMENTE EL NAVBAR
 const Header = () => {
   return (
     <>
-      <div>Header</div>
+      <div
+        style={{ border: "1px black solid", width: "80%", marginTop: "1rem" }}
+      >
+        Header
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
