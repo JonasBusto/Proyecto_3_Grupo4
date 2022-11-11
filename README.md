@@ -1,4 +1,7 @@
-# Proyecto 3 - Grupo 4: Pagina de ?????.
+# Proyecto 3 - Grupo 4:
+- Nombre del equipo: Grupo4.jsx
+- Nombre de la pagina: RollingTravel
+
 # Integrantes:
 1- Busto, Kevin Jonás <b>(TECH LEAD)</b>.</br>
 2- Garcia, Mario David <b>(SCRUM MASTER)</b>.</br>
