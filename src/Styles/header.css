@@ -1,0 +1,19 @@
+.header-color{
+   background-color:#EB6440;
+}
+
+.header-height{
+   max-height: 10vh;
+}
+
+.logo{
+   max-width: 40%;
+}
+
+/* .container.icon{
+   
+} */
+
+.icon{
+   max-width: 33%;
+}
