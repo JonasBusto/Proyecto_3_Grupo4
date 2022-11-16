@@ -1,30 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { Container , Row , Col , InputGroup , Form } from "react-bootstrap";
 import "../Styles/header.css";
+import { AiOutlineZoomIn } from "react-icons/ai"
 
 const Header = () => {
   return (
-    <Container fluid className="header-color header-heigh">
+    <Container fluid className="header-color">
       <Container>
-        <Row>
-          <Col>
-            <Container className="d-flex align-items-center justify-content-center">
-              <img src="/logo-RollingTravel.png" alt="" className="logo" />
-            </Container>
+        <Row className="align-items-center">
+          <Col xs={6} sm={6} md={4} className="d-flex justify-content-center">
+            <img alt="" src="/logo-RollingTravel.png" width="80" height="80" />
           </Col>
-          <Col className="container-icon d-flex justify-content-around ">
-            <img src="/icon-twet.png" alt="" className="icon" />
-            <img src="/icon-face.png" alt="" className="icon" />
-            <img src="/icon-insta.png" alt="" className="icon" />
+          <Col
+            md={4}
+            className="d-flex justify-content-between d-none d-sm-none d-md-flex"
+          >
+            <img
+              alt=""
+              src="/icon-twet.png"
+              width="70"
+              height="70"
+              className=""
+            />
+            <img
+              alt=""
+              src="/icon-face.png"
+              width="70"
+              height="70"
+              className=""
+            />
+            <img
+              alt=""
+              src="/icon-insta.png"
+              width="70"
+              height="70"
+              className=""
+            />
           </Col>
-          <Col className="d-flex align-items-center justify-content-center">
-            <InputGroup className="py-2">
+          <Col
+            xs={6}
+            sm={6}
+            md={4}
+            className="d-flex justify-content-center px-md-5"
+          >
+            <InputGroup>
               <Form.Control
                 placeholder="Buscar"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
               />
-              <InputGroup.Text id="basic-addon2">Lupa</InputGroup.Text>
+              <InputGroup.Text>
+                <AiOutlineZoomIn />
+              </InputGroup.Text>
             </InputGroup>
           </Col>
         </Row>
@@ -34,3 +61,5 @@ const Header = () => {
 };
 
 export default Header;
+
+

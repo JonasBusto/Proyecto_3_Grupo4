@@ -6,14 +6,19 @@
    max-height: 10vh;
 }
 
-.logo{
+/* .logo{
    max-width: 40%;
-}
+} */
 
 /* .container.icon{
    
 } */
 
-.icon{
+/* .icon{
    max-width: 33%;
 }
+
+.logo-center{
+   display: flex;
+   justify-content: center;
+} */
