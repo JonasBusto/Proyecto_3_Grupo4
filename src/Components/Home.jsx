@@ -131,7 +131,7 @@ const Home = () => {
               <div className="col-12 col-md-8 d-flex flex-column p-0">
                 <div className="row m-0">
                   <div className="col-12">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg"
@@ -142,7 +142,7 @@ const Home = () => {
                 </div>
                 <div className="row m-0">
                   <div className="col-12 col-md-6">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
@@ -151,7 +151,7 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="col-12 col-md-6">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
@@ -164,7 +164,7 @@ const Home = () => {
               <div className="col-12 col-md-4 p-0">
                 <div className="row m-0">
                   <div className="col">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
@@ -175,7 +175,7 @@ const Home = () => {
                 </div>
                 <div className="row m-0">
                   <div className="col">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
@@ -186,7 +186,7 @@ const Home = () => {
                 </div>
                 <div className="row m-0">
                   <div className="col">
-                    <div className="m-2">
+                    <div className="m-2 div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
