@@ -8,34 +8,21 @@ const Header = () => {
     <Container fluid className="header-color">
       <Container>
         <Row className="align-items-center">
-          <Col xs={6} sm={6} md={4} className="d-flex justify-content-center">
-            <img alt="" src="/logo-RollingTravel.png" width="80" height="80" />
+          <Col
+            xs={6}
+            sm={6}
+            md={4}
+            className="d-flex justify-content-center container-logo"
+          >
+            <img alt="" src="/logo-RollingTravel.png" />
           </Col>
           <Col
             md={4}
-            className="d-flex justify-content-between d-none d-sm-none d-md-flex"
+            className="d-flex justify-content-between d-none d-sm-none d-md-flex container-icon-social"
           >
-            <img
-              alt=""
-              src="/icon-twet.png"
-              width="70"
-              height="70"
-              className=""
-            />
-            <img
-              alt=""
-              src="/icon-face.png"
-              width="70"
-              height="70"
-              className=""
-            />
-            <img
-              alt=""
-              src="/icon-insta.png"
-              width="70"
-              height="70"
-              className=""
-            />
+            <img alt="" src="/icon-face-mini.png" />
+            <img alt="" src="/icon-twet-mini.png" />
+            <img alt="" src="/icon-insta-mini.png" />
           </Col>
           <Col
             xs={6}

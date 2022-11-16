@@ -2,23 +2,16 @@
    background-color:#EB6440;
 }
 
-.header-height{
-   max-height: 10vh;
+.container-logo img{
+   width: 9rem;
+   padding-top: 0.3rem;
+   padding-bottom: 0.3rem;
 }
 
-/* .logo{
-   max-width: 40%;
+/* .container-logo{
+   padding-left: 5rem !important; 
 } */
 
-/* .container.icon{
-   
-} */
-
-/* .icon{
-   max-width: 33%;
+.container-icon-social img{
+   width: 3.5rem;
 }
-
-.logo-center{
-   display: flex;
-   justify-content: center;
-} */
