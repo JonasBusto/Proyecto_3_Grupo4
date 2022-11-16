@@ -1,119 +1,18 @@
-.carousel-item img {
-  max-height: 22rem;
-  border-radius: 8px;
-}
-
-@media (max-width: 767px) {
-  .carousel-item img {
-    max-height: 11rem;
-    border-radius: 8px;
-  }
-
-  .div-img-provinces {
-    /* position: absolute; */
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .div-img-provinces img {
-    width: 100%;
-    height: 13rem;
-    object-fit: cover;
-  }
-}
-@media (max-width: 767px) {
-}
-
-@media (max-width: 600px) {
-  .carousel-indicators {
-    display: none !important;
-  }
-
-  .title-slider-location {
-    max-width: 15rem !important;
-  }
-}
-
-@media (max-width: 400px) {
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    height: 100% !important;
-    border-radius: 0px !important;
-    width: 100% !important;
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 10% !important;
-  }
-
-  .slider-links a {
-    width: 6rem !important;
-    font-size: 1rem !important;
-  }
-}
-
-.div-carousel {
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 2.5rem;
-  padding: 0.7rem;
-  border: 0.2rem solid #b9c9ca;
-  background-color: #d6e4e5;
-  border-radius: 6px;
-}
-
-.title-slider-location {
-  background-color: rgba(255, 255, 255, 0.575);
-  padding: 0.5rem;
-  color: black;
-  max-width: 20rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(255, 255, 255, 0.788);
-  height: 3rem !important;
-  width: 3rem !important;
-  border-radius: 7px;
-}
-
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-  background-color: rgba(255, 255, 255, 0.87);
-}
-
-.carousel-item {
-  display: flex !important;
-}
-
-.carousel-caption {
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.slider-links {
-  display: flex;
-  justify-content: center;
-}
-.slider-links a {
-  background-color: rgba(255, 255, 255, 0.575);
-  color: black;
+.div-see-more-btn a {
   text-decoration: none;
-  width: 9.5rem;
+  background-color: #eb6540b6;
+  color: white;
+  padding: 0.6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   border-radius: 5px;
-  padding: 0.6rem 0.7rem;
-  font-size: 1.2rem;
+  /* border: 3px solid transparent; */
 }
-.slider-links a:hover {
-  background-color: rgba(255, 255, 255, 0.685);
-  color: black;
+.div-see-more-btn a:hover {
+  /* border: 3px solid #eb6440; */
+  background-color: rgba(255, 255, 255, 0.637);
+  color: #eb6440;
+  /* font-weight: bold; */
 }
 
 /*  */
@@ -124,7 +23,7 @@
   /* height: 50rem; */
 }
 
-.div-container-category {
+/* .div-container-category {
   background-image: linear-gradient(
       to right,
       rgba(255, 255, 255, 0.075),
@@ -134,14 +33,15 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  object-fit: cover;
   width: 90%;
-  height: 28rem;
+  min-height: 28rem;
   margin-left: auto;
   margin-right: auto;
   padding-top: 1rem;
   padding-bottom: 2rem;
   border-radius: 7px;
-}
+} */
 
 .div-link-category {
   width: 90%;
@@ -153,7 +53,6 @@
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #eb6440;
   color: white;
   margin-top: 0.7rem;
   padding: 0.5rem;
@@ -166,7 +65,45 @@
   border: 3px solid transparent;
 }
 
-.div-link-category a:hover,
+.div-link-category > div {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  width: 49%;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+.div-link-category > div:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+.div-link-category a {
+  padding: 0%;
+  width: 100%;
+  height: 7.5rem;
+  margin: 0px;
+  transition: ease-in 0.3ms;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  color: black;
+  font-weight: bold;
+  /* transform: scale(1.6); */
+}
+
+.div-link-category a:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.6);
+  width: 3rem;
+  /* -webkit-text-stroke: 0.5px black; */
+  color: white;
+}
+
+.div-seeMore a {
+  background-color: #eb6440;
+}
+
 .div-seeMore a:hover {
   color: #eb6440;
   background-color: white;
@@ -174,7 +111,7 @@
 }
 
 .div-advertising img {
-  width: 90%;
+  /* width: 90%; */
   height: 65%;
   border-radius: 5px;
 }

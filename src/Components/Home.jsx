@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import "../Styles/home.css";
+import Slider from "react-animated-slider";
+import "react-animated-slider/build/horizontal.css";
+import "../Styles/slider-animations.css";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
@@ -9,107 +12,126 @@ const Home = () => {
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  const content = [
+    {
+      title: "Rio Negro - Lugar 1",
+      description:
+        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
+      image:
+        "https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg",
+      user: "Chapulin Colorado",
+      userProfile: "https://pbs.twimg.com/media/EVcjT-JXQAIq0Yy.jpg",
+    },
+    {
+      title: "Misiones - Lugar 1",
+      description:
+        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
+      image:
+        "https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg",
+      user: "Don Ramon",
+      userProfile:
+        "https://portal.andina.pe/EDPfotografia/Thumbnail/2013/09/02/000218071W.jpg",
+    },
+    {
+      title: "Salta - Lugar 1",
+      description:
+        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
+      image:
+        "https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg",
+      user: "El Zorro",
+      userProfile:
+        "https://www.lanacion.com.ar/resizer/wWlTepZ2pHuoyXZF3U7RR7C1iic=/309x206/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/MGYRO7LAGVBHBMR52AN5EKPQZY.jpg",
+    },
+  ];
   return (
     <>
       <div>
-        <div className="div-carousel">
-          <Carousel fade activeIndex={index} onSelect={handleSelect}>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg"
-                alt="First slide"
-              />
-              <Carousel.Caption>
-                <div>
-                  <h3 className="title-slider-location">Jujuy - Lugar 1</h3>
-                  {/* <p className="d-none d-sm-block">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Architecto harum placeat id quas ex excepturi totam expedita
-                    fuga rerum laudantium...
-                  </p> */}
-                  <p>
-                    Nulla vitae elit libero, a pharetra augue mollis
-                    interdum....
-                  </p>
+        <div className="mt-3">
+          <Slider previousButton={<svg>s</svg>} className="slider-wrapper">
+            {content.map((item, index) => (
+              <div
+                key={index}
+                className="slider-content"
+                style={{
+                  background: `url('${item.image}') no-repeat center center`,
+                }}
+              >
+                <div className="inner">
+                  <h1>{item.title}</h1>
+                  <p>{item.description}</p>
+                  <div className="div-see-more-btn">
+                    <Link to="">Ver Mas</Link>
+                  </div>
                 </div>
-                <div className="slider-links">
-                  <Link to="">Ver Más</Link>
-                </div>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg"
-                alt="Second slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Jujuy - Lugar 1</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum....
-                </p>
-                <div className="slider-links">
-                  <Link to="">Ver Más</Link>
-                </div>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg"
-                alt="Third slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Jujuy - Lugar 3</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum....
-                </p>
-                <div className="slider-links">
-                  <Link to="">Ver Más</Link>
-                </div>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Carousel>
+                <section>
+                  <img src={item.userProfile} alt={item.user} />
+                  <span>
+                    Recomendado por <strong>{item.user}</strong>
+                  </span>
+                </section>
+              </div>
+            ))}
+          </Slider>
         </div>
 
         <div className="div-category-advertising">
           <div className="row m-0">
             <div className="col-12 col-md-6 div-categoria">
               <h1 className="text-center">Categorias</h1>
-              <div className="div-container-category">
-                <div className="row m-0 mx-auto div-link-category justify-content-between">
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 1</Link>
+              <div className="div-container-category pt-0">
+                <div className="row w-100 m-0 div-link-category justify-content-between">
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://www.tucumanturismo.gob.ar/carga/image/1470857806%20-%20Senda%20tafi%20del%20valle%20-%20Siambon%202.jpg") no-repeat top center`,
+                    }}
+                  >
+                    <Link to="/montañas">Montañas</Link>
                   </div>
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 2</Link>
-                  </div>
-                </div>
-                <div className="row m-0 mx-auto div-link-category justify-content-between">
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 1</Link>
-                  </div>
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 2</Link>
-                  </div>
-                </div>
-                <div className="row m-0 mx-auto div-link-category justify-content-between">
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 1</Link>
-                  </div>
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 2</Link>
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
+                    }}
+                  >
+                    <Link to="">Selvas</Link>
                   </div>
                 </div>
-                <div className="row m-0 mx-auto div-link-category justify-content-between">
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 1</Link>
+                <div className="row w-100 m-0 div-link-category justify-content-between">
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://www.reportur.com/wp-content/uploads/2019/08/glaciar-e1565834650693.jpg") no-repeat center center`,
+                    }}
+                  >
+                    <Link to="">Glaciares</Link>
                   </div>
-                  <div className="col-12 col-sm-6 d-flex justify-content-center">
-                    <Link to="">Categoria 2</Link>
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
+                    }}
+                  >
+                    <Link to="">Selvas</Link>
+                  </div>
+                </div>
+                <div className="row w-100 m-0 div-link-category justify-content-between">
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://www.tucumanturismo.gob.ar/carga/image/1470857806%20-%20Senda%20tafi%20del%20valle%20-%20Siambon%202.jpg") no-repeat top center`,
+                    }}
+                  >
+                    <Link to="">Montañas</Link>
+                  </div>
+                  <div
+                    className="col-12 p-0 col-sm-6 d-flex justify-content-center"
+                    style={{
+                      background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
+                    }}
+                  >
+                    <Link to="">Selvas</Link>
                   </div>
                 </div>
               </div>
@@ -124,14 +146,14 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="div-provinces d-flex flex-column">
+        {/* <div className="div-provinces d-flex flex-column">
           <p className="text-center fs-1">Provincias mas visitadas</p>
           <div>
             <div className="row">
               <div className="col-12 col-md-8 d-flex flex-column p-0">
                 <div className="row m-0">
-                  <div className="col-12">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col-12 p-0">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg"
@@ -141,8 +163,8 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="row m-0">
-                  <div className="col-12 col-md-6">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col-12 p-0 col-md-6">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
@@ -150,8 +172,8 @@ const Home = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-12 col-md-6">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col-12 p-0 col-md-6">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
@@ -163,8 +185,8 @@ const Home = () => {
               </div>
               <div className="col-12 col-md-4 p-0">
                 <div className="row m-0">
-                  <div className="col">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col p-0">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
@@ -174,8 +196,8 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="row m-0">
-                  <div className="col">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col p-0">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
@@ -185,8 +207,8 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="row m-0">
-                  <div className="col">
-                    <div className="m-2 div-img-provinces">
+                  <div className="col p-0">
+                    <div className="div-img-provinces">
                       <img
                         className="img-fluid"
                         src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
@@ -198,7 +220,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="div-seeMore d-flex justify-content-center">
           <Link to="">VER MAS</Link>
