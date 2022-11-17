@@ -79,7 +79,7 @@ const Home = () => {
           <div className="row m-0">
             <div className="col-12 col-md-6 div-categoria">
               <h1 className="text-center">Categorias</h1>
-              <div className="div-container-category pt-0">
+              <div className="div-container-category d-flex flex-column justify-content-between px-3 pt-0">
                 <div className="row w-100 m-0 div-link-category justify-content-between">
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -146,81 +146,69 @@ const Home = () => {
           </div>
         </div>
 
-        {/* <div className="div-provinces d-flex flex-column">
+        <div className="div-provinces d-flex flex-column">
           <p className="text-center fs-1">Provincias mas visitadas</p>
-          <div>
-            <div className="row">
-              <div className="col-12 col-md-8 d-flex flex-column p-0">
+          <div className="w-100 d-flex justify-content-center">
+            <div className="row w-100 justify-content-center">
+              <div
+                className="col-12 col-md-8 d-flex flex-column p-0"
+                style={{ border: "1px solid black", height: "40rem" }}
+              >
                 <div className="row m-0">
-                  <div className="col-12 p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
+                  <div
+                    className="col-12"
+                    style={{ border: "1px solid black", height: "18rem" }}
+                  ></div>
                 </div>
-                <div className="row m-0">
-                  <div className="col-12 p-0 col-md-6">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="col-12 p-0 col-md-6">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
+                <div className="row div-row-col m-0">
+                  <div
+                    className="col-12 col-sm-4"
+                    style={{
+                      border: "1px solid black",
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  ></div>
+                  <div
+                    className="col-12 col-sm-4"
+                    style={{
+                      border: "1px solid black",
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  ></div>
+                  <div
+                    className="col-12 col-sm-4"
+                    style={{
+                      border: "1px solid black",
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  ></div>
                 </div>
               </div>
-              <div className="col-12 col-md-4 p-0">
+              <div
+                className="col-12 col-md-4 p-0"
+                style={{ border: "1px solid black", height: "40rem" }}
+              >
                 <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
+                  <div
+                    className="col-12"
+                    style={{ border: "1px solid black", height: "13.3rem" }}
+                  ></div>
+                  <div
+                    className="col-12"
+                    style={{ border: "1px solid black", height: "13.3rem" }}
+                  ></div>
+                  <div
+                    className="col-12"
+                    style={{ border: "1px solid black", height: "13.3rem" }}
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div className="div-seeMore d-flex justify-content-center">
           <Link to="">VER MAS</Link>
