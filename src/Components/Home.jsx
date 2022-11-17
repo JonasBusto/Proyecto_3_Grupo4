@@ -79,7 +79,7 @@ const Home = () => {
           <div className="row m-0">
             <div className="col-12 col-md-6 div-categoria">
               <h1 className="text-center">Categorias</h1>
-              <div className="div-container-category pt-0">
+              <div className="div-container-category d-flex flex-column justify-content-between px-3 pt-0">
                 <div className="row w-100 m-0 div-link-category justify-content-between">
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -146,84 +146,206 @@ const Home = () => {
           </div>
         </div>
 
-        {/* <div className="div-provinces d-flex flex-column">
+        <div className="div-provinces d-flex flex-column">
           <p className="text-center fs-1">Provincias mas visitadas</p>
-          <div>
-            <div className="row">
-              <div className="col-12 col-md-8 d-flex flex-column p-0">
+
+          <div className="w-100 div-sm-provinces-none">
+            <div className="row w-100 justify-content-center">
+              <div
+                className="col-12 col-md-8 d-flex flex-column p-0"
+                style={{ height: "40rem" }}
+              >
                 <div className="row m-0">
-                  <div className="col-12 p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg"
-                        alt=""
-                      />
+                  <div
+                    className="col-12 d-flex w-100 p-0 div-col-img-provinces2"
+                    style={{ height: "18rem" }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_1">Provincia 1</Link>
                     </div>
                   </div>
                 </div>
-                <div className="row m-0">
-                  <div className="col-12 p-0 col-md-6">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
-                        alt=""
-                      />
+                {/*  */}
+                <div className="row div-row-col m-0 div-col-img-provinces2">
+                  <div
+                    className="col-12 col-sm-4 p-0 d-flex"
+                    style={{
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_2">Provincia 2</Link>
                     </div>
                   </div>
-                  <div className="col-12 p-0 col-md-6">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg"
-                        alt=""
-                      />
+                  <div
+                    className="col-12 col-sm-4 p-0 d-flex"
+                    style={{
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_3">Provincia 3</Link>
+                    </div>
+                  </div>
+                  <div
+                    className="col-12 col-sm-4 p-0 d-flex"
+                    style={{
+                      width: "33.3%",
+                      height: "22rem",
+                    }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_3">Provincia 4</Link>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-12 col-md-4 p-0">
-                <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
+              <div className="col-12 col-md-4 p-0" style={{ height: "40rem" }}>
+                <div className="row div-row-col-p m-0">
+                  <div
+                    className="col-12 d-flex p-0"
+                    style={{ height: "13.3rem" }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_4">Provincia 5</Link>
                     </div>
                   </div>
-                </div>
-                <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
+                  <div
+                    className="col-12 d-flex p-0"
+                    style={{ height: "13.3rem" }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_5">Provincia 6</Link>
                     </div>
                   </div>
-                </div>
-                <div className="row m-0">
-                  <div className="col p-0">
-                    <div className="div-img-provinces">
-                      <img
-                        className="img-fluid"
-                        src="https://www.clarin.com/img/2019/11/06/a8GQ9c_x_1200x630__1.jpg"
-                        alt=""
-                      />
+                  <div
+                    className="col-12 d-flex p-0"
+                    style={{ height: "13.3rem" }}
+                  >
+                    <div
+                      className="div-img-provinces d-flex w-100"
+                      style={{
+                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                      }}
+                    >
+                      <Link to="/provincia=provincia_6">Provincia 7</Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> */}
+
+          <div className="div-sm-display-block">
+            <div className="row m-0">
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_1">Provincia 1</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_2">Provincia 2</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_3">Provincia 3</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_4">Provincia 4</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_5">Provincia 5</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_6">Provincia 6</Link>
+                </div>
+              </div>
+              <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
+                <div
+                  className="div-img-provinces d-flex w-100"
+                  style={{
+                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
+                  }}
+                >
+                  <Link to="/provincia=provincia_7">Provincia 7</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div className="div-seeMore d-flex justify-content-center">
-          <Link to="">VER MAS</Link>
+          <Link to="/provincias">VER MAS</Link>
         </div>
       </div>
     </>

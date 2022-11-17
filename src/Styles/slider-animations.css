@@ -250,6 +250,15 @@
   display: block;
 }
 
+@media (max-width: 400px) {
+  @media (min-width: 800px) {
+    .slider-wrapper,
+    .slide {
+      height: calc(45vh - 30px);
+    }
+  }
+}
+
 @media (max-height: 500px) {
   .slider-wrapper,
   .slide {
