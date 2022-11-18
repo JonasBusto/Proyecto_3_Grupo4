@@ -151,6 +151,15 @@
   height: 2.6rem;
   border-radius: 50px;
   border: 3px solid transparent;
+  transition: all 300ms ease;
+}
+
+.liked {
+  background-color: #497174;
+}
+.liked:hover {
+  border: 3px solid #497174 !important;
+  background-color: #5d888b !important;
 }
 
 .btn-delete {
@@ -182,7 +191,61 @@
 }
 
 select {
-  border: 1px solid black !important;
+  border: 1px solid white !important;
   border-radius: 0px !important;
   margin-left: 0.3rem;
+}
+
+.modal-header-place {
+  background-color: #497174;
+}
+.modal-header-place > div {
+  color: white;
+}
+.modal-body-place {
+  background-color: #d6e4e5;
+}
+
+.modal-body-place input {
+  border: 1px solid white;
+  border-radius: 0px;
+}
+
+.modal-body-place .title-white {
+  text-shadow: 0 0 2px black;
+  color: white;
+}
+.modal-body-place .title-black {
+  color: black;
+}
+.modal-body-place .title-orange {
+  color: #eb6440;
+}
+
+.div-input-form {
+  display: flex;
+}
+
+.div-input-form-icon {
+  background-color: #eb6440;
+  width: 2.7rem;
+  color: white;
+}
+
+.div-btn-modal-place button {
+  color: white;
+  background-color: #eb6440;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  padding: 0.3rem 0.8rem;
+}
+
+.div-btn-modal-place button:hover {
+  background-color: white;
+  color: #eb6440;
+  border: 3px solid #eb6440;
+}
+
+.text-muted {
+  color: red !important;
 }
