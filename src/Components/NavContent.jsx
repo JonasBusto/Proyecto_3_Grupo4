@@ -17,13 +17,13 @@ const NavContent = () => {
     <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
       <Container>
         <Row className="justify-content-start">
-          <Col>
-            <text>
+          <Col className="d-flex">
+            <p>
               <strong>Rolling</strong>
-            </text>
-            <text className="travel">
+            </p>
+            <p className="travel">
               <strong>Travel</strong>
-            </text>
+            </p>
           </Col>
         </Row>
         <Row className="justify-content-end px-3">
@@ -35,13 +35,16 @@ const NavContent = () => {
             className="navbar-offcanvas"
           >
             <Offcanvas.Header closeButton>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand`}>
-                <text>
+              <Offcanvas.Title
+                className="d-flex"
+                id={`offcanvasNavbarLabel-expand`}
+              >
+                <p>
                   <strong>Rolling</strong>
-                </text>
-                <text className="travel">
+                </p>
+                <p className="travel">
                   <strong>Travel</strong>
-                </text>
+                </p>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
