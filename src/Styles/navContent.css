@@ -1,0 +1,30 @@
+@media only screen and (max-width: 600px) {
+  .home-navbar {
+    background-color: #d6e4e5 !important;
+    color: black !important;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .home-navbar {
+    background-color: #d6e4e5 !important;
+    color: black !important;
+  }
+}
+
+.navbar-offcanvas {
+  background-color: #d6e4e5 !important;
+}
+.navbar {
+  background-color: #d6e4e5;
+  display: flex;
+}
+.navbar-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
+.travel {
+  color: #eb6440;
+}
+.home-navbar {
+  background-color: #497174;
+}

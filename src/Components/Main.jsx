@@ -4,6 +4,7 @@ import LikesPage from "../Components/LikesPage";
 import RecoverPass from "../Components/RecoverPass";
 import SearchResult from "../Components/SearchResult";
 import Home from "../Components/Home";
+import NavContent from "./NavContent";
 import { Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
