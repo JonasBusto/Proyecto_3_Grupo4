@@ -1,0 +1,188 @@
+.btn-add-place button {
+  background-color: #eb6440;
+  color: white;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+
+.btn-add-place button:hover {
+  background-color: white;
+  color: #eb6440;
+  border: 3px solid #eb6440;
+}
+
+.div-card img {
+  object-fit: cover;
+  height: 13rem;
+  transition: 0.3s;
+  opacity: 1;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.div-card img:hover {
+  border: 2px solid black !important;
+  transform: scale(1.4);
+  opacity: 0.7;
+}
+
+.div-img-card {
+  overflow: hidden;
+}
+
+.card {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
+}
+
+.card a,
+.card a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.title-card-img {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.493);
+  width: 100%;
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+.card-body {
+  background-color: white;
+  width: 80%;
+}
+
+.card-body > p {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: start;
+  color: rgb(15, 15, 15);
+  margin-bottom: 0.2rem;
+}
+
+.div-details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.div-details p {
+  background-color: rgb(78, 78, 78);
+  color: white;
+  width: auto;
+  font-size: 0.7rem;
+  margin: 0.2rem;
+  padding: 0.25rem 0.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.div-details p:hover {
+  background-color: rgb(88, 88, 88);
+}
+
+.card-cta {
+  margin-left: 0.4rem;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--gray-8);
+  position: relative;
+  width: fit-content;
+  font-size: var(--font-size-2);
+  transition: var(--transition);
+  transition-property: color;
+  --transition: 250ms ease-in-out;
+}
+
+.card-cta::before,
+.card-cta::after {
+  transition: var(--transition);
+  transition-property: transform;
+}
+
+.card-cta::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5%;
+  width: 100%;
+  height: 2px;
+
+  background-color: currentColor;
+  border-radius: var(--radius-2);
+
+  transform-origin: right;
+}
+
+.card-cta::after {
+  content: " →";
+  display: inline-block;
+  margin-left: var(--size-1);
+}
+
+.card-cta:hover {
+  color: var(--brand);
+}
+
+.card-cta:hover::before {
+  transform: scale(0);
+}
+
+.card-cta:hover::after {
+  transform: translateX(50%);
+}
+
+.btn-like {
+  position: absolute;
+  top: 12rem;
+  left: 81%;
+  border: 0px;
+  background-color: #eb6440;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50px;
+  border: 3px solid transparent;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 12rem;
+  left: 65%;
+  border: 0px;
+  background-color: #d12d2d;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50px;
+  border: 3px solid transparent;
+}
+
+.btn-like:hover {
+  border: 3px solid #eb6440;
+  background-color: #ec7b5b;
+}
+.btn-delete:hover {
+  border: 3px solid #d12d2d;
+  background-color: #d33939;
+}
+
+.btn-like path {
+  color: white;
+}
+.btn-delete path {
+  color: white;
+}
+
+select {
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+  margin-left: 0.3rem;
+}
