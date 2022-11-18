@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       <Header />
-      {/* <NavContent /> */}
+      <NavContent sticky="top" />
       <Main />
       <Footer />
     </>
