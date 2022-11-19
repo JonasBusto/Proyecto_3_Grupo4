@@ -47,10 +47,10 @@ function ProvincePlace(props) {
   return (
     <>
       {mostrarLugar ? (
-        <div className="col-12 mt-2 mt-sm-0 col-sm-6 col-md-4 col-lg-3 div-card p-0">
+        <div className="col-12 mt-2 mt-sm-0 col-sm-6 col-md-4 col-lg-3 col-xxl-2 div-card p-0">
           <Card className="card m-2">
             <div className="d-flex div-img-card">
-              <Link to="/lugar" className="w-100">
+              <Link to={`/lugar/${props.objeto.id}`} className="w-100">
                 <Card.Img
                   className="img-fluid"
                   variant="top"
@@ -68,7 +68,7 @@ function ProvincePlace(props) {
                   <Modal.Title>Eliminar Lugar</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modal-body-place">
-                  ¿Esta seguro de eliminar el lugar 'Lugar 1'?
+                  ¿Esta seguro de eliminar el lugar '{props.objeto.lugar}'?
                   <div className="d-flex justify-content-between mx-5 mt-3 div-btn-modal-place">
                     <button onClick={handleClose}>Cancelar</button>
                     <button onClick={props.deleteP}>Aceptar</button>
@@ -99,7 +99,7 @@ function ProvincePlace(props) {
                 <p>{props.objeto.provincia.toUpperCase()}</p>
               </div>
             </Card.Body>
-            <Link className="card-cta mb-3" to="\lugar">
+            <Link className="card-cta mb-3" to={`/lugar/${props.objeto.id}`}>
               Ver mas
             </Link>
           </Card>
