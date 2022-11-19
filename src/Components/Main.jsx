@@ -6,6 +6,7 @@ import SearchResult from "../Components/SearchResult";
 import PlacesGrid from "../Components/PlacesGrid";
 import Home from "../Components/Home";
 import NavContent from "./NavContent";
+import Login from "./Login";
 import { Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +22,8 @@ const Main = () => {
         <RecoverPass />
         <SearchResult /> */}
         {/* <Home /> */}
-        <PlacesGrid />
+        {/* <PlacesGrid /> */}
+        <Login />
       </main>
     </>
   );
