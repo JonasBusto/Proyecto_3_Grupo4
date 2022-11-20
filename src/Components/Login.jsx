@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Form,Modal,Button } from 'react-bootstrap'
 import '../Styles/login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope , faLockKeyHoleOpen } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope , faLockKeyHoleOpen , faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -32,17 +32,22 @@ const Login = () => {
     <Form.Group className="mb-3">
     <div className='d-flex'>
         <div className='d-flex align-items-center justify-content-center color-icon'><FontAwesomeIcon icon={faEnvelope} /></div>
-        <Form.Control type="email" placeholder="Ingrese su correo electrónico" />
+        <Form.Control type="email" placeholder="Ingrese su correo electrónico." />
     </div>
         <Form.Text className="text-muted">
-          Ingrese un correo electrponico válido.
+          Ingrese un correo electrónico válido.
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Control type="password" placeholder="Password" />
+        <div className='d-flex'>
+        <div className='d-flex align-items-center justify-content-center color-icon'><FontAwesomeIcon icon={faLock} /></div>
+        <Form.Control type="password" placeholder="Ingrese su contraseña." />
+        </div>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
+        <div className='py-1'>Olivé mi contraseña</div>
+        <div>No tengo cuenta, quiero Registrarme</div>
       </Form.Group>
       <div className='d-flex justify-content-between w-75 mx-auto'>
       <button className='btn-init-custom' type="submit">
