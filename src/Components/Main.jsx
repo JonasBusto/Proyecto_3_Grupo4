@@ -23,7 +23,9 @@ const Main = () => {
         <RecoverPass />
         <SearchResult /> */}
         {/* <Home /> */}
-        <PlacesGrid />
+        {/* <Error404 /> */}
+        {/* <PlacesGrid /> */}
+        <ArticlePage />
       </main>
     </>
   );

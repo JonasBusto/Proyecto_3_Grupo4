@@ -6,7 +6,7 @@ const Error404 = () => {
     <>
       <div>
         <Container fluid className="error404">
-          <img class="img-fluid" src="/error404.jpeg" alt="" />
+          <img className="img-fluid" src="/error404.jpeg" alt="" />
         </Container>
       </div>
     </>

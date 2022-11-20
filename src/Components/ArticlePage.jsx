@@ -4,6 +4,8 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ArticlePage = () => {
   const content = {
@@ -11,7 +13,8 @@ const ArticlePage = () => {
     lugar: "Simoca",
     provincia: "Tucumán",
     categoria: "montaña",
-    descripcion: "descripción del lugar 1",
+    descripcion:
+      "Simoca tiene un origen quechua “Shimukay”, que significa lugar de gente tranquila y silenciosa o lugar de paz y silencio. La ciudad está ubicada en el sudeste de la provincia a 50 kilómetros de San Miguel de Tucumán sobre la Ruta Nacional Nº 157. Conocida como la Capital Nacional del Sulky, es una localidad orgullosa de sus tradiciones cuyo exponente más auténtico es la feria de los sábados. En ella, los vendedores acuden a ofrecer los más diversos productos que van desde las exquisitas comidas regionales, artesanías, miel de caña, empanadillas y rosquetes, hasta artículos importados y cigarrillos en chalas. Durante el mes de Julio, se realiza una verdadera fiesta que trascendió las fronteras de la provincia y del país, la Fiesta Nacional de la Feria. La misma nació en el año 1980 con motivo de homenaje al pueblo simoqueño. Al comienzo de la fiesta, se realiza un desfile de Sulkys y de caballería gaucha representando un testimonio viviente de la historia del país. Otra celebración importante de Simoca, es la Fiesta Nacional del Sulky. Realizada a fines de noviembre, todos los años convoca a destacadas figuras del canto folklórico nacional y local acompañados del pintoresco y ya tradicional desfile de sulkys, carros y carretas por las calles de la ciudad. En el paseo por la ciudad, se puede visitar la Plaza Bartolomé Mitre, la Iglesia La Merced, antigua estación de trenes. También se puede realizar un paseo en Sulky y el Paseo del Bicentenario donde hay una réplica de la casa histórica. Simoca ofrece opciones de hospedaje, comercios de todo tipo y una variada gama de locales gastronómicos",
     img: {
       img1: "https://cdn-sp.radionacional.com.ar/wp-content/uploads/2020/01/Simoca.jpg",
       img2: "https://upload.wikimedia.org/wikipedia/commons/2/22/Tucuman_Simoca_Plaza.JPG",
@@ -19,6 +22,20 @@ const ArticlePage = () => {
       img4: "https://media.elpatagonico.com/p/ee309b8bcd5453f7af74287b020b7f4b/adjuntos/193/imagenes/010/199/0010199640/1200x675/smart/simoca2jpg.jpg",
       img5: "https://www.tucumanturismo.gob.ar/carga/image/festival%20sulky.jpg",
     },
+    servicios: [
+      "Llevar agua para mantenerse hidratados y evitar apunamiento.",
+      "Podes elegir la opción de agregar el adicional al fabuloso cerro de los 14 colores. En este caso, podes comprar el tour completo a Serranías del Hornocal.",
+      " Los restaurantes para los almuerzos en los destinos son a elección de los pasajeros. Las comidas no están incluidas.",
+      "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
+      "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
+    ],
+    tips: [
+      "Llevar agua para mantenerse hidratados y evitar apunamiento.",
+      "Podes elegir la opción de agregar el adicional al fabuloso cerro de los 14 colores. En este caso, podes comprar el tour completo a Serranías del Hornocal.",
+      " Los restaurantes para los almuerzos en los destinos son a elección de los pasajeros. Las comidas no están incluidas.",
+      "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
+      "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
+    ],
     liked: false,
   };
 
@@ -96,7 +113,20 @@ const ArticlePage = () => {
             </div>
           </div>
         </div>
-        <div className="mx-auto" style={{ maxWidth: "1300px" }}>
+
+        <div className="mx-auto mt-5" style={{ maxWidth: "1300px" }}>
+          <div className="div-box">
+            <h1 className="text-orange">Modificar atributos:</h1>
+            <p>
+              Como administrador, elija la opción que considere necesario
+              modificar
+            </p>
+            <button>Detalles del lugar</button>
+            <button>Descripción</button>
+            <button>Imagenes</button>
+            <button>Servicios</button>
+            <button>Tips</button>
+          </div>
           <div className="mt-5">
             <div className="row m-0">
               <div className="col-12 col-lg-7">
@@ -105,66 +135,37 @@ const ArticlePage = () => {
               <div className="col-12 col-lg-5 d-flex flex-column">
                 <div className="mt-4 mt-lg-0">
                   <h1 className="text-orange">Descripcion</h1>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-                    magni in a iste modi! Repellat corporis omnis ab ullam
-                    deleniti ut eos suscipit. Numquam similique ratione amet
-                    voluptates exercitationem reprehenderit?
-                  </p>
+                  <p>{objetoPrueba.descripcion}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="p-2 d-block d-md-none">
+          <div className="p-2 d-block d-md-none div-box">
             <h1 className="text-orange">Detalles</h1>
-            <p>1. Validación: </p>
-            <p>2. Categoria: </p>
-            <p>3. Provincia: </p>
+            <p>1. Valoración: </p>
+            <p>2. Categoria: {objetoPrueba.categoria} </p>
+            <p>3. Provincia: {objetoPrueba.provincia}</p>
+            <p>4. Me gusta: </p>
           </div>
-          <div className="p-2">
+          <div className="p-2 div-box">
             <h1 className="text-orange">Servicios</h1>
-            <p>
-              1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              magni in a iste modi! Repellat corporis omnis ab ullam deleniti ut
-              eos suscipit. Numquam similique ratione amet voluptates
-              exercitationem reprehenderit?
-            </p>
-            <p>
-              2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              magni in a iste modi! Repellat corporis omnis ab ullam deleniti ut
-              eos suscipit. Numquam similique ratione amet voluptates
-              exercitationem reprehenderit?
-            </p>
-            <p>
-              2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              magni in a iste modi! Repellat corporis omnis ab ullam deleniti ut
-              eos suscipit. Numquam similique ratione amet voluptates
-              exercitationem reprehenderit?
-            </p>
-            <p>
-              2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              magni in a iste modi! Repellat corporis omnis ab ullam deleniti ut
-              eos suscipit. Numquam similique ratione amet voluptates
-              exercitationem reprehenderit?
-            </p>
+            {objetoPrueba.servicios.map((s, i) => (
+              <div key={"servicio" + i} className="d-flex div-tips">
+                <FontAwesomeIcon icon={faCheck} />
+                <p>{s}</p>
+              </div>
+            ))}
           </div>
-          <div className="p-2">
+          <div className="p-2 div-box">
             <h1 className="text-orange">Tips</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              enim delectus itaque id omnis facilis optio saepe, eveniet,
-              quibusdam explicabo quos perferendis modi? Assumenda at nam,
-              consequuntur accusamus magni expedita. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Illo, nemo deleniti ab molestiae aut
-              ipsum. Ducimus asperiores quae facere deserunt esse nam
-              reprehenderit eligendi cupiditate amet harum, praesentium fuga
-              natus? Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Eaque ad consequuntur enim, ducimus esse, repellendus possimus
-              ipsam dicta, quibusdam dolorum tempora. Voluptate natus reiciendis
-              dolorem iste voluptatum ex. Aliquam, nisi.
-            </p>
+            {objetoPrueba.tips.map((t, i) => (
+              <div key={"tips" + i} className="d-flex div-tips">
+                <FontAwesomeIcon icon={faCheck} />
+                <p>{t}</p>
+              </div>
+            ))}
           </div>
-          <div className="p-2">
+          <div className="p-2 div-box">
             <div>
               <h1 className="text-orange">Comentarios</h1>
               <p>
@@ -172,21 +173,28 @@ const ArticlePage = () => {
                 han reservado con nosotros.
               </p>
             </div>
-            {comentarios.map((c) => (
-              <div key={c.idReseña} className="d-flex flex-column px-5 pt-1">
-                <div>Valoraciones: {c.valoracionRealizada} / 5 estrellas</div>
-                <div className="d-flex">
-                  <b>{c.nombreUsuario}</b>
-                  <p className="mx-1 mb-0">-</p>
-                  <p className="mb-0">07/12/2019</p>
+            {comentarios.length !== 0 ? (
+              comentarios.map((c) => (
+                <div key={c.idReseña} className="d-flex flex-column px-5 pt-1">
+                  <div>Valoración: {c.valoracionRealizada} / 5 estrellas</div>
+                  <div className="d-flex">
+                    <b>{c.nombreUsuario}</b>
+                    <p className="mx-1 mb-0">-</p>
+                    <p className="mb-0">07/12/2019</p>
+                  </div>
+                  <div>
+                    <p>{c.reseñaRealizada}</p>
+                  </div>
                 </div>
-                <div>
-                  <p>{c.reseñaRealizada}</p>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <h6>
+                No se realizaron comentarios. Haz uno, y se el primero en
+                hacerlo.
+              </h6>
+            )}
           </div>
-          <div className="p-2">
+          <div className="p-2 div-box">
             <h1 className="text-orange">Escribe tu reseña</h1>
             <Formik
               initialValues={{
@@ -243,7 +251,7 @@ const ArticlePage = () => {
                 handleChange,
                 handleBlur,
               }) => (
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="form-review">
                   <Form.Group className="mb-3">
                     <Form.Control
                       as="textarea"
@@ -295,7 +303,11 @@ const ArticlePage = () => {
                       {errors.valoracion}
                     </Form.Text>
                   )}
-                  <button type="submit">Añadir</button>
+                  <div className="mt-3 d-flex justify-content-end mx-2">
+                    <button className="btn-add-review" type="submit">
+                      Añadir
+                    </button>
+                  </div>
                 </Form>
               )}
             </Formik>

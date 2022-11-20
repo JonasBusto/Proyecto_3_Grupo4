@@ -27,7 +27,7 @@ main {
   text-align: center;
 }
 .div-title-place {
-  background-color: rgba(255, 255, 255, 0.315);
+  /* background-color: rgba(255, 255, 255, 0.315); */
   width: 70%;
   border-radius: 8px;
 }
@@ -139,4 +139,45 @@ main {
   .welcome-place {
     font-size: 0.5rem;
   }
+}
+
+/* .div-box {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  transition: 0.3s ease-in-out;
+  background-color: white;
+}
+.div-box:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.308), 0 10px 10px rgba(0, 0, 0, 0.22);
+} */
+
+.btn-add-review {
+  background-color: #eb6440;
+  color: white;
+  border: 3px solid transparent;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.btn-add-review:hover {
+  background-color: white;
+  border: 3px solid #eb6440;
+  color: #eb6440;
+}
+
+.form-review input,
+.form-review textarea,
+.form-review select {
+  border: 1px solid black !important;
+  border-radius: 0px;
+}
+
+.div-tips svg {
+  margin-top: 0.2rem;
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  color: #497174;
 }
