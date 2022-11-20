@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/main.css";
 import ArticlePage from "./ArticlePage";
+import FeaturedPage from "./FeaturedPage";
 
 const Main = () => {
   return (
@@ -25,7 +26,8 @@ const Main = () => {
         {/* <Home /> */}
         {/* <Error404 /> */}
         {/* <PlacesGrid /> */}
-        <ArticlePage />
+        {/* <ArticlePage /> */}
+        <FeaturedPage />
       </main>
     </>
   );
