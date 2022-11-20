@@ -11,6 +11,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/main.css";
+import ArticlePage from "./ArticlePage";
 
 const Main = () => {
   return (
@@ -22,8 +23,9 @@ const Main = () => {
         <RecoverPass />
         <SearchResult /> */}
         {/* <Home /> */}
+        {/* <Error404 /> */}
         {/* <PlacesGrid /> */}
-        <Error404 />
+        <ArticlePage />
       </main>
     </>
   );
