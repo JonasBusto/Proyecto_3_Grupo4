@@ -1,84 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ProvincePlace from "./ProvincePlace";
-import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
-import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faImage,
-  faLocationDot,
-  faR,
-  faThumbsUp,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
+import FeatureElement from "./FeatureElement";
+import TablePlaces from "../Components/TablePlaces";
+
 import "../Styles/featuredPage.css";
-
-function Outstanding(props) {
-  const [show, setShow] = useState(false);
-
-  return (
-    <>
-      {
-        <div className="col-12 mt-2 mt-sm-0 col-sm-6 col-md-4 col-lg-3 col-xxl-2 div-card p-0">
-          <Card className="card m-2">
-            <div className="d-flex div-img-card">
-              <Link to={`/lugar/${props.objeto.id}`} className="w-100">
-                <Card.Img
-                  className="img-fluid"
-                  variant="top"
-                  src={props.objeto.img}
-                />
-              </Link>
-              <button className="btn-delete d-flex align-items-center justify-content-center">
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-              {/* <Modal show={show} onHide={handleClose} backdrop="static">
-                <Modal.Header className="modal-header-place justify-content-center">
-                  <Modal.Title>Eliminar Lugar</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="modal-body-place">
-                  ¿Esta seguro de eliminar el lugar '{props.objeto.lugar}'?
-                  <div className="d-flex justify-content-between mx-5 mt-3 div-btn-modal-place">
-                    <button onClick={handleClose}>Cancelar</button>
-                    <button onClick={props.deleteP}>Aceptar</button>
-                  </div>
-                </Modal.Body>
-              </Modal> */}
-              {props.objeto.liked ? (
-                <button
-                  className="btn-like liked d-flex align-items-center justify-content-center"
-                  onClick={props.likeP}
-                >
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-              ) : (
-                <button
-                  className="btn-like d-flex align-items-center justify-content-center"
-                  onClick={props.likeP}
-                >
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-              )}
-            </div>
-
-            <Card.Body className="card-body">
-              <p>{props.objeto.lugar}</p>
-              <div className="div-details">
-                <p>{props.objeto.categoria.toUpperCase()}</p>
-                <p>{props.objeto.provincia.toUpperCase()}</p>
-              </div>
-            </Card.Body>
-            <Link className="card-cta mb-3" to={`/lugar/${props.objeto.id}`}>
-              Ver mas
-            </Link>
-          </Card>
-        </div>
-      }
-    </>
-  );
-}
 
 const FeaturedPage = () => {
   const content = [
@@ -247,10 +173,39 @@ const FeaturedPage = () => {
   const [province, setProvince] = useState("");
   const [category, setCategory] = useState("");
   const [arrayPlaces, setArrayPlaces] = useState(content);
+  const [alert, setAlert] = useState(false);
+
+  const defineFeatured = (objectPlace) => {
+    let arrayAux = [...arrayPlaces];
+    let indexFound = arrayAux.findIndex((l) => l.id === objectPlace.id);
+    let counterFeatured = 0;
+    for (let i = 0; i < arrayPlaces.length; i++) {
+      if (arrayPlaces[i].destacado === true) {
+        counterFeatured++;
+      }
+    }
+
+    if (arrayAux[indexFound].destacado) {
+      if (counterFeatured <= 1) {
+        setAlert(true);
+      } else {
+        arrayAux[indexFound].destacado = false;
+      }
+    } else {
+      arrayAux[indexFound].destacado = true;
+    }
+    setArrayPlaces(arrayAux);
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+  }, [alert]);
   return (
     <>
       <div>
-        <h1 className="text-center">Destacados</h1>
+        <h1 className="text-center">Lugares destacados</h1>
         <div className="div-admin-featured">
           <h2 className="text-center title-admin-featured">
             Administrar destacados
@@ -258,7 +213,7 @@ const FeaturedPage = () => {
           <div>
             <div>
               <div className="row m-0">
-                <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center mt-1">
+                <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center div-select-featured">
                   <h5 className="m-0">Provincia:</h5>
                   <Form.Select
                     aria-label="Default select example"
@@ -276,7 +231,7 @@ const FeaturedPage = () => {
                     <option value="la pampa">La Pampa</option>
                   </Form.Select>
                 </div>
-                <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center mt-1">
+                <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center div-select-featured">
                   <h5 className="m-0">Categoria:</h5>
                   <Form.Select
                     aria-label="Default select example"
@@ -297,24 +252,31 @@ const FeaturedPage = () => {
               </div>
             </div>
             <div className="div-table-featured">
-              <Table striped bordered hover size="sm">
+              {alert && (
+                <h4 className="text-center text-orange">
+                  Debe existir minimamente un destacado
+                </h4>
+              )}
+              <Table responsive="sm" striped bordered hover size="sm">
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Lugar</th>
+                    <th style={{ width: "25rem" }}>Lugar</th>
                     <th>Provincia</th>
                     <th>Categoria</th>
                     <th>Destacado</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                  </tr>
+                  {arrayPlaces.map((l) => (
+                    <TablePlaces
+                      key={l.id}
+                      object={l}
+                      catSelect={category}
+                      provSelect={province}
+                      highlight={() => defineFeatured(l)}
+                    />
+                  ))}
                 </tbody>
               </Table>
             </div>
@@ -323,9 +285,10 @@ const FeaturedPage = () => {
 
         <div className="row m-0">
           {arrayPlaces.length !== 0 &&
-            arrayPlaces.map((p, i) => {
-              p.destacado === true && <Outstanding key={p.id} objeto={p} />;
-            })}
+            arrayPlaces.map(
+              (p, i) =>
+                p.destacado === true && <FeatureElement key={p.id} objeto={p} />
+            )}
         </div>
       </div>
     </>
