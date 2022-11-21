@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Form, Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import '../Styles/register.css'
 import {
   faEnvelope,
   faLockKeyHoleOpen,
@@ -9,12 +10,15 @@ import {
 
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/register.css"
+import { Formik } from 'formik';
 
 const Register = () => {
    const [show, setShow] = useState(false);
 
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
+
+
 
   return (
     <>
@@ -34,77 +38,120 @@ const Register = () => {
               <b className="title-orange">Travel</b>
             </p>
           </div>
-          <Form>
-            <Form.Group className="mb-3">
-              <div className="d-flex">
-                <div className="d-flex align-items-center justify-content-center color-icon">
-                  <FontAwesomeIcon icon={faUser} />
+          <Formik
+            initialValues={{
+              name: "",
+              lastName: "",
+              email: "",
+              pass: "",
+              checkPass: "",
+            }}
+            validate={(valores) =>{}}
+            onSubmit={(valores) => {
+              console.log(valores)
+              console.log("formulario enviado.");
+            }}
+          >
+            {({values, handleSubmit, handleChange, handleBlur}) => (
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center justify-content-center color-icon">
+                      <FontAwesomeIcon icon={faUser} />
+                    </div>
+                    <Form.Control
+                      type="text"
+                      placeholder="Nombre/s"
+                      id="name"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                  <Form.Text className="text-muted">
+                    Ingrese un nombre válido.
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center justify-content-center color-icon">
+                      <FontAwesomeIcon icon={faUser} />
+                    </div>
+                    <Form.Control
+                      type="text"
+                      placeholder="Apellido/s"
+                      id="lastName"
+                      value={values.lastName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                  <Form.Text className="text-muted">
+                    Ingrese un apellido válido.
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center justify-content-center color-icon">
+                      <FontAwesomeIcon icon={faEnvelope} />
+                    </div>
+                    <Form.Control
+                      type="email"
+                      placeholder="Ingrese su correo electrónico."
+                      id="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                  <Form.Text className="text-muted">
+                    Ingrese un correo electrónico válido.
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center justify-content-center color-icon">
+                      <FontAwesomeIcon icon={faLock} />
+                    </div>
+                    <Form.Control
+                      type="password"
+                      placeholder="Ingrese su contraseña."
+                      id="pass"
+                      value={values.pass}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center justify-content-center color-icon">
+                      <FontAwesomeIcon icon={faLock} />
+                    </div>
+                    <Form.Control
+                      type="password"
+                      placeholder="Confirme su contraseña."
+                      id="checkPass"
+                      value={values.checkPass}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                  <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                  </Form.Text>
+                </Form.Group>
+                <div className="d-flex justify-content-center w-75 mx-auto">
+                  <button className="btn-init-custom" type="submit">
+                    Registrarme
+                  </button>
                 </div>
-                <Form.Control type="text" placeholder="Nombre/s" />
-              </div>
-              <Form.Text className="text-muted">
-               Ingrese un nombre válido.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <div className="d-flex">
-                <div className="d-flex align-items-center justify-content-center color-icon">
-                  <FontAwesomeIcon icon={faUser} />
-                </div>
-                <Form.Control type="text" placeholder="Apellido/s" />
-              </div>
-              <Form.Text className="text-muted">
-                Ingrese un apellido válido.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <div className="d-flex">
-                <div className="d-flex align-items-center justify-content-center color-icon">
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </div>
-                <Form.Control
-                  type="email"
-                  placeholder="Ingrese su correo electrónico."
-                />
-              </div>
-              <Form.Text className="text-muted">
-                Ingrese un correo electrónico válido.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <div className="d-flex">
-                <div className="d-flex align-items-center justify-content-center color-icon">
-                  <FontAwesomeIcon icon={faLock} />
-                </div>
-                <Form.Control
-                  type="password"
-                  placeholder="Ingrese su contraseña."
-                />
-              </div>
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <div className="d-flex">
-                <div className="d-flex align-items-center justify-content-center color-icon">
-                  <FontAwesomeIcon icon={faLock} />
-                </div>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirme su contraseña."
-                />
-              </div>
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-            <div className="d-flex justify-content-center w-75 mx-auto">
-              <button className="btn-init-custom" type="submit">
-                Registrarme
-              </button>
-            </div>
-          </Form>
+              </Form>
+            )}
+          </Formik>
           <div className="d-flex flex-column justify-content-center align-items-center text-center pt-3">
             <p>
               ¿Ya tienes una cuenta?
