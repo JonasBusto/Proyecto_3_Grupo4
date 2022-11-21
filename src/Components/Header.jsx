@@ -20,9 +20,12 @@ const Header = () => {
             xs={12}
             sm={6}
             md={6}
-            className="d-flex justify-content-center ps-3 d-md-none container-name"
+            className="d-flex py-3 justify-content-center align-items-center d-md-none"
           >
-            <img src="/RollingTravel.png" alt="" />
+            <p className=" fs-2 d-flex justify-content-center m-0 align-items-center">
+              <b className="title-black">Rolling</b>
+              <b className="title-white">Travel</b>
+            </p>
           </Col>
           <Col
             md={4}
@@ -36,7 +39,7 @@ const Header = () => {
             xs={12}
             sm={6}
             md={4}
-            className="d-flex justify-content-center ps-5 py-2 container-seeker"
+            className="d-flex justify-content-center ps-5 py-2 d-none d-sx-none d-sm-flex container-seeker"
           >
             <div>
               <InputGroup>
