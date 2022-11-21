@@ -64,3 +64,13 @@
     border-bottom-left-radius: 6px ;
     border-bottom-right-radius: 6px ;
 }
+
+.container-aux{
+    display: flex;
+    flex-direction: column;
+}
+
+/* .btn-close{
+    margin-left: 0 !important;
+    margin-right: 5px;
+} */
