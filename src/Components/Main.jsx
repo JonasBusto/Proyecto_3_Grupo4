@@ -9,6 +9,8 @@ import { Routes, Route } from "react-router-dom";
 import "../Styles/main.css";
 import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
+import Login from "./Login"
+import Register from "./Register";
 
 const Main = () => {
   return (
@@ -16,6 +18,7 @@ const Main = () => {
       <main className="mx-auto" style={{ maxWidth: "1300px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/lugar" element={<ArticlePage />} />
           <Route path="/lugares" element={<PlacesGrid />} />
           <Route path="/recuperarContrasela" element={<RecoverPass />} />
