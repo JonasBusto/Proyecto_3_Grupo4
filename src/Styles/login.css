@@ -70,7 +70,6 @@
     flex-direction: column;
 }
 
-/* .btn-close{
-    margin-left: 0 !important;
-    margin-right: 5px;
-} */
+.cursor-pointer-custom{
+    cursor: pointer;
+}

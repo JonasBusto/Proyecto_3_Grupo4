@@ -12,12 +12,17 @@ import {
 import { GiShoppingCart } from "react-icons/gi";
 import "../Styles/navContent.css";
 import Login from "./Login"
+import Register from "./Register";
 
 const NavContent = () => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+      const [showRegister, setShowRegister] = useState(false);
+      const handleCloseRegister = () => setShowRegister(false);
+      const handleShowRegister = () => setShowRegister(true);
 
   return (
     <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
@@ -66,7 +71,17 @@ const NavContent = () => {
                 <Nav.Link href="#action2">Contacto</Nav.Link>
                 <Nav.Link href="#action2">Me Gusta</Nav.Link>
                 <Button onClick={handleShow}>Iniciar Sesion</Button>
-                <Login show={show} handleClose={handleClose} handleShow={handleShow} />
+                <Login
+                  show={show}
+                  handleClose={handleClose}
+                  handleShow={handleShow}
+                  handleShowRegister={handleShowRegister}
+                />
+                <Register 
+                handleShow={handleShow}
+                handleShowRegister={handleShowRegister} 
+                handleCloseRegister={handleCloseRegister} 
+                showRegister={showRegister} />
                 <Nav.Link href="#action2">
                   <h4 className="align-items-center">
                     <GiShoppingCart />

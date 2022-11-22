@@ -17,7 +17,6 @@ const Main = () => {
       <main className="mx-auto" style={{ maxWidth: "1300px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/lugar" element={<ArticlePage />} />
           <Route path="/lugares" element={<PlacesGrid />} />
           <Route path="/recuperarContrasela" element={<RecoverPass />} />

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Form, Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../Styles/register.css'
+import { Link } from "react-router-dom";
 import {
   faEnvelope,
   faLockKeyHoleOpen,
@@ -12,19 +13,11 @@ import {
 import "../Styles/register.css"
 import { Formik } from 'formik';
 
-const Register = () => {
-   const [show, setShow] = useState(false);
-
-   const handleClose = () => setShow(false);
-   const handleShow = () => setShow(true);
+const Register = ({handleCloseRegister, showRegister, handleShow}) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Registrarme
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showRegister} onHide={handleCloseRegister}>
         <Modal.Header closeButton className="d-flex">
           <Modal.Title className="w-100 text-center">Registrarse</Modal.Title>
         </Modal.Header>
@@ -32,8 +25,10 @@ const Register = () => {
           <div className="d-flex justify-content-center">
             <p className="fs-2">
               <b className="title-white">Bienvenido a</b>{" "}
-              <b className="title-black">Rolling</b>
-              <b className="title-orange">Travel</b>
+              <Link onClick={handleCloseRegister} to="/" style={{textDecoration:"none"}}>
+                <b className="title-black cursor-pointer-custom">Rolling</b>
+                <b className="title-orange cursor-pointer-custom">Travel</b>
+              </Link>
             </p>
           </div>
           <Formik
@@ -71,12 +66,11 @@ const Register = () => {
 
               if (!valores.pass) {
                 errors.pass = "Por favor ingrese un contraseña.";
-              } else if (/\s/.test(valores.pass)){
+              } else if (/\s/.test(valores.pass)) {
                 console.log(/\s/.test(valores.pass));
-                errors.pass = "La contraseña no puede tener espacios."
+                errors.pass = "La contraseña no puede tener espacios.";
               }
-              
-              
+
               // else if (
               //     !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/.test(
               //       valores.pass
@@ -87,19 +81,16 @@ const Register = () => {
 
               if (!valores.checkPass) {
                 errors.checkPass = "Por favor confirme su contraseña.";
-              } else if (
-                valores.pass !== valores.checkPass
-                )
-               {
+              } else if (valores.pass !== valores.checkPass) {
                 errors.checkPass = "Las contraseñas no coinciden.";
               }
 
               return errors;
             }}
-            onSubmit={(valores, {resetForm}) => {
+            onSubmit={(valores, { resetForm }) => {
               console.log(valores);
               console.log("formulario enviado.");
-              resetForm()
+              resetForm();
             }}
           >
             {({
@@ -224,7 +215,16 @@ const Register = () => {
             <p>
               ¿Ya tienes una cuenta?
               <br />
-              Inicia Sesion <b>Aquí.</b>
+              Inicia Sesion{" "}
+              <b
+                className="cursor-pointer-custom"
+                onClick={() => {
+                  handleShow();
+                  handleCloseRegister();
+                }}
+              >
+                Aquí.
+              </b>
             </p>
           </div>
         </Modal.Body>
