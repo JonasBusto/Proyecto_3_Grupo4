@@ -69,25 +69,30 @@ const Register = () => {
                 errors.email = "Ingrese un correo electrónico válido";
               }
 
-              // if (!valores.pass) {
-              //   errors.pass = "Por favor ingrese un contraseña.";
-              // } else if (
-              //   !/^(?=(?:.*\d))(?=.*[A-Z])(?=.*[a-z])(?=.*[.,*!?¿¡/#$%&])\S{8,64}$/.test(
-              //     valores.pass
-              //   )
-              // ) {
-              //   errors.pass = "Ingrese una buena contraseña.";
+              if (!valores.pass) {
+                errors.pass = "Por favor ingrese un contraseña.";
+              } else if (/\s/.test(valores.pass)){
+                console.log(/\s/.test(valores.pass));
+                errors.pass = "La contraseña no puede tener espacios."
+              }
+              
+              
+              // else if (
+              //     !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/.test(
+              //       valores.pass
+              //     )
+              //   ){
+              //   errors.pass = "Debe contener al menos: un caracter especial, una mayuscula, un numero y tener 8-15 caract. (sin espacios)";
               // }
 
-              // if (!valores.checkPass) {
-              //   errors.checkPass = "Por favor ingrese una contraseña.";
-              // } else if (
-              //   !/^(?=(?:.*\d))(?=.*[A-Z])(?=.*[a-z])(?=.*[.,*!?¿¡/#$%&])\S{8,64}$/.test(
-              //     valores.checkPass
-              //   )
-              // ) {
-              //   errors.checkPass = "Ingrese una buena contraseña.";
-              // }
+              if (!valores.checkPass) {
+                errors.checkPass = "Por favor confirme su contraseña.";
+              } else if (
+                valores.pass !== valores.checkPass
+                )
+               {
+                errors.checkPass = "Las contraseñas no coinciden.";
+              }
 
               return errors;
             }}
@@ -118,6 +123,7 @@ const Register = () => {
                       value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      maxLength={20}
                     />
                   </div>
                   {touched.name && errors.name && (
@@ -136,6 +142,7 @@ const Register = () => {
                       value={values.lastName}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      maxLength={20}
                     />
                   </div>
                   {touched.lastName && errors.lastName && (
@@ -156,6 +163,7 @@ const Register = () => {
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      maxLength={35}
                     />
                   </div>
                   {touched.email && errors.email && (
@@ -170,12 +178,13 @@ const Register = () => {
                       <FontAwesomeIcon icon={faLock} />
                     </div>
                     <Form.Control
-                      type="password"
+                      type="text"
                       placeholder="Ingrese su contraseña."
                       id="pass"
                       value={values.pass}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      maxLength={15}
                     />
                   </div>
                   {touched.pass && errors.pass && (
@@ -188,12 +197,13 @@ const Register = () => {
                       <FontAwesomeIcon icon={faLock} />
                     </div>
                     <Form.Control
-                      type="password"
+                      type="text"
                       placeholder="Confirme su contraseña."
                       id="checkPass"
                       value={values.checkPass}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      maxLength={15}
                     />
                   </div>
                   {touched.checkPass && errors.checkPass && (
