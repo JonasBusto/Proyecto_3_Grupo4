@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Container,
   Navbar,
@@ -11,8 +11,14 @@ import {
 } from "react-bootstrap";
 import { GiShoppingCart } from "react-icons/gi";
 import "../Styles/navContent.css";
+import Login from "./Login"
 
 const NavContent = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
   return (
     <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
       <Container>
@@ -59,7 +65,8 @@ const NavContent = () => {
                 <Nav.Link href="#action2">Destacado</Nav.Link>
                 <Nav.Link href="#action2">Contacto</Nav.Link>
                 <Nav.Link href="#action2">Me Gusta</Nav.Link>
-                <Nav.Link href="#action2">Iniciar Sesion</Nav.Link>
+                <Button onClick={handleShow}>Iniciar Sesion</Button>
+                <Login show={show} handleClose={handleClose} handleShow={handleShow} />
                 <Nav.Link href="#action2">
                   <h4 className="align-items-center">
                     <GiShoppingCart />
