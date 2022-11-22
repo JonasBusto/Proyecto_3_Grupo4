@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope , faLockKeyHoleOpen , faLock } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 
-const Login = ({show, handleClose}) => {
+const Login = ({show, handleClose, handleShowRegister}) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -116,8 +116,21 @@ const Login = ({show, handleClose}) => {
               </Form>
             )}
           </Formik>
-          <div className="d-flex pt-2">
-            <div>No tengo cuenta, quiero Registrarme.</div>
+          <div className="d-flex flex-column justify-content-center align-items-center text-center pt-3">
+            <p>
+              ¿No tienes una cuenta?
+              <br />
+              Registrate{" "}
+              <b 
+                className='cursor-pointer-custom'
+                onClick={() => {
+                  handleClose();
+                  handleShowRegister();
+                }}
+              >
+                Aquí.
+              </b>
+            </p>
           </div>
         </Modal.Body>
       </Modal>

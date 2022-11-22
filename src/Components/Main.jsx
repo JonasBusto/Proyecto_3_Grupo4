@@ -9,7 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import "../Styles/main.css";
 import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
-import Login from "./Login";
+
 
 const Main = () => {
   return (

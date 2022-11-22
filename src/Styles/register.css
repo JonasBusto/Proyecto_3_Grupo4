@@ -69,7 +69,3 @@
     display: flex;
     flex-direction: column;
 }
-
-.cursor-pointer-custom{
-    cursor: pointer;
-}
