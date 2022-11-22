@@ -18,8 +18,6 @@ const Register = () => {
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
 
-
-
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -46,13 +44,67 @@ const Register = () => {
               pass: "",
               checkPass: "",
             }}
-            validate={(valores) =>{}}
-            onSubmit={(valores) => {
-              console.log(valores)
+            validate={(valores) => {
+              let errors = {};
+
+              if (!valores.name) {
+                errors.name = "Por favor ingresa un nombre.";
+              } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+                errors.name = "Ingrese un nombre válido.";
+              }
+
+              if (!valores.lastName) {
+                errors.lastName = "Por favor ingrese un apellido.";
+              } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.lastName)) {
+                errors.lastName = "Ingrese un apellido válido";
+              }
+
+              if (!valores.email) {
+                errors.email = "Por favor ingrese un correo electrónico.";
+              } else if (
+                !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                  valores.email
+                )
+              ) {
+                errors.email = "Ingrese un correo electrónico válido";
+              }
+
+              // if (!valores.pass) {
+              //   errors.pass = "Por favor ingrese un contraseña.";
+              // } else if (
+              //   !/^(?=(?:.*\d))(?=.*[A-Z])(?=.*[a-z])(?=.*[.,*!?¿¡/#$%&])\S{8,64}$/.test(
+              //     valores.pass
+              //   )
+              // ) {
+              //   errors.pass = "Ingrese una buena contraseña.";
+              // }
+
+              // if (!valores.checkPass) {
+              //   errors.checkPass = "Por favor ingrese una contraseña.";
+              // } else if (
+              //   !/^(?=(?:.*\d))(?=.*[A-Z])(?=.*[a-z])(?=.*[.,*!?¿¡/#$%&])\S{8,64}$/.test(
+              //     valores.checkPass
+              //   )
+              // ) {
+              //   errors.checkPass = "Ingrese una buena contraseña.";
+              // }
+
+              return errors;
+            }}
+            onSubmit={(valores, {resetForm}) => {
+              console.log(valores);
               console.log("formulario enviado.");
+              resetForm()
             }}
           >
-            {({values, handleSubmit, handleChange, handleBlur}) => (
+            {({
+              values,
+              errors,
+              touched,
+              handleSubmit,
+              handleChange,
+              handleBlur,
+            }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
@@ -68,9 +120,9 @@ const Register = () => {
                       onBlur={handleBlur}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    Ingrese un nombre válido.
-                  </Form.Text>
+                  {touched.name && errors.name && (
+                    <Form.Text className="text-danger">{errors.name}</Form.Text>
+                  )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
@@ -86,9 +138,11 @@ const Register = () => {
                       onBlur={handleBlur}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    Ingrese un apellido válido.
-                  </Form.Text>
+                  {touched.lastName && errors.lastName && (
+                    <Form.Text className="text-danger">
+                      {errors.lastName}
+                    </Form.Text>
+                  )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
@@ -104,9 +158,11 @@ const Register = () => {
                       onBlur={handleBlur}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    Ingrese un correo electrónico válido.
-                  </Form.Text>
+                  {touched.email && errors.email && (
+                    <Form.Text className="text-danger">
+                      {errors.email}
+                    </Form.Text>
+                  )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
@@ -122,9 +178,9 @@ const Register = () => {
                       onBlur={handleBlur}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
+                  {touched.pass && errors.pass && (
+                    <Form.Text className="text-danger">{errors.pass}</Form.Text>
+                  )}
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
@@ -140,9 +196,11 @@ const Register = () => {
                       onBlur={handleBlur}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
+                  {touched.checkPass && errors.checkPass && (
+                    <Form.Text className="text-danger">
+                      {errors.checkPass}
+                    </Form.Text>
+                  )}
                 </Form.Group>
                 <div className="d-flex justify-content-center w-75 mx-auto">
                   <button className="btn-init-custom" type="submit">
