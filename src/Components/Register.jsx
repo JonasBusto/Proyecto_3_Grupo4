@@ -23,7 +23,7 @@ const Register = ({handleCloseRegister, showRegister, handleShow}) => {
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex justify-content-center">
-            <p className="fs-2">
+            <p className="fs-2 text-center">
               <b className="title-white">Bienvenido a</b>{" "}
               <Link onClick={handleCloseRegister} to="/" style={{textDecoration:"none"}}>
                 <b className="title-black cursor-pointer-custom">Rolling</b>
