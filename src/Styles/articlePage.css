@@ -181,3 +181,35 @@ main {
   font-size: 1.5rem;
   color: #497174;
 }
+
+.btn-admin-place,
+.div-btn-admin-color > button {
+  border: 3px solid transparent;
+  border-radius: 7px;
+  background-color: #eb6440;
+  color: #ffffff;
+  padding: 0.4rem;
+  margin: 0.5rem;
+}
+
+.btn-admin-place:hover,
+.div-btn-admin-color > button:hover {
+  border: 3px solid #eb6440;
+  background-color: white;
+  color: #eb6440;
+}
+
+.btns-admin {
+  margin-left: 0.7rem;
+  margin-right: 0.7rem;
+  padding: 0.7rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.308), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.modal-h-admin {
+  background-color: #497174;
+  color: white;
+}
+.modal-b-admin {
+  background-color: #d6e4e5;
+}

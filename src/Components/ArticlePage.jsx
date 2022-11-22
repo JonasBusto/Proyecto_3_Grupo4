@@ -4,8 +4,15 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faBookAtlas,
+  faLocationDot,
+  faImage,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "react-bootstrap/Modal";
+import "../Styles/placesGrid.css";
 
 const ArticlePage = () => {
   const content = {
@@ -64,9 +71,37 @@ const ArticlePage = () => {
     },
   ];
 
-  useEffect(() => {
-    console.log("Comentarios: ", comentarios);
-  }, [comentarios]);
+  let objInitial = {};
+
+  const [showDetails, setShowDetails] = useState(false);
+  const handleCloseDetails = () => setShowDetails(false);
+  const handleShowDetails = () => setShowDetails(true);
+
+  const [showDescription, setShowDescription] = useState(false);
+  const handleCloseDescription = () => setShowDescription(false);
+  const handleShowDescription = () => setShowDescription(true);
+
+  const [showImages, setShowImages] = useState(false);
+  const handleCloseImages = () => setShowImages(false);
+  const handleShowImages = () => setShowImages(true);
+
+  const [showServices, setShowServices] = useState(false);
+  const handleCloseServices = () => setShowServices(false);
+  const handleShowIServices = () => setShowServices(true);
+
+  const [showTips, setShowTips] = useState(false);
+  const handleCloseTips = () => setShowTips(false);
+  const handleShowTips = () => setShowTips(true);
+
+  const changeDetails = (cat, prov) => {
+    let objAux = { ...objetoPrueba, categoria: cat, provincia: prov };
+    setObjetoPrueba(objAux);
+  };
+
+  const changeDescription = (desc) => {
+    let objAux = { ...objetoPrueba, descripcion: desc };
+    setObjetoPrueba(objAux);
+  };
 
   return (
     <>
@@ -115,17 +150,613 @@ const ArticlePage = () => {
         </div>
 
         <div className="mx-auto mt-5" style={{ maxWidth: "1300px" }}>
-          <div className="div-box">
+          <div className="btns-admin">
             <h1 className="text-orange">Modificar atributos:</h1>
             <p>
               Como administrador, elija la opción que considere necesario
               modificar
             </p>
-            <button>Detalles del lugar</button>
-            <button>Descripción</button>
-            <button>Imagenes</button>
-            <button>Servicios</button>
-            <button>Tips</button>
+            <div className="row m-0 justify-content-center">
+              <button
+                onClick={handleShowDetails}
+                className="btn-admin-place col-12 col-sm-6 col-md-4 col-lg-2"
+              >
+                Detalles del lugar
+              </button>
+              <button
+                onClick={handleShowDescription}
+                className="btn-admin-place col-12 col-sm-6 col-md-4 col-lg-2"
+              >
+                Descripción
+              </button>
+              <button
+                onClick={handleShowImages}
+                className="btn-admin-place col-12 col-sm-6 col-md-4 col-lg-2"
+              >
+                Imagenes
+              </button>
+              <button
+                onClick={handleShowIServices}
+                className="btn-admin-place col-12 col-sm-6 col-md-4 col-lg-2"
+              >
+                Servicios
+              </button>
+              <button
+                onClick={handleShowTips}
+                className="btn-admin-place col-12 col-sm-6 col-md-4 col-lg-2"
+              >
+                Tips
+              </button>
+              <div>
+                <Modal
+                  show={showDetails}
+                  onHide={handleCloseDetails}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header className="modal-h-admin">
+                    <Modal.Title>Detalles</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="modal-b-admin">
+                    <Formik
+                      initialValues={{
+                        categoria: objetoPrueba.categoria,
+                        provincia: objetoPrueba.provincia,
+                      }}
+                      validate={(valuesInput) => {
+                        let errors = {};
+
+                        if (valuesInput.categoria === "") {
+                          errors.categoria =
+                            "Por favor, seleccione una categoria.";
+                        }
+                        if (valuesInput.provincia === "") {
+                          errors.provincia =
+                            "Por favor, seleccione una provincia.";
+                        }
+
+                        return errors;
+                      }}
+                      onSubmit={(valuesInput, { resetForm }) => {
+                        changeDetails(
+                          valuesInput.categoria,
+                          valuesInput.provincia
+                        );
+                        // resetForm({});
+                      }}
+                    >
+                      {({
+                        handleSubmit,
+                        errors,
+                        touched,
+                        values,
+                        handleChange,
+                        handleBlur,
+                      }) => (
+                        <Form onSubmit={handleSubmit}>
+                          <div className="row m-0">
+                            <p>
+                              Categoria seleccionada:{" "}
+                              {objetoPrueba.categoria.toUpperCase()}
+                            </p>
+                            <p>
+                              Provincia seleccionada:{" "}
+                              {objetoPrueba.provincia.toUpperCase()}
+                            </p>
+                            <div className="col-12 w-100 col-sm-6 col-lg-4 d-flex flex-column mt-1">
+                              <div className="d-flex align-items-center">
+                                <h5 className="m-0">Categoria:</h5>
+                                <Form.Select
+                                  aria-label="Default select example"
+                                  name="categoria"
+                                  value={values.categoria}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                >
+                                  <option value="">Todas</option>
+                                  <option value="playa">Playa</option>
+                                  <option value="montaña">Montaña</option>
+                                  <option value="selva">Selva</option>
+                                  <option value="cataratas">Cataratas</option>
+                                  <option value="llanura">Llanura</option>
+                                  <option value="llamativo">Llamativo</option>
+                                  <option value="campo">Campo</option>
+                                  <option value="ciudad">Ciudad</option>
+                                  <option value="rural">Rural</option>
+                                </Form.Select>
+                              </div>
+                              {errors.categoria && touched.categoria && (
+                                <Form.Text className="text-muted">
+                                  {errors.categoria}
+                                </Form.Text>
+                              )}
+                            </div>
+                            <div className="col-12 w-100 col-sm-6 col-lg-4 d-flex flex-column mt-3">
+                              <div className="d-flex align-items-center">
+                                <h5 className="m-0">Provincia:</h5>
+                                <Form.Select
+                                  aria-label="Default select example"
+                                  name="provincia"
+                                  value={values.provincia}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                >
+                                  <option value="">Todas</option>
+                                  <option value="Tucumán">Tucumán</option>
+                                  <option value="Bs As">Bs As</option>
+                                  <option value="Catamarca">Catamarca</option>
+                                  <option value="misiones">Misiones</option>
+                                  <option value="jujuy">Jujuy</option>
+                                  <option value="chubut">Chubut</option>
+                                  <option value="mendoza">Mendoza</option>
+                                  <option value="la rioja">La Rioja</option>
+                                  <option value="la pampa">La Pampa</option>
+                                </Form.Select>
+                              </div>
+                              {errors.provincia && touched.provincia && (
+                                <Form.Text className="text-muted">
+                                  {errors.provincia}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <div className="mt-3 d-flex justify-content-between w-75 mx-auto div-btn-admin-color">
+                            <button
+                              onClick={(e) => {
+                                handleCloseDetails();
+                                e.preventDefault();
+                              }}
+                            >
+                              Cancelar
+                            </button>
+                            <button type="submit">Guardar Cambios</button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                  </Modal.Body>
+                </Modal>
+              </div>
+
+              <div>
+                <Modal
+                  show={showDescription}
+                  onHide={handleCloseDescription}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header className="modal-h-admin">
+                    <Modal.Title>Descripción</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="modal-b-admin">
+                    <Formik
+                      initialValues={{
+                        descripcion: objetoPrueba.descripcion,
+                      }}
+                      validate={(valuesInput) => {
+                        let errors = {};
+
+                        if (valuesInput.descripcion.trim() === "") {
+                          errors.descripcion = "Campo 'Descripción' vacio.";
+                        } else if (
+                          valuesInput.descripcion.trim().split("").length < 1 ||
+                          valuesInput.descripcion.trim().split("").length > 300
+                        ) {
+                          errors.descripcion =
+                            "La descripción debe tener entre 1 y 300 caracteres.";
+                        }
+
+                        return errors;
+                      }}
+                      onSubmit={(valuesInput, { resetForm }) => {
+                        changeDescription(valuesInput.descripcion);
+                        // handleCloseDescription();
+                        resetForm({});
+                      }}
+                    >
+                      {({
+                        handleSubmit,
+                        errors,
+                        touched,
+                        values,
+                        handleChange,
+                        handleBlur,
+                      }) => (
+                        <Form onSubmit={handleSubmit}>
+                          <div className="div-input-form">
+                            <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                              <FontAwesomeIcon icon={faBookAtlas} />
+                            </div>
+                            <Form.Control
+                              as="textarea"
+                              rows={3}
+                              name="descripcion"
+                              placeholder="Ingresar descripción"
+                              value={values.descripcion}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                            />
+                          </div>
+                          {errors.descripcion && touched.descripcion && (
+                            <Form.Text className="text-muted">
+                              {errors.descripcion}
+                            </Form.Text>
+                          )}
+                          <div className="mt-3 d-flex justify-content-between w-75 mx-auto div-btn-admin-color">
+                            <button
+                              onClick={(e) => {
+                                handleCloseDescription();
+                                e.preventDefault();
+                              }}
+                            >
+                              Cancelar
+                            </button>
+                            <button type="submit">Guardar Cambios</button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                  </Modal.Body>
+                </Modal>
+              </div>
+
+              <div>
+                <Modal
+                  show={showImages}
+                  onHide={handleCloseImages}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header className="modal-h-admin">
+                    <Modal.Title>Imagenes</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body
+                    className="modal-b-admin"
+                    style={{ height: "20rem", overflow: "auto" }}
+                  >
+                    <Formik
+                      initialValues={{
+                        urlImg1: objetoPrueba.img.img1,
+                        urlImg2: objetoPrueba.img.img2,
+                        urlImg3: objetoPrueba.img.img3,
+                        urlImg4: objetoPrueba.img.img4,
+                        urlImg5: objetoPrueba.img.img5,
+                      }}
+                      validate={(valuesInput) => {
+                        let errors = {};
+
+                        if (valuesInput.urlImg1.trim() === "") {
+                          errors.urlImg1 = "Por favor, ingrese una url";
+                        }
+                        if (valuesInput.urlImg2.trim() === "") {
+                          errors.urlImg2 = "Por favor, ingrese una url";
+                        }
+                        if (valuesInput.urlImg3.trim() === "") {
+                          errors.urlImg3 = "Por favor, ingrese una url";
+                        }
+                        if (valuesInput.urlImg4.trim() === "") {
+                          errors.urlImg4 = "Por favor, ingrese una url";
+                        }
+                        if (valuesInput.urlImg5.trim() === "") {
+                          errors.urlImg5 = "Por favor, ingrese una url";
+                        }
+
+                        return errors;
+                      }}
+                      onSubmit={(valuesInput, { resetForm }) => {
+                        resetForm();
+                      }}
+                    >
+                      {({
+                        handleSubmit,
+                        errors,
+                        touched,
+                        values,
+                        handleChange,
+                        handleBlur,
+                      }) => (
+                        <Form onClick={handleSubmit}>
+                          <div className="d-flex flex-column mt-2">
+                            <p>Url Imagen 1: </p>
+                            <div className="div-input-form">
+                              <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faImage} />
+                              </div>
+                              <Form.Control
+                                type="text"
+                                name="lugar"
+                                placeholder="Ingresar lugar"
+                                value={values.urlImg1}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </div>
+                            <div className="d-flex flex-column align-items-center mt-2">
+                              <img
+                                src={objetoPrueba.img.img1}
+                                className="img-fluid"
+                                alt=""
+                                style={{
+                                  height: "15rem",
+                                  width: "26rem",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              {errors.urlImg1 && touched.urlImg1 && (
+                                <Form.Text className="text-muted">
+                                  {errors.urlImg1}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="d-flex flex-column mt-2">
+                            <p>Url Imagen 2: </p>
+                            <div className="div-input-form">
+                              <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faImage} />
+                              </div>
+                              <Form.Control
+                                type="text"
+                                name="lugar"
+                                placeholder="Ingresar lugar"
+                                value={values.urlImg2}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </div>
+                            <div className="d-flex flex-column align-items-center mt-2">
+                              <img
+                                src={objetoPrueba.img.img2}
+                                className="img-fluid"
+                                alt=""
+                                style={{
+                                  height: "15rem",
+                                  width: "26rem",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              {errors.urlImg2 && touched.urlImg2 && (
+                                <Form.Text className="text-muted">
+                                  {errors.urlImg2}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="d-flex flex-column mt-2">
+                            <p>Url Imagen 3: </p>
+                            <div className="div-input-form">
+                              <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faImage} />
+                              </div>
+                              <Form.Control
+                                type="text"
+                                name="lugar"
+                                placeholder="Ingresar lugar"
+                                value={values.urlImg3}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </div>
+                            <div className="d-flex flex-column align-items-center mt-2">
+                              <img
+                                src={objetoPrueba.img.img3}
+                                className="img-fluid"
+                                alt=""
+                                style={{
+                                  height: "15rem",
+                                  width: "26rem",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              {errors.urlImg3 && touched.urlImg3 && (
+                                <Form.Text className="text-muted">
+                                  {errors.urlImg3}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="d-flex flex-column mt-2">
+                            <p>Url Imagen 4: </p>
+                            <div className="div-input-form">
+                              <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faImage} />
+                              </div>
+                              <Form.Control
+                                type="text"
+                                name="lugar"
+                                placeholder="Ingresar lugar"
+                                value={values.urlImg4}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </div>
+                            <div className="d-flex flex-column align-items-center mt-2">
+                              <img
+                                src={objetoPrueba.img.img4}
+                                className="img-fluid"
+                                alt=""
+                                style={{
+                                  height: "15rem",
+                                  width: "26rem",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              {errors.urlImg4 && touched.urlImg4 && (
+                                <Form.Text className="text-muted">
+                                  {errors.urlImg4}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="d-flex flex-column mt-2">
+                            <p>Url Imagen 5: </p>
+                            <div className="div-input-form">
+                              <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                <FontAwesomeIcon icon={faImage} />
+                              </div>
+                              <Form.Control
+                                type="text"
+                                name="lugar"
+                                placeholder="Ingresar lugar"
+                                value={values.urlImg5}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </div>
+                            <div className="d-flex flex-column align-items-center mt-2">
+                              <img
+                                src={objetoPrueba.img.img5}
+                                className="img-fluid"
+                                alt=""
+                                style={{
+                                  height: "15rem",
+                                  width: "26rem",
+                                  objectFit: "cover",
+                                }}
+                              />
+                              {errors.urlImg5 && touched.urlImg5 && (
+                                <Form.Text className="text-muted">
+                                  {errors.urlImg5}
+                                </Form.Text>
+                              )}
+                            </div>
+                          </div>
+                          <hr />
+                          <div className="mt-3 d-flex justify-content-between mx-auto w-75 div-btn-admin-color">
+                            <button
+                              type="button"
+                              onClick={(e) => handleCloseImages(e)}
+                            >
+                              Cancelar
+                            </button>
+                            <button type="submit">Guardar Cambios</button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                  </Modal.Body>
+                </Modal>
+              </div>
+
+              <div>
+                <Modal
+                  show={showServices}
+                  onHide={handleCloseServices}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header className="modal-h-admin">
+                    <Modal.Title>Servicios</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body
+                    className="modal-b-admin"
+                    style={{ height: "20rem", overflow: "auto" }}
+                  >
+                    <Formik>
+                      {({
+                        handleSubmit,
+                        errors,
+                        touched,
+                        values,
+                        handleChange,
+                        handleBlur,
+                      }) => (
+                        <Form>
+                          <div>
+                            {objetoPrueba.servicios.map((s, i) => (
+                              <div
+                                key={"servicio" + i}
+                                className="d-flex flex-column mb-3"
+                              >
+                                <p className="mb-1">Servicio {i + 1}</p>
+                                <div className="div-input-form">
+                                  <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                    <FontAwesomeIcon icon={faImage} />
+                                  </div>
+                                  <Form.Control
+                                    as="textarea"
+                                    row={3}
+                                    name="lugar"
+                                    placeholder="Ingresar servicio"
+                                    value={s}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                    <div className="mt-3 d-flex justify-content-between w-75 mx-auto div-btn-admin-color">
+                      <button onClick={handleCloseServices}>Cancelar</button>
+                      <button>Guardar Cambios</button>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+              </div>
+
+              <div>
+                <Modal
+                  show={showTips}
+                  onHide={handleCloseTips}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header className="modal-h-admin">
+                    <Modal.Title>Tips</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body className="modal-b-admin">
+                    <Formik>
+                      {({
+                        handleSubmit,
+                        errors,
+                        touched,
+                        values,
+                        handleChange,
+                        handleBlur,
+                      }) => (
+                        <Form>
+                          <div>
+                            {objetoPrueba.tips.map((t, i) => (
+                              <div
+                                key={"servicio" + i}
+                                className="d-flex flex-column mb-3"
+                              >
+                                <p className="mb-1">Tip {i + 1}</p>
+                                <div className="div-input-form">
+                                  <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                                    <FontAwesomeIcon icon={faImage} />
+                                  </div>
+                                  <Form.Control
+                                    as="textarea"
+                                    row={3}
+                                    name="tip"
+                                    placeholder="Ingresar tip"
+                                    value={t}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+                    <div className="mt-3 d-flex justify-content-between w-75 mx-auto div-btn-admin-color">
+                      <button onClick={handleCloseTips}>Cancelar</button>
+                      <button>Guardar Cambios</button>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+              </div>
+            </div>
           </div>
           <div className="mt-5">
             <div className="row m-0">
