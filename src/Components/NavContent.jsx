@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -11,18 +12,17 @@ import {
 } from "react-bootstrap";
 import { GiShoppingCart } from "react-icons/gi";
 import "../Styles/navContent.css";
-import Login from "./Login"
+import Login from "./Login";
 import Register from "./Register";
 
 const NavContent = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-      const [showRegister, setShowRegister] = useState(false);
-      const handleCloseRegister = () => setShowRegister(false);
-      const handleShowRegister = () => setShowRegister(true);
+  const [showRegister, setShowRegister] = useState(false);
+  const handleCloseRegister = () => setShowRegister(false);
+  const handleShowRegister = () => setShowRegister(true);
 
   return (
     <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
@@ -60,16 +60,17 @@ const NavContent = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link
+                <Link
+                  to="/"
                   className="home-navbar"
                   style={{ color: "white" }}
                   href="#action1"
                 >
                   Home
-                </Nav.Link>
-                <Nav.Link href="#action2">Destacado</Nav.Link>
-                <Nav.Link href="#action2">Contacto</Nav.Link>
-                <Nav.Link href="#action2">Me Gusta</Nav.Link>
+                </Link>
+                <Link to="/destacados">Destacado</Link>
+                <Link to="/contacto">Contacto</Link>
+                <Link to="/likes">Me Gusta</Link>
                 <Button onClick={handleShow}>Iniciar Sesion</Button>
                 <Login
                   show={show}
@@ -77,16 +78,12 @@ const NavContent = () => {
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
                 />
-                <Register 
-                handleShow={handleShow}
-                handleShowRegister={handleShowRegister} 
-                handleCloseRegister={handleCloseRegister} 
-                showRegister={showRegister} />
-                <Nav.Link href="#action2">
-                  <h4 className="align-items-center">
-                    <GiShoppingCart />
-                  </h4>
-                </Nav.Link>
+                <Register
+                  handleShow={handleShow}
+                  handleShowRegister={handleShowRegister}
+                  handleCloseRegister={handleCloseRegister}
+                  showRegister={showRegister}
+                />
               </Nav>
               <Form className="d-flex d-md-none d-xl-none">
                 <Form.Control

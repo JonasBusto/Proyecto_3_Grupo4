@@ -1,77 +1,45 @@
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-import "../Styles/home.css";
 import Slider from "react-animated-slider";
+import content from "../arrayContent";
+import "../Styles/home.css";
 import "react-animated-slider/build/horizontal.css";
 import "../Styles/slider-animations.css";
 
 const Home = () => {
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
-  const content = [
-    {
-      title: "Rio Negro - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg",
-      user: "Chapulin Colorado",
-      userProfile: "https://pbs.twimg.com/media/EVcjT-JXQAIq0Yy.jpg",
-    },
-    {
-      title: "Misiones - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg",
-      user: "Don Ramon",
-      userProfile:
-        "https://portal.andina.pe/EDPfotografia/Thumbnail/2013/09/02/000218071W.jpg",
-    },
-    {
-      title: "Salta - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg",
-      user: "El Zorro",
-      userProfile:
-        "https://www.lanacion.com.ar/resizer/wWlTepZ2pHuoyXZF3U7RR7C1iic=/309x206/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/MGYRO7LAGVBHBMR52AN5EKPQZY.jpg",
-    },
-  ];
+  const [arrayPlaces, setArrayPlaces] = useState(content);
+  console.log(arrayPlaces);
   return (
     <>
       <div>
         <div className="mt-3">
-          <Slider previousButton={<svg>s</svg>} className="slider-wrapper">
-            {content.map((item, index) => (
-              <div
-                key={index}
-                className="slider-content"
-                style={{
-                  background: `url('${item.image}') no-repeat center center`,
-                }}
-              >
-                <div className="inner">
-                  <h1>{item.title}</h1>
-                  <p>{item.description}</p>
-                  <div className="div-see-more-btn">
-                    <Link to="">Ver Mas</Link>
-                  </div>
-                </div>
-                <section>
-                  <img src={item.userProfile} alt={item.user} />
-                  <span>
-                    Recomendado por <strong>{item.user}</strong>
-                  </span>
-                </section>
-              </div>
-            ))}
+          <Slider className="slider-wrapper">
+            {/* {arrayPlaces.map((item, index) => 
+              // item.destacado === true
+              //   ? console.log("hola")
+              //   : console.log("chao");
+              // <div
+              //   key={"lugar" + index}
+              //   className="slider-content"
+              //   style={{
+              //     background: `url('${item.img.img1}') no-repeat center center`,
+              //   }}
+              // >
+              //   <div className="inner">
+              //     <h1>{item.lugar}</h1>
+              //     <p>{item.descripcion}</p>
+              //     <div className="div-see-more-btn">
+              //       <Link to="/">Ver Mas</Link>
+              //     </div>
+              //   </div>
+              //   <section>
+              //     <img src={item.userProfile} alt={item.user} />
+              //     <span>
+              //       Recomendado por <strong>{item.user}</strong>
+              //     </span>
+              //   </section>
+              // </div>
+            )} */}
           </Slider>
         </div>
 
@@ -95,7 +63,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to="/selvas">Selvas</Link>
                   </div>
                 </div>
                 <div className="row w-100 m-0 div-link-category justify-content-between">
@@ -105,7 +73,7 @@ const Home = () => {
                       background: `url("https://www.reportur.com/wp-content/uploads/2019/08/glaciar-e1565834650693.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Glaciares</Link>
+                    <Link to="/glaciares">Glaciares</Link>
                   </div>
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -113,7 +81,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to="/selvas">Selvas</Link>
                   </div>
                 </div>
                 <div className="row w-100 m-0 div-link-category justify-content-between">
@@ -123,7 +91,7 @@ const Home = () => {
                       background: `url("https://www.tucumanturismo.gob.ar/carga/image/1470857806%20-%20Senda%20tafi%20del%20valle%20-%20Siambon%202.jpg") no-repeat top center`,
                     }}
                   >
-                    <Link to="">Montañas</Link>
+                    <Link to="/selvas">Montañas</Link>
                   </div>
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -131,7 +99,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to="/selvas">Selvas</Link>
                   </div>
                 </div>
               </div>
@@ -170,7 +138,6 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                {/*  */}
                 <div className="row div-row-col m-0 div-col-img-provinces2">
                   <div
                     className="col-12 col-sm-4 p-0 d-flex"
@@ -344,9 +311,9 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="div-seeMore d-flex justify-content-center">
+        {/* <div className="div-seeMore d-flex justify-content-center">
           <Link to="/provincias">VER MAS</Link>
-        </div>
+        </div> */}
       </div>
     </>
   );

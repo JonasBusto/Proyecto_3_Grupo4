@@ -10,11 +10,6 @@ const LikeElement = (props) => {
   let likedPlace = false;
   let mostrarLugar = false;
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   if (
     props.catSelect.toLowerCase() === props.objeto.categoria.toLowerCase() ||
     props.catSelect === ""
@@ -53,7 +48,7 @@ const LikeElement = (props) => {
                 <Card.Img
                   className="img-fluid"
                   variant="top"
-                  src={props.objeto.img}
+                  src={props.objeto.img.img1}
                 />
               </Link>
               {props.objeto.liked ? (

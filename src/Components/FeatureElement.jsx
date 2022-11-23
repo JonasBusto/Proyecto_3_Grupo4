@@ -15,7 +15,7 @@ const FeatureElement = (props) => {
                 <Card.Img
                   className="img-fluid"
                   variant="top"
-                  src={props.objeto.img}
+                  src={props.objeto.img.img1}
                 />
               </Link>
             </div>

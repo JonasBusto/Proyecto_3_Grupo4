@@ -10,7 +10,6 @@ import "../Styles/main.css";
 import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
 
-
 const Main = () => {
   return (
     <>
@@ -20,7 +19,7 @@ const Main = () => {
           <Route path="/lugar" element={<ArticlePage />} />
           <Route path="/lugares" element={<PlacesGrid />} />
           <Route path="/recuperarContrasela" element={<RecoverPass />} />
-          <Route path="/likePagina" element={<LikesPage />} />
+          <Route path="/likes" element={<LikesPage />} />
           <Route path="/busqueda" element={<SearchResult />} />
           <Route path="/destacados" element={<FeaturedPage />} />
           <Route path="*" element={<Error404 />} />
