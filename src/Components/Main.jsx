@@ -18,7 +18,7 @@ const Main = () => {
           <Route path="/" element={<Home />} />
           <Route path="/lugar/:id" element={<ArticlePage />} />
           <Route path="/lugares/:province/:category" element={<PlacesGrid />} />
-          <Route path="/recuperarContrasela" element={<RecoverPass />} />
+          <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/busqueda" element={<SearchResult />} />
           <Route path="/destacados" element={<FeaturedPage />} />

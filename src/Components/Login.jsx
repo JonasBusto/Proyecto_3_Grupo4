@@ -19,7 +19,11 @@ const Login = ({show, handleClose, handleShowRegister}) => {
           <div className="d-flex justify-content-center">
             <p className="fs-2 text-center">
               <b className="title-white">Bienvenido a</b>{" "}
-              <Link onClick={handleClose} to='/' style={{textDecoration:"none"}}>
+              <Link
+                onClick={handleClose}
+                to="/"
+                style={{ textDecoration: "none" }}
+              >
                 <b className="title-black cursor-pointer-custom">Rolling</b>
                 <b className="title-orange cursor-pointer-custom">Travel</b>
               </Link>
@@ -34,7 +38,7 @@ const Login = ({show, handleClose, handleShowRegister}) => {
               let errors = {};
 
               if (!valores.email) {
-                errors.name =
+                errors.email =
                   "Por favor ingrese su correo electrónico para iniciar sesión.";
               } else if (
                 !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
@@ -102,12 +106,12 @@ const Login = ({show, handleClose, handleShowRegister}) => {
                       maxLength={15}
                     />
                   </div>
-                  <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                  </Form.Text>
+                  {touched.pass && errors.pass && (
+                    <Form.Text className="text-danger">{errors.pass}</Form.Text>
+                  )}
                   <div className="container-aux">
-                    <div className="d-flex justify-content-end mb-1">
-                      Olivé mi contraseña
+                    <div className="d-flex mt-1 justify-content-end mb-1">
+                      <Link onClick={handleClose} to="/recuperarContraseña" style={{textDecoration: 'none', color:'black'}}>Olivé mi contraseña</Link>
                     </div>
                   </div>
                 </Form.Group>
