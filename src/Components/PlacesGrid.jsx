@@ -44,8 +44,20 @@ const PlacesGrid = () => {
         lugar: objectPlace.lugar,
         provincia: objectPlace.provincia,
         categoria: objectPlace.categoria,
-        img: objectPlace.url,
+        descripcion: objectPlace.descripcion,
+        img: {
+          img1: objectPlace.url,
+          img2: "",
+          img3: "",
+          img4: "",
+          img5: "",
+        },
+        servicios: ["", "", "", "", ""],
+        tips: ["", "", "", "", ""],
         liked: false,
+        destacado: false,
+        user: "",
+        userProfile: "",
       },
     ]);
   };
@@ -75,6 +87,10 @@ const PlacesGrid = () => {
     const newOffset = (event.selected * itemsPerPage) % arrayPlaces.length;
     setItemOffset(newOffset);
   };
+
+  useEffect(() => {
+    localStorage.setItem("Lugares", JSON.stringify(arrayPlaces));
+  }, [arrayPlaces]);
 
   return (
     <>

@@ -53,3 +53,25 @@
   background-color: #497174;
   color: white;
 }
+
+.form-search {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.form-search button {
+  background-color: #eb6440;
+  color: white;
+  border: 3px solid transparent;
+}
+
+.form-search button:hover {
+  background-color: white;
+  color: #eb6440;
+  border: 3px solid #eb6440;
+}
+
+@media (max-width: 400px) {
+  .form-search input {
+  }
+}

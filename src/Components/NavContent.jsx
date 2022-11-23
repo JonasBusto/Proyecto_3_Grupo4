@@ -91,7 +91,7 @@ const NavContent = () => {
                   showRegister={showRegister}
                 />
               </Nav>
-              <Form className="d-flex d-md-none d-xl-none">
+              <Form className="d-flex d-sm-none d-xl-none justify-content-center form-search">
                 <Form.Control
                   type="search"
                   placeholder="Search"
