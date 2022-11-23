@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import "../Styles/main.css";
 import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
+import Contact from "./Contact";
 
 const Main = () => {
   return (
@@ -22,6 +23,7 @@ const Main = () => {
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/busqueda" element={<SearchResult />} />
           <Route path="/destacados" element={<FeaturedPage />} />
+          <Route path="/contacto" element={<Contact />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </main>
