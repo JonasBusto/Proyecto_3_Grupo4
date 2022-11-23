@@ -1,19 +1,16 @@
-@media only screen and (max-width: 764px) {
-  .logo-footer img {
-    width: 70px;
-  }
-  .icon-footer img {
-    width: 30px;
-  }
-}
-.icon-footer {
-  padding-top: 3%;
-  padding-bottom: 3%;
-}
-.logo-footer {
-  padding-top: 2%;
-}
 .copyright-footer {
   font-size: 1.5rem;
   padding-bottom: 0.5rem;
+}
+
+.container-icon-social img{
+   width: 3.2rem;
+}
+
+.container-logo img{
+   width: 10rem;
+}
+
+.cursor-pointer-custom{
+    cursor: pointer;
 }
