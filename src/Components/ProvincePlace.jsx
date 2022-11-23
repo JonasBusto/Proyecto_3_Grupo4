@@ -22,7 +22,7 @@ function ProvincePlace(props) {
 
   if (
     props.catSelect.toLowerCase() === props.objeto.categoria.toLowerCase() ||
-    props.catSelect === ""
+    props.catSelect === "todas"
   ) {
     encontrado1 = true;
   } else {
@@ -31,7 +31,7 @@ function ProvincePlace(props) {
 
   if (
     props.provSelect.toLowerCase() === props.objeto.provincia.toLowerCase() ||
-    props.provSelect === ""
+    props.provSelect === "todas"
   ) {
     encontrado2 = true;
   } else {
@@ -54,7 +54,7 @@ function ProvincePlace(props) {
                 <Card.Img
                   className="img-fluid"
                   variant="top"
-                  src={props.objeto.img}
+                  src={props.objeto.img.img1}
                 />
               </Link>
               <button

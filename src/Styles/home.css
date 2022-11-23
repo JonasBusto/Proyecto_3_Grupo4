@@ -40,7 +40,8 @@
   margin-right: auto;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  border-radius: 7px;
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
 }
 
 .link-center a {
@@ -77,9 +78,10 @@
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
   width: 49%;
-  border-radius: 10px;
+  border-radius: 4px;
   margin-top: 1rem;
-  box-shadow: 3px 3px rgba(255, 255, 255, 0.514);
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
 }
 
 @media (max-width: 515px) {
@@ -95,7 +97,8 @@
 .div-link-category > div:hover {
   -webkit-filter: grayscale(0);
   filter: grayscale(0);
-  box-shadow: 3px 3px #4d2d2486;
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.507), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
 }
 
 .div-link-category a {
@@ -187,7 +190,8 @@
   object-fit: cover;
   border-radius: 4px;
   padding: 0.2rem;
-  border: 2px solid black;
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border: 0px !important;
   display: flex;
   justify-content: center;
   align-items: center;

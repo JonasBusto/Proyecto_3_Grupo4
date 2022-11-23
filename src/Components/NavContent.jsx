@@ -25,16 +25,27 @@ const NavContent = () => {
   const handleShowRegister = () => setShowRegister(true);
 
   return (
-    <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
+    <Navbar
+      expand="lg"
+      sticky="top"
+      className="navbar d-flex p-0"
+      style={{ width: "100%" }}
+    >
       <Container>
         <Row className="justify-content-start">
           <Col className="d-flex">
-            <p>
-              <strong>Rolling</strong>
-            </p>
-            <p className="travel">
-              <strong>Travel</strong>
-            </p>
+            <Link
+              to="/"
+              className="d-flex"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <p className="m-0">
+                <strong>Rolling</strong>
+              </p>
+              <p className="travel mx-1 m-0">
+                <strong>Travel</strong>
+              </p>
+            </Link>
           </Col>
         </Row>
         <Row className="justify-content-end px-3">
@@ -59,19 +70,14 @@ const NavContent = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Link
-                  to="/"
-                  className="home-navbar"
-                  style={{ color: "white" }}
-                  href="#action1"
-                >
-                  Home
-                </Link>
+              <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
+                <Link to="/">Home</Link>
                 <Link to="/destacados">Destacado</Link>
                 <Link to="/contacto">Contacto</Link>
                 <Link to="/likes">Me Gusta</Link>
-                <Button onClick={handleShow}>Iniciar Sesion</Button>
+                <p className="m-0" onClick={handleShow}>
+                  Iniciar Sesion
+                </p>
                 <Login
                   show={show}
                   handleClose={handleClose}

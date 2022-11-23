@@ -9,7 +9,9 @@ import "../Styles/featuredPage.css";
 const FeaturedPage = () => {
   const [province, setProvince] = useState("");
   const [category, setCategory] = useState("");
-  const [arrayPlaces, setArrayPlaces] = useState(content);
+  const [arrayPlaces, setArrayPlaces] = useState(
+    JSON.parse(localStorage.getItem("Lugares")) || []
+  );
   const [alert, setAlert] = useState(false);
 
   const defineFeatured = (objectPlace) => {
@@ -33,6 +35,10 @@ const FeaturedPage = () => {
     }
     setArrayPlaces(arrayAux);
   };
+
+  useEffect(() => {
+    localStorage.setItem("Lugares", JSON.stringify(arrayPlaces));
+  }, [arrayPlaces]);
 
   useEffect(() => {
     setTimeout(() => {
