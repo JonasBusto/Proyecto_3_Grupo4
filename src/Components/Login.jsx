@@ -4,6 +4,7 @@ import '../Styles/login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope , faLockKeyHoleOpen , faLock } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 
 const Login = ({show, handleClose, handleShowRegister}) => {
   return (
@@ -16,10 +17,12 @@ const Login = ({show, handleClose, handleShowRegister}) => {
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex justify-content-center">
-            <p className="fs-2">
+            <p className="fs-2 text-center">
               <b className="title-white">Bienvenido a</b>{" "}
-              <b className="title-black">Rolling</b>
-              <b className="title-orange">Travel</b>
+              <Link onClick={handleClose} to='/' style={{textDecoration:"none"}}>
+                <b className="title-black cursor-pointer-custom">Rolling</b>
+                <b className="title-orange cursor-pointer-custom">Travel</b>
+              </Link>
             </p>
           </div>
           <Formik
@@ -121,8 +124,8 @@ const Login = ({show, handleClose, handleShowRegister}) => {
               ¿No tienes una cuenta?
               <br />
               Registrate{" "}
-              <b 
-                className='cursor-pointer-custom'
+              <b
+                className="cursor-pointer-custom"
                 onClick={() => {
                   handleClose();
                   handleShowRegister();
