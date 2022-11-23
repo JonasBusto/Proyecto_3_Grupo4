@@ -1,67 +1,44 @@
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
-import "../Styles/home.css";
 import Slider from "react-animated-slider";
+import content from "../arrayContent";
+import "../Styles/home.css";
 import "react-animated-slider/build/horizontal.css";
 import "../Styles/slider-animations.css";
 
 const Home = () => {
-  const [index, setIndex] = useState(0);
+  if (localStorage.getItem("Lugares") === null) {
+    localStorage.setItem("Lugares", JSON.stringify(content));
+  }
+  const [arrayPlaces, setArrayPlaces] = useState(
+    JSON.parse(localStorage.getItem("Lugares")) || []
+  );
+  let arrayFeaturedAux = [];
+  for (let i = 0; i < arrayPlaces.length; i++) {
+    if (arrayPlaces[i].destacado === true) {
+      arrayFeaturedAux.push(arrayPlaces[i]);
+    }
+  }
+  const [arrayFeatured, setArrayFeatured] = useState(arrayFeaturedAux);
 
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
-  const content = [
-    {
-      title: "Rio Negro - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://www.welcomeargentina.com/rio-negro/imagenes/rio-negro.jpg",
-      user: "Chapulin Colorado",
-      userProfile: "https://pbs.twimg.com/media/EVcjT-JXQAIq0Yy.jpg",
-    },
-    {
-      title: "Misiones - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://www.viajes.com/wp-content/uploads/destinos-tc2/misiones-argentina.jpg",
-      user: "Don Ramon",
-      userProfile:
-        "https://portal.andina.pe/EDPfotografia/Thumbnail/2013/09/02/000218071W.jpg",
-    },
-    {
-      title: "Salta - Lugar 1",
-      description:
-        "Agregar una descripción de cada lugar que aparece en recomendados. La idea es colocar la misma descripción que aparece en article page",
-      image:
-        "https://vivo247.com/wp-content/uploads/2020/10/salta-sello-viaje.jpg",
-      user: "El Zorro",
-      userProfile:
-        "https://www.lanacion.com.ar/resizer/wWlTepZ2pHuoyXZF3U7RR7C1iic=/309x206/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/MGYRO7LAGVBHBMR52AN5EKPQZY.jpg",
-    },
-  ];
   return (
     <>
       <div>
-        <div className="mt-3">
-          <Slider previousButton={<svg>s</svg>} className="slider-wrapper">
-            {content.map((item, index) => (
+        <div className="mt-0">
+          <Slider className="slider-wrapper">
+            {arrayFeatured.map((item) => (
               <div
-                key={index}
+                key={item.id}
                 className="slider-content"
                 style={{
-                  background: `url('${item.image}') no-repeat center center`,
+                  background: `url('${item.img.img1}') no-repeat center center`,
                 }}
               >
                 <div className="inner">
-                  <h1>{item.title}</h1>
-                  <p>{item.description}</p>
+                  <h1>{item.lugar}</h1>
+                  <p>{item.descripcion}</p>
                   <div className="div-see-more-btn">
-                    <Link to="">Ver Mas</Link>
+                    <Link to={`/lugar/${item.id}`}>Ver Mas</Link>
                   </div>
                 </div>
                 <section>
@@ -87,7 +64,7 @@ const Home = () => {
                       background: `url("https://www.tucumanturismo.gob.ar/carga/image/1470857806%20-%20Senda%20tafi%20del%20valle%20-%20Siambon%202.jpg") no-repeat top center`,
                     }}
                   >
-                    <Link to="/montañas">Montañas</Link>
+                    <Link to={`/lugares/todas/montaña`}>Montañas</Link>
                   </div>
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -95,7 +72,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to={`/lugares/todas/selva`}>Selvas</Link>
                   </div>
                 </div>
                 <div className="row w-100 m-0 div-link-category justify-content-between">
@@ -105,7 +82,7 @@ const Home = () => {
                       background: `url("https://www.reportur.com/wp-content/uploads/2019/08/glaciar-e1565834650693.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Glaciares</Link>
+                    <Link to={`/lugares/todas/llamativo`}>Llamativo</Link>
                   </div>
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -113,7 +90,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to={`/lugares/todas/playa`}>Playas</Link>
                   </div>
                 </div>
                 <div className="row w-100 m-0 div-link-category justify-content-between">
@@ -123,7 +100,7 @@ const Home = () => {
                       background: `url("https://www.tucumanturismo.gob.ar/carga/image/1470857806%20-%20Senda%20tafi%20del%20valle%20-%20Siambon%202.jpg") no-repeat top center`,
                     }}
                   >
-                    <Link to="">Montañas</Link>
+                    <Link to={`/lugares/todas/rural`}>Rural</Link>
                   </div>
                   <div
                     className="col-12 p-0 col-sm-6 d-flex justify-content-center"
@@ -131,7 +108,7 @@ const Home = () => {
                       background: `url("https://s.ruta0.net/cache/img680/41345.jpg") no-repeat center center`,
                     }}
                   >
-                    <Link to="">Selvas</Link>
+                    <Link to={`/lugares/todas/cataratas`}>Cataratas</Link>
                   </div>
                 </div>
               </div>
@@ -163,14 +140,13 @@ const Home = () => {
                     <div
                       className="div-img-provinces d-flex w-100"
                       style={{
-                        background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                        background: `url("https://www.argentina.gob.ar/sites/default/files/plazaindependencia_en-tucuman.jpg") no-repeat center center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_1">Provincia 1</Link>
+                      <Link to={`/lugares/Tucumán/todas`}>Tucumán</Link>
                     </div>
                   </div>
                 </div>
-                {/*  */}
                 <div className="row div-row-col m-0 div-col-img-provinces2">
                   <div
                     className="col-12 col-sm-4 p-0 d-flex"
@@ -185,7 +161,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_2">Provincia 2</Link>
+                      <Link to={`/lugares/Bs As/todas`}>Buenos Aires</Link>
                     </div>
                   </div>
                   <div
@@ -201,7 +177,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_3">Provincia 3</Link>
+                      <Link to={`/lugares/Catamarca/todas`}>Catamarca</Link>
                     </div>
                   </div>
                   <div
@@ -217,7 +193,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_3">Provincia 4</Link>
+                      <Link to={`/lugares/misiones/todas`}>Misiones</Link>
                     </div>
                   </div>
                 </div>
@@ -234,7 +210,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_4">Provincia 5</Link>
+                      <Link to={`/lugares/jujuy/todas`}>Jujuy</Link>
                     </div>
                   </div>
                   <div
@@ -247,7 +223,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_5">Provincia 6</Link>
+                      <Link to={`/lugares/chubut/todas`}>Chubut</Link>
                     </div>
                   </div>
                   <div
@@ -260,7 +236,7 @@ const Home = () => {
                         background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                       }}
                     >
-                      <Link to="/provincia=provincia_6">Provincia 7</Link>
+                      <Link to={`/lugares/mendoza/todas`}>Mendoza</Link>
                     </div>
                   </div>
                 </div>
@@ -274,10 +250,10 @@ const Home = () => {
                 <div
                   className="div-img-provinces d-flex w-100"
                   style={{
-                    background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
+                    background: `url("https://www.argentina.gob.ar/sites/default/files/plazaindependencia_en-tucuman.jpg") no-repeat center center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_1">Provincia 1</Link>
+                  <Link to={`/lugares/Tucumán/todas`}>Tucumán</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -287,7 +263,7 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat bottom center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_2">Provincia 2</Link>
+                  <Link to={`/lugares/Bs As/todas`}>Buenos Aires</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -297,7 +273,7 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_3">Provincia 3</Link>
+                  <Link to={`/lugares/Catamarca/todas`}>Catamarca</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -307,7 +283,7 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat top center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_4">Provincia 4</Link>
+                  <Link to={`/lugares/misiones/todas`}>Misiones</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -317,7 +293,7 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_5">Provincia 5</Link>
+                  <Link to={`/lugares/jujuy/todas`}>Jujuy</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -327,7 +303,7 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_6">Provincia 6</Link>
+                  <Link to={`/lugares/chubut/todas`}>Chubut</Link>
                 </div>
               </div>
               <div className="col-12 d-flex p-0" style={{ height: "13.3rem" }}>
@@ -337,16 +313,16 @@ const Home = () => {
                     background: `url("https://content.r9cdn.net/rimg/dimg/ea/81/e9826474-ctry-10-171ef010f0f.jpg?width=1366&height=768&xhint=3715&yhint=2662&crop=true") no-repeat center center`,
                   }}
                 >
-                  <Link to="/provincia=provincia_7">Provincia 7</Link>
+                  <Link to={`/lugares/mendoza/todas`}>Mendoza</Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="div-seeMore d-flex justify-content-center">
+        {/* <div className="div-seeMore d-flex justify-content-center">
           <Link to="/provincias">VER MAS</Link>
-        </div>
+        </div> */}
       </div>
     </>
   );

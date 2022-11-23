@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Navbar,
@@ -11,30 +12,40 @@ import {
 } from "react-bootstrap";
 import { GiShoppingCart } from "react-icons/gi";
 import "../Styles/navContent.css";
-import Login from "./Login"
+import Login from "./Login";
 import Register from "./Register";
 
 const NavContent = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-      const [showRegister, setShowRegister] = useState(false);
-      const handleCloseRegister = () => setShowRegister(false);
-      const handleShowRegister = () => setShowRegister(true);
+  const [showRegister, setShowRegister] = useState(false);
+  const handleCloseRegister = () => setShowRegister(false);
+  const handleShowRegister = () => setShowRegister(true);
 
   return (
-    <Navbar expand="lg" className="navbar d-flex" style={{ width: "100%" }}>
+    <Navbar
+      expand="lg"
+      sticky="top"
+      className="navbar d-flex p-0"
+      style={{ width: "100%" }}
+    >
       <Container>
         <Row className="justify-content-start">
           <Col className="d-flex">
-            <p>
-              <strong>Rolling</strong>
-            </p>
-            <p className="travel">
-              <strong>Travel</strong>
-            </p>
+            <Link
+              to="/"
+              className="d-flex"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <p className="m-0">
+                <strong>Rolling</strong>
+              </p>
+              <p className="travel mx-1 m-0">
+                <strong>Travel</strong>
+              </p>
+            </Link>
           </Col>
         </Row>
         <Row className="justify-content-end px-3">
@@ -59,36 +70,28 @@ const NavContent = () => {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link
-                  className="home-navbar"
-                  style={{ color: "white" }}
-                  href="#action1"
-                >
-                  Home
-                </Nav.Link>
-                <Nav.Link href="#action2">Destacado</Nav.Link>
-                <Nav.Link href="#action2">Contacto</Nav.Link>
-                <Nav.Link href="#action2">Me Gusta</Nav.Link>
-                <Button onClick={handleShow}>Iniciar Sesion</Button>
+              <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
+                <Link to="/">Home</Link>
+                <Link to="/destacados">Destacado</Link>
+                <Link to="/contacto">Contacto</Link>
+                <Link to="/likes">Me Gusta</Link>
+                <p className="m-0" onClick={handleShow}>
+                  Iniciar Sesion
+                </p>
                 <Login
                   show={show}
                   handleClose={handleClose}
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
                 />
-                <Register 
-                handleShow={handleShow}
-                handleShowRegister={handleShowRegister} 
-                handleCloseRegister={handleCloseRegister} 
-                showRegister={showRegister} />
-                <Nav.Link href="#action2">
-                  <h4 className="align-items-center">
-                    <GiShoppingCart />
-                  </h4>
-                </Nav.Link>
+                <Register
+                  handleShow={handleShow}
+                  handleShowRegister={handleShowRegister}
+                  handleCloseRegister={handleCloseRegister}
+                  showRegister={showRegister}
+                />
               </Nav>
-              <Form className="d-flex d-md-none d-xl-none">
+              <Form className="d-flex d-sm-none d-xl-none justify-content-center form-search">
                 <Form.Control
                   type="search"
                   placeholder="Search"

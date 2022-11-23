@@ -9,6 +9,7 @@ const Footer = () => {
   return (
     <>
       <div
+        className="mt-auto"
         style={{
           border: "1px black solid",
           width: "100%",

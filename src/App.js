@@ -11,12 +11,12 @@ import "./Styles/app.css";
 
 const App = () => {
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <Header />
       <NavContent sticky="top" />
       <Main />
       <Footer />
-    </>
+    </div>
   );
 };
 

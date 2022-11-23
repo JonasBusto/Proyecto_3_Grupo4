@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Styles/articlePage.css";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
 import {
@@ -15,38 +16,13 @@ import Modal from "react-bootstrap/Modal";
 import "../Styles/placesGrid.css";
 
 const ArticlePage = () => {
-  const content = {
-    id: 0,
-    lugar: "Simoca",
-    provincia: "Tucumán",
-    categoria: "montaña",
-    descripcion:
-      "Simoca tiene un origen quechua “Shimukay”, que significa lugar de gente tranquila y silenciosa o lugar de paz y silencio. La ciudad está ubicada en el sudeste de la provincia a 50 kilómetros de San Miguel de Tucumán sobre la Ruta Nacional Nº 157. Conocida como la Capital Nacional del Sulky, es una localidad orgullosa de sus tradiciones cuyo exponente más auténtico es la feria de los sábados. En ella, los vendedores acuden a ofrecer los más diversos productos que van desde las exquisitas comidas regionales, artesanías, miel de caña, empanadillas y rosquetes, hasta artículos importados y cigarrillos en chalas. Durante el mes de Julio, se realiza una verdadera fiesta que trascendió las fronteras de la provincia y del país, la Fiesta Nacional de la Feria. La misma nació en el año 1980 con motivo de homenaje al pueblo simoqueño. Al comienzo de la fiesta, se realiza un desfile de Sulkys y de caballería gaucha representando un testimonio viviente de la historia del país. Otra celebración importante de Simoca, es la Fiesta Nacional del Sulky. Realizada a fines de noviembre, todos los años convoca a destacadas figuras del canto folklórico nacional y local acompañados del pintoresco y ya tradicional desfile de sulkys, carros y carretas por las calles de la ciudad. En el paseo por la ciudad, se puede visitar la Plaza Bartolomé Mitre, la Iglesia La Merced, antigua estación de trenes. También se puede realizar un paseo en Sulky y el Paseo del Bicentenario donde hay una réplica de la casa histórica. Simoca ofrece opciones de hospedaje, comercios de todo tipo y una variada gama de locales gastronómicos",
-    img: {
-      img1: "https://cdn-sp.radionacional.com.ar/wp-content/uploads/2020/01/Simoca.jpg",
-      img2: "https://upload.wikimedia.org/wikipedia/commons/2/22/Tucuman_Simoca_Plaza.JPG",
-      img3: "https://mapio.net/images-p/42423331.jpg",
-      img4: "https://media.elpatagonico.com/p/ee309b8bcd5453f7af74287b020b7f4b/adjuntos/193/imagenes/010/199/0010199640/1200x675/smart/simoca2jpg.jpg",
-      img5: "https://www.tucumanturismo.gob.ar/carga/image/festival%20sulky.jpg",
-    },
-    servicios: [
-      "Llevar agua para mantenerse hidratados y evitar apunamiento.",
-      "Podes elegir la opción de agregar el adicional al fabuloso cerro de los 14 colores. En este caso, podes comprar el tour completo a Serranías del Hornocal.",
-      " Los restaurantes para los almuerzos en los destinos son a elección de los pasajeros. Las comidas no están incluidas.",
-      "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
-      "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
-    ],
-    tips: [
-      "Llevar agua para mantenerse hidratados y evitar apunamiento.",
-      "Podes elegir la opción de agregar el adicional al fabuloso cerro de los 14 colores. En este caso, podes comprar el tour completo a Serranías del Hornocal.",
-      " Los restaurantes para los almuerzos en los destinos son a elección de los pasajeros. Las comidas no están incluidas.",
-      "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
-      "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
-    ],
-    liked: false,
-  };
-
-  const [objetoPrueba, setObjetoPrueba] = useState(content);
+  const paramsId = useParams();
+  const indexFound = JSON.parse(localStorage.getItem("Lugares")).findIndex(
+    (l) => l.id === Number(paramsId.id)
+  );
+  const [objetoPrueba, setObjetoPrueba] = useState(
+    JSON.parse(localStorage.getItem("Lugares"))[indexFound]
+  );
   const [comentarios, setComentarios] = useState([]);
   const images = [
     {
@@ -70,8 +46,6 @@ const ArticlePage = () => {
       thumbnail: objetoPrueba.img.img5,
     },
   ];
-
-  let objInitial = {};
 
   const [showDetails, setShowDetails] = useState(false);
   const handleCloseDetails = () => setShowDetails(false);
