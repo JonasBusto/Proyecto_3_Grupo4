@@ -21,7 +21,8 @@ const Main = () => {
         <RecoverPass />
         <SearchResult /> */}
         {/* <Home /> */}
-        <PlacesGrid />
+        {/* <PlacesGrid /> */}
+        <RecoverPass />
       </main>
     </>
   );
