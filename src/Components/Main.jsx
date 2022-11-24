@@ -14,17 +14,6 @@ import Contact from "./Contact";
 const Main = () => {
   return (
     <>
-<<<<<<< HEAD
-      <main className="mx-auto" style={{ maxWidth: "1300px" }}>
-        {/* Contenido Main
-        <Hero />
-        <LikesPage />
-        <RecoverPass />
-        <SearchResult /> */}
-        {/* <Home /> */}
-        {/* <PlacesGrid /> */}
-        <RecoverPass />
-=======
       <main className="mx-auto w-100" style={{ maxWidth: "1300px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,7 +26,6 @@ const Main = () => {
           <Route path="/contacto" element={<Contact />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
->>>>>>> main
       </main>
     </>
   );
