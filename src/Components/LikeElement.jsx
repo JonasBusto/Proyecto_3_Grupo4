@@ -1,28 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import Modal from "react-bootstrap/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faImage,
-  faLocationDot,
-  faR,
-  faThumbsUp,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-function ProvincePlace(props) {
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+
+const LikeElement = (props) => {
   let encontrado1 = false;
   let encontrado2 = false;
+  let likedPlace = false;
   let mostrarLugar = false;
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   if (
     props.catSelect.toLowerCase() === props.objeto.categoria.toLowerCase() ||
-    props.catSelect === "todas"
+    props.catSelect === ""
   ) {
     encontrado1 = true;
   } else {
@@ -31,14 +21,18 @@ function ProvincePlace(props) {
 
   if (
     props.provSelect.toLowerCase() === props.objeto.provincia.toLowerCase() ||
-    props.provSelect === "todas"
+    props.provSelect === ""
   ) {
     encontrado2 = true;
   } else {
     encontrado2 = false;
   }
 
-  if (encontrado1 && encontrado2) {
+  if (props.objeto.liked === true) {
+    likedPlace = true;
+  }
+
+  if (encontrado1 && encontrado2 && likedPlace) {
     mostrarLugar = true;
   } else {
     mostrarLugar = false;
@@ -57,24 +51,6 @@ function ProvincePlace(props) {
                   src={props.objeto.img.img1}
                 />
               </Link>
-              <button
-                className="btn-delete d-flex align-items-center justify-content-center"
-                onClick={handleShow}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
-              <Modal show={show} onHide={handleClose} backdrop="static">
-                <Modal.Header className="modal-header-place justify-content-center">
-                  <Modal.Title>Eliminar Lugar</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className="modal-body-place">
-                  ¿Esta seguro de eliminar el lugar '{props.objeto.lugar}'?
-                  <div className="d-flex justify-content-between mx-5 mt-3 div-btn-modal-place">
-                    <button onClick={handleClose}>Cancelar</button>
-                    <button onClick={props.deleteP}>Aceptar</button>
-                  </div>
-                </Modal.Body>
-              </Modal>
               {props.objeto.liked ? (
                 <button
                   className="btn-like liked d-flex align-items-center justify-content-center"
@@ -109,6 +85,6 @@ function ProvincePlace(props) {
       )}
     </>
   );
-}
+};
 
-export default ProvincePlace;
+export default LikeElement;

@@ -8,18 +8,25 @@
    padding-bottom: 0.3rem;
 }
 
-/* .container-logo{
-   padding-left: 5rem !important; 
-} */
-
 .container-icon-social img{
    width: 4.2rem;
 }
 
-.container-name img{
-   width: 23rem;
-}
-
 .container-seeker div{
    width: 12rem;
+}
+
+.title-white {
+   font-size: 1.7rem;
+   text-shadow: 0 0 2px black;
+   color: white;
+}
+
+.title-black {
+   font-size: 1.7rem;
+   color: black;
+}
+
+.cursor-pointer-custom{
+    cursor: pointer;
 }

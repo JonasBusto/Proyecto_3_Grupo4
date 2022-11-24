@@ -1,13 +1,22 @@
-@media only screen and (max-width: 600px) {
-  .home-navbar {
-    background-color: #d6e4e5 !important;
-    color: black !important;
+@media (max-width: 991px) {
+  .offcanvas-body,
+  .nav-link-custom {
+    padding: 0px !important;
   }
-}
-@media only screen and (min-width: 600px) {
-  .home-navbar {
-    background-color: #d6e4e5 !important;
-    color: black !important;
+
+  .offcanvas-header {
+    background-color: #497174;
+    box-shadow: 0 9px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .navbar > .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .offcanvas-title p {
+    font-size: 1.8rem;
+    margin: 0px;
   }
 }
 
@@ -25,6 +34,44 @@
 .travel {
   color: #eb6440;
 }
-.home-navbar {
+
+.nav-link-custom a,
+.nav-link-custom p {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+.nav-link-custom a:hover,
+.nav-link-custom p:hover {
   background-color: #497174;
+  color: white;
+}
+
+.form-search {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.form-search button {
+  background-color: #eb6440;
+  color: white;
+  border: 3px solid transparent;
+}
+
+.form-search button:hover {
+  background-color: white;
+  color: #eb6440;
+  border: 3px solid #eb6440;
+}
+
+@media (max-width: 400px) {
+  .form-search input {
+  }
 }
