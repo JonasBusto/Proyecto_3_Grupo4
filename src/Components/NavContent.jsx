@@ -79,11 +79,14 @@ const NavContent = ({ search, setSearch }) => {
                 <Link to="/destacados" onClick={() => setSearch("")}>
                   Destacado
                 </Link>
+                <Link to="/likes" onClick={() => setSearch("")}>
+                  Me Gusta
+                </Link>
                 <Link to="/contacto" onClick={() => setSearch("")}>
                   Contacto
                 </Link>
-                <Link to="/likes" onClick={() => setSearch("")}>
-                  Me Gusta
+                <Link to="/nosotros" onClick={() => setSearch("")}>
+                  Nosotros
                 </Link>
                 <p className="m-0" onClick={handleShow}>
                   Iniciar Sesion
