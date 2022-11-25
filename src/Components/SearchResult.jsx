@@ -1,61 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import LikeElement from "./LikeElement";
 import content from "../arrayContent";
+import { useParams } from "react-router";
+import FeatureElement from "./FeatureElement";
 
 const SearchResult = () => {
+  let resultSearch = useParams().resultado;
+  const [arrayPlaces, setArrayPlaces] = useState(
+    JSON.parse(localStorage.getItem("Lugares")) || []
+  );
+  let arrayAux = arrayPlaces.filter((p) =>
+    p.lugar.toLowerCase().includes(resultSearch.toLowerCase().trim())
+  );
   const [province, setProvince] = useState("");
   const [category, setCategory] = useState("");
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [arrayPlaces, setArrayPlaces] = useState(content);
-
-  const deletePlace = (objectPlace) => {
-    setArrayPlaces(arrayPlaces.filter((p) => p.id !== objectPlace.id));
-  };
-
-  const giveLike = (objectPlace) => {
-    let arrayAux = [...arrayPlaces];
-    let indexFound = arrayAux.findIndex((l) => l.id === objectPlace.id);
-    if (arrayAux[indexFound].liked) {
-      arrayAux[indexFound].liked = false;
-    } else {
-      arrayAux[indexFound].liked = true;
-    }
-    setArrayPlaces(arrayAux);
-  };
 
   return (
     <>
       <div className="d-flex m-2 mx-3">
-        <p>Buscaste: resultados</p>
+        <p>Buscaste: "{resultSearch}"</p>
       </div>
       <div className="d-flex flex-column">
         <div className="row m-0">
-          {arrayPlaces && category === "" && province === ""
-            ? arrayPlaces.map((p, i) => (
-                <LikeElement
-                  key={p.id}
-                  objeto={p}
-                  catSelect={category}
-                  provSelect={province}
-                  deleteP={() => deletePlace(p)}
-                  likeP={() => giveLike(p)}
-                />
-              ))
-            : arrayPlaces.map((p, i) => (
-                <LikeElement
-                  key={p.id}
-                  objeto={p}
-                  catSelect={category}
-                  provSelect={province}
-                  deleteP={() => deletePlace(p)}
-                  likeP={() => giveLike(p)}
-                />
-              ))}
+          {arrayAux.map((p, i) => (
+            <FeatureElement key={p.id} objeto={p} />
+          ))}
         </div>
       </div>
     </>

@@ -15,7 +15,7 @@ import "../Styles/navContent.css";
 import Login from "./Login";
 import Register from "./Register";
 
-const NavContent = () => {
+const NavContent = ({ search, setSearch }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,6 +26,7 @@ const NavContent = () => {
 
   return (
     <Navbar
+      collapseOnSelect
       expand="lg"
       sticky="top"
       className="navbar d-flex p-0"
@@ -38,6 +39,7 @@ const NavContent = () => {
               to="/"
               className="d-flex"
               style={{ textDecoration: "none", color: "black" }}
+              onClick={() => setSearch("")}
             >
               <p className="m-0">
                 <strong>Rolling</strong>
@@ -71,10 +73,18 @@ const NavContent = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
-                <Link to="/">Home</Link>
-                <Link to="/destacados">Destacado</Link>
-                <Link to="/contacto">Contacto</Link>
-                <Link to="/likes">Me Gusta</Link>
+                <Link to="/" onClick={() => setSearch("")}>
+                  Home
+                </Link>
+                <Link to="/destacados" onClick={() => setSearch("")}>
+                  Destacado
+                </Link>
+                <Link to="/contacto" onClick={() => setSearch("")}>
+                  Contacto
+                </Link>
+                <Link to="/likes" onClick={() => setSearch("")}>
+                  Me Gusta
+                </Link>
                 <p className="m-0" onClick={handleShow}>
                   Iniciar Sesion
                 </p>
