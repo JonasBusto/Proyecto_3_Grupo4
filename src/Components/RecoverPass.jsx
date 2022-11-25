@@ -20,6 +20,7 @@ const RecoverPass = () => {
           width: "100%",
           height: "100%",
           marginTop: "1rem",
+          marginBottom: "1rem",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
