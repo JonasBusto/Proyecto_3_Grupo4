@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Container , Row , Col , InputGroup , Form } from "react-bootstrap";
+import { Container, Row, Col, InputGroup, Form } from "react-bootstrap";
 import "../Styles/header.css";
-import { AiOutlineZoomIn } from "react-icons/ai"
-import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Header = () => {
+const Header = ({ search, setSearch }) => {
   return (
     <Container fluid className="header-color">
       <Container>
@@ -30,7 +31,11 @@ const Header = () => {
             className="d-flex py-3 justify-content-center align-items-center d-md-none"
           >
             <p className=" fs-2 d-flex justify-content-center m-0 align-items-center">
-              <Link to="/" style={{ textDecoration: "none" }}>
+              <Link
+                to="/"
+                style={{ textDecoration: "none" }}
+                onClick={() => setSearch("")}
+              >
                 <b className="title-black cursor-pointer-custom">Rolling</b>
                 <b className="title-white cursor-pointer-custom">Travel</b>
               </Link>
@@ -56,18 +61,19 @@ const Header = () => {
             md={4}
             className="d-flex justify-content-center ps-5 py-2 d-none d-sx-none d-sm-flex container-seeker"
           >
-            <div>
-              <InputGroup>
+            <Form className="d-flex form-search">
+              <Form.Group>
                 <Form.Control
+                  type="text"
                   placeholder="Buscar"
-                  aria-label="Recipient's username"
-                  aria-describedby="basic-addon2"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                 />
-                <InputGroup.Text>
-                  <AiOutlineZoomIn />
-                </InputGroup.Text>
-              </InputGroup>
-            </div>
+              </Form.Group>
+              <Link to={`/search=${search}`}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </Link>
+            </Form>
           </Col>
         </Row>
       </Container>
@@ -76,5 +82,3 @@ const Header = () => {
 };
 
 export default Header;
-
-

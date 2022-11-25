@@ -69,10 +69,7 @@ const RecoverPass = () => {
                   handleBlur,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group
-                      className="mb-3 text-center"
-                      controlId="exampleForm.ControlInput1"
-                    >
+                    <Form.Group className="mb-3 text-center">
                       <Form.Label className="text-dark rounded">
                         Correo Electronico
                       </Form.Label>
@@ -109,10 +106,7 @@ const RecoverPass = () => {
             <Modal show={show}>
               <Modal.Body style={{ backgroundColor: "#d6e4e5" }}>
                 <Form>
-                  <Form.Group
-                    className="mb-3"
-                    controlId="exampleForm.ControlTextarea1"
-                  >
+                  <Form.Group className="mb-3">
                     <Form.Label>Introducir Código</Form.Label>
                     <Form.Control as="textarea" rows={1} />
                   </Form.Group>
@@ -165,10 +159,7 @@ const RecoverPass = () => {
                     handleBlur,
                   }) => (
                     <Form onSubmit={handleSubmit}>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicPassword"
-                      >
+                      <Form.Group className="mb-3">
                         <Form.Label>Nueva Contraseña</Form.Label>
                         <Form.Control
                           type="password"
@@ -185,10 +176,7 @@ const RecoverPass = () => {
                           </Form.Text>
                         )}
                       </Form.Group>
-                      <Form.Group
-                        className="mb-3"
-                        controlId="formBasicPassword"
-                      >
+                      <Form.Group className="mb-3">
                         <Form.Label>Confirmar nueva contraseña</Form.Label>
                         <Form.Control
                           type="password"
