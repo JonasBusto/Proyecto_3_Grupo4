@@ -1,6 +1,6 @@
 .container-color {
   background-color: #d6e4e5;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 5px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   width: 80%;
@@ -19,4 +19,23 @@
   color: #eb6440;
   background-color: white;
   border: 3px solid #eb6440;
+}
+
+.google-map{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+
+ 
+.container-google-map{
+  height: 100%;
+}
+
+@media (max-width: 767px){
+  .container-google-map{
+  height: 100%;
+  padding-top: 1.5rem;
+}
 }
