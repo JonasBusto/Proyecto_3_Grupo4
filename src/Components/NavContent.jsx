@@ -8,12 +8,12 @@ import {
   Col,
   Offcanvas,
   Form,
-  Button,
 } from "react-bootstrap";
-import { GiShoppingCart } from "react-icons/gi";
 import "../Styles/navContent.css";
 import Login from "./Login";
 import Register from "./Register";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const NavContent = ({ search, setSearch }) => {
   const [show, setShow] = useState(false);
@@ -103,12 +103,14 @@ const NavContent = ({ search, setSearch }) => {
               </Nav>
               <Form className="d-flex d-sm-none d-xl-none justify-content-center form-search">
                 <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
+                  type="text"
+                  placeholder="Buscar"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                 />
-                <Button variant="outline-dark">Buscar</Button>
+                <Link to={`/search=${search}`}>
+                  <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </Link>
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

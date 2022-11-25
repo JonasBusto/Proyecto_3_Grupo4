@@ -19,6 +19,8 @@ const SearchResult = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  console.log("busqueda: ", resultSearch);
+
   return (
     <>
       <div className="d-flex m-2 mx-3">
