@@ -1,19 +1,39 @@
-@media only screen and (max-width: 764px) {
-  .logo-footer img {
-    width: 70px;
-  }
-  .icon-footer img {
-    width: 30px;
-  }
+footer {
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
 }
-.icon-footer {
-  padding-top: 3%;
-  padding-bottom: 3%;
+
+.logo-footer img {
+  width: 10rem;
+  height: 10rem;
 }
+
 .logo-footer {
   padding-top: 2%;
 }
 .copyright-footer {
+  background: linear-gradient(-45deg, #e46959, #ec8829, #ffae00, #ffae00);
   font-size: 1.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  padding-top: 0.3rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 950px) {
+  .anchon-icon-size {
+    font-size: 2.1rem !important;
+    width: 3.35rem !important;
+    height: 3.35rem !important;
+  }
+}
+@media (max-width: 900px) {
+  .anchon-icon-size {
+    font-size: 2.2rem !important;
+    width: 3.4rem !important;
+    height: 3.4rem !important;
+  }
+}
+.anchon-icon-size {
+  font-size: 2.7rem;
+  width: 4.2rem;
+  height: 4.2rem;
 }
