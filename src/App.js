@@ -9,7 +9,7 @@ const App = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="d-flex flex-column min-vh-100 div-app">
       <Header search={search} setSearch={setSearch} />
       <NavContent sticky="top" search={search} setSearch={setSearch} />
       <Main />

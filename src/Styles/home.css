@@ -1,6 +1,6 @@
 .div-see-more-btn a {
   text-decoration: none;
-  background-color: #eb6540b6;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   color: white;
   padding: 0.6rem;
   padding-left: 2rem;
@@ -8,8 +8,8 @@
   border-radius: 5px;
 }
 .div-see-more-btn a:hover {
-  background-color: rgba(255, 255, 255, 0.637);
-  color: #eb6440;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  color: #ffa600;
 }
 
 /*  */
@@ -175,13 +175,6 @@
   }
 }
 
-/* .div-img-provinces img {
-  object-fit: cover;
-  width: 100%;
-  border-radius: 8px;
-  border: 2px solid black;
-  padding: 0.2rem;
-} */
 .div-img-provinces {
   margin: 0.5rem;
 }

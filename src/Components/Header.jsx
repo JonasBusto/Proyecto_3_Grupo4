@@ -4,6 +4,11 @@ import "../Styles/header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Header = ({ search, setSearch }) => {
   return (
@@ -45,14 +50,26 @@ const Header = ({ search, setSearch }) => {
             md={4}
             className="d-flex justify-content-between d-none d-sm-none d-md-flex container-icon-social"
           >
-            <a href="https://www.facebook.com/" target="blank">
-              <img alt="" src="/icon-face-mini.png" />
+            <a
+              href="https://www.facebook.com/"
+              className="anchor-facebook"
+              target="blank"
+            >
+              <FontAwesomeIcon icon={faFacebookF} />
             </a>
-            <a href="https://twitter.com/" target="blank">
-              <img alt="" src="/icon-twet-mini.png" />
+            <a
+              href="https://twitter.com/"
+              className="anchor-twitter"
+              target="blank"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
             </a>
-            <a href="https://www.instagram.com/" target="blank">
-              <img alt="" src="/icon-insta-mini.png" />
+            <a
+              href="https://www.instagram.com/"
+              className="anchor-instagram"
+              target="blank"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
             </a>
           </Col>
           <Col
@@ -65,7 +82,7 @@ const Header = ({ search, setSearch }) => {
               <Form.Group>
                 <Form.Control
                   type="text"
-                  placeholder="Buscar"
+                  placeholder="Buscar lugar"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />

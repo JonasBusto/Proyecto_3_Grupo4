@@ -26,9 +26,11 @@ const SearchResult = () => {
       </div>
       <div className="d-flex flex-column">
         <div className="row m-0">
-          {arrayAux.map((p, i) => (
-            <FeatureElement key={p.id} objeto={p} />
-          ))}
+          {arrayAux.length !== 0 ? (
+            arrayAux.map((p, i) => <FeatureElement key={p.id} objeto={p} />)
+          ) : (
+            <h1 className="text-center">No se encontraron resultados</h1>
+          )}
         </div>
       </div>
     </>

@@ -1,5 +1,7 @@
 .header-color {
-  background-color: #eb6440;
+  /* background-color: #eb6440; */
+  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
 }
 
 .container-logo img {
@@ -8,8 +10,87 @@
   padding-bottom: 0.3rem;
 }
 
-.container-icon-social img {
+/* .container-icon-social img {
   width: 4.2rem;
+} */
+.anchor-facebook {
+  background-color: #3b5998;
+  color: white;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid transparent;
+  transition: ease-in-out 0.7s;
+}
+.anchor-facebook:hover {
+  color: #3b5998;
+  background-color: white;
+  border: 3px solid #3b5998;
+}
+
+.anchor-twitter {
+  background-color: #00aced;
+  color: white;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid transparent;
+  transition: ease-in-out 0.7s;
+}
+.anchor-twitter:hover {
+  color: #00aced;
+  background-color: white;
+  border: 3px solid #00aced;
+}
+
+.anchor-instagram {
+  background: radial-gradient(
+      circle farthest-corner at 60% 90%,
+      #fec564,
+      transparent 50%
+    ),
+    radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%),
+    radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 20% -50%,
+      #5258cf,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%),
+    radial-gradient(
+      ellipse farthest-corner at 60% 100%,
+      #893dc2,
+      transparent 50%
+    ),
+    radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent),
+    linear-gradient(
+      #6559ca,
+      #bc318f 30%,
+      #e33f5f 50%,
+      #f77638 70%,
+      #fec66d 100%
+    );
+  color: white;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 0.7s;
+}
+.anchor-instagram:hover {
+  color: #ffffff;
+  border: 3px solid white;
 }
 
 .container-seeker div {

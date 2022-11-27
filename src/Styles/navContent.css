@@ -5,7 +5,8 @@
   }
 
   .offcanvas-header {
-    background-color: #497174;
+    background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
+    /* background-color: #497174; */
     box-shadow: 0 9px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
@@ -22,9 +23,11 @@
 
 .navbar-offcanvas {
   background-color: #d6e4e5 !important;
+  /* background: linear-gradient(-45deg, #8c9899, #b0bfc0, #c5d5d6, #d6e4e5); */
 }
 .navbar {
-  background-color: #d6e4e5;
+  /* background-color: #d6e4e5; */
+  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #8ad6db);
   display: flex;
 }
 .navbar-bottom {
@@ -50,7 +53,7 @@
 }
 .nav-link-custom a:hover,
 .nav-link-custom p:hover {
-  background-color: #497174;
+  background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
   color: white;
 }
 

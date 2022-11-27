@@ -358,7 +358,7 @@ const PlacesGrid = () => {
             </Modal.Body>
           </Modal>
         </div>
-        <div className="row m-0">
+        <div className="row m-0 row-places-grid-width mb-5">
           {currentItems && category === "todas" && province === "todas"
             ? currentItems.map((p, i) => (
                 <ProvincePlace
