@@ -165,7 +165,7 @@
 
 .div-about-us-home a {
   color: white;
-  background-color: #ff7b00;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   padding: 0.7rem;
   border-radius: 8px;
   text-decoration: none;
@@ -174,7 +174,7 @@
 }
 .div-about-us-home a:hover {
   color: #ff7b00;
-  background-color: white;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
   border: 3px solid #ff7b00;
 }
 

@@ -5,7 +5,7 @@
   margin-right: 1rem;
   margin-bottom: 3rem;
   margin-top: 0.5rem;
-  background-color: #d6e4e5;
+  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #8ad6db);
 }
 
 .div-table-featured {
@@ -21,14 +21,14 @@
 }
 
 .title-admin-featured {
-  background-color: #497174;
+  background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   color: white;
 }
 
 .icon-color-custom {
-  color: #eb6440;
+  color: #ffa600;
   font-size: 2rem;
 }
 

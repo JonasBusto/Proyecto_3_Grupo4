@@ -7,7 +7,11 @@ import "react-animated-slider/build/horizontal.css";
 import "../Styles/slider-animations.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faChampagneGlasses,
+  faLandmark,
   faMountain,
+  faPersonHiking,
+  faTractor,
   faTree,
   faUmbrellaBeach,
   faWater,
@@ -137,52 +141,52 @@ const Home = () => {
               <h1 className="text-center mb-2">CATEGORIAS</h1>
               <div className="row m-0">
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
+                  <Link to={`/lugares/todas/montaña`}>
                     <FontAwesomeIcon icon={faMountain} />
                   </Link>
                   <p>MONTAÑA</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
+                  <Link to={`/lugares/todas/selva`}>
                     <FontAwesomeIcon icon={faTree} />
                   </Link>
                   <p>SELVA</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
+                  <Link to={`/lugares/todas/playa`}>
                     <FontAwesomeIcon icon={faUmbrellaBeach} />
                   </Link>
                   <p>PLAYA</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
+                  <Link to={`/lugares/todas/cataratas`}>
                     <FontAwesomeIcon icon={faWater} />
                   </Link>
                   <p>CATARATAS</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faMountain} />
+                  <Link to={`/lugares/todas/festival`}>
+                    <FontAwesomeIcon icon={faChampagneGlasses} />
                   </Link>
                   <p>FESTIVALES</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faTree} />
+                  <Link to={`/lugares/todas/senderismo`}>
+                    <FontAwesomeIcon icon={faPersonHiking} />
                   </Link>
-                  <p>SELVA</p>
+                  <p>SENDERISMO</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faUmbrellaBeach} />
+                  <Link to={`/lugares/todas/rural`}>
+                    <FontAwesomeIcon icon={faTractor} />
                   </Link>
-                  <p>PLAYA</p>
+                  <p>RURAL</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faWater} />
+                  <Link to={`/lugares/todas/historia`}>
+                    <FontAwesomeIcon icon={faLandmark} />
                   </Link>
-                  <p>CATARATAS</p>
+                  <p>HISTORIA</p>
                 </div>
               </div>
             </div>

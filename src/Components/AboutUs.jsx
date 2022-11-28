@@ -20,7 +20,6 @@ const AboutUs = () => {
                 style={{
                   minHeight: "30rem",
                   width: "18rem",
-                  backgroundColor: "#d6e4e5",
                 }}
               >
                 <Card.Img
@@ -28,7 +27,7 @@ const AboutUs = () => {
                   variant="top"
                   src="/paisaje-recoverPass.jpg"
                 />
-                <h3 className="m-2 d-flex justify-content-center">
+                <h3 className="d-flex mb-2 justify-content-center text-name-about-us">
                   Mario David, Garcia
                 </h3>
                 <div className="m-2 d-flex justify-content-center">
@@ -54,7 +53,7 @@ const AboutUs = () => {
                   variant="top"
                   src="/paisaje-recoverPass.jpg"
                 />
-                <h3 className="m-2 d-flex justify-content-center">
+                <h3 className="mb-2 d-flex justify-content-center text-name-about-us">
                   Kevin Jonas, Busto
                 </h3>
                 <div className="m-2 d-flex justify-content-center">
@@ -80,7 +79,7 @@ const AboutUs = () => {
                   variant="top"
                   src="/Foto_Valentina.jpg"
                 />
-                <h3 className="m-2 d-flex justify-content-center">
+                <h3 className="mb-2 d-flex justify-content-center text-name-about-us">
                   Valentina, Giuliani
                 </h3>
                 <div className="m-2 d-flex justify-content-center">

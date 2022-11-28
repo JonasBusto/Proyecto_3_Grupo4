@@ -1,75 +1,74 @@
-.modal-header{
-    background-color: #497174;
+.modal-header {
+  background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
 }
 
-.modal-body{
-    background-color: #D6E4E5;
+.modal-body {
+  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #8ad6db);
 }
 
-.btn-init-custom{
-    color: white;
-    background-color: #EB6440;
-    border: 0px;
-    border-radius: 8px;
-    width: auto;
-    padding: 0.4rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.btn-init-custom {
+  color: white;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  border: 0px;
+  border-radius: 8px;
+  width: auto;
+  padding: 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
-.btn-close-custom{
-    color: white;
-    background-color: #EB6440;
-    border: 0px;
-    border-radius: 8px;
-    width: auto;
-    padding: 0.4rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.btn-close-custom {
+  color: white;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  border: 0px;
+  border-radius: 8px;
+  width: auto;
+  padding: 0.4rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .title-white {
-    text-shadow: 0 0 2px black;
-    color: white;
+  text-shadow: 0 0 2px black;
+  color: white;
 }
 
 .title-black {
-    color: black;
+  color: black;
 }
 
 .title-orange {
-    color: #eb6440;
+  color: #eb6440;
 }
 
-.modal-title{
-    font-size: 2rem !important;
-    color: white;
+.modal-title {
+  font-size: 2rem !important;
+  color: white;
 }
 
-.form-control{
-    border-radius: 0px !important;
+.form-control {
+  border-radius: 0px !important;
 }
 
 .color-icon {
-    background-color: #EB6440;
-    width: 2.6rem;
-    
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  width: 2.6rem;
 }
 
-.color-icon path{
-    color: white;
+.color-icon path {
+  color: white;
 }
 
-.modal-body{
-    border-bottom-left-radius: 6px ;
-    border-bottom-right-radius: 6px ;
+.modal-body {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
-.container-aux{
-    display: flex;
-    flex-direction: column;
+.container-aux {
+  display: flex;
+  flex-direction: column;
 }
 
-.cursor-pointer-custom{
-    cursor: pointer;
+.cursor-pointer-custom {
+  cursor: pointer;
 }
