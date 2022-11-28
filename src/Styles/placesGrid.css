@@ -56,7 +56,7 @@
 }
 
 .card-body {
-  background-color: white;
+  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #b2d1d3);
   width: 80%;
 }
 

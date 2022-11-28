@@ -46,7 +46,7 @@ const Footer = () => {
               sm={6}
               md={4}
             >
-              <h2>Redes sociales</h2>
+              <h2 className="text-light">SIGUENOS EN</h2>
               <div className="d-flex justify-content-between w-75 mt-2">
                 <a
                   href="https://www.facebook.com/"
@@ -72,12 +72,13 @@ const Footer = () => {
               </div>
             </Col>
             <Col className="d-none d-md-block text-light p-5" md={4}>
+              <h2 className="text-light">SOBRE NOSOTROS</h2>
               <ul>
                 <li>
                   <Card.Text>03815555555</Card.Text>
                 </li>
                 <li>
-                  <Card.Text>Rollig.Travel@gmail.com</Card.Text>
+                  <Card.Text>Rolling.Travel@gmail.com</Card.Text>
                 </li>
                 <li>
                   <Card.Text>Ubicacion</Card.Text>
@@ -87,7 +88,9 @@ const Footer = () => {
           </Row>
         </Container>
         <div className="text-center text-light copyright-footer">
-          <h5>Copyright Rolling Travel S.A.</h5>
+          <h5>
+            © Copyright 2022 Rolling Travel. Todos los derechos reservados.
+          </h5>
         </div>
       </footer>
     </>

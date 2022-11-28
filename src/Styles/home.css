@@ -153,6 +153,20 @@
   box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.div-more-place-home {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.466), rgba(0, 0, 0, 0.555)),
+    url("https://www.catamarcaonline.com/u/fotografias/m/2020/11/8/f608x342-5052_34775_4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 20rem;
+}
+
+.text-more-place {
+  color: white;
+}
+
 .div-about-us-home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
     url("https://wallpaperaccess.com/full/1431610.jpg");
@@ -163,7 +177,8 @@
   height: 25rem;
 }
 
-.div-about-us-home a {
+.div-about-us-home a,
+.div-more-place-home a {
   color: white;
   background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   padding: 0.7rem;
@@ -172,7 +187,8 @@
   border: 3px solid transparent;
   transition: 0.3s ease-in-out;
 }
-.div-about-us-home a:hover {
+.div-about-us-home a:hover,
+.div-more-place-home a:hover {
   color: #ff7b00;
   background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
   border: 3px solid #ff7b00;
@@ -240,9 +256,10 @@
   object-fit: cover;
   margin-left: 2rem;
   margin-right: 4rem;
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.div-provinces {
+/* .div-provinces {
   margin-bottom: 3rem;
 }
 
@@ -321,7 +338,7 @@
 .div-img-provinces:hover {
   -webkit-filter: grayscale(0);
   filter: grayscale(100%);
-}
+} */
 /* 
 .div-link-category > div:hover {
   -webkit-filter: grayscale(0);

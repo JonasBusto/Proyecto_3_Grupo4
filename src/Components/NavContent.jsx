@@ -74,22 +74,22 @@ const NavContent = ({ search, setSearch }) => {
             <Offcanvas.Body>
               <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
                 <Link to="/" onClick={() => setSearch("")}>
-                  Home
+                  HOME
                 </Link>
                 <Link to="/destacados" onClick={() => setSearch("")}>
-                  Destacado
+                  DESTACADO
                 </Link>
                 <Link to="/likes" onClick={() => setSearch("")}>
-                  Me Gusta
+                  ME GUSTA
                 </Link>
                 <Link to="/contacto" onClick={() => setSearch("")}>
-                  Contacto
+                  CONTACTO
                 </Link>
                 <Link to="/nosotros" onClick={() => setSearch("")}>
-                  Nosotros
+                  NOSOTROS
                 </Link>
                 <p className="m-0" onClick={handleShow}>
-                  Iniciar Sesion
+                  INICIAR SESIÓN
                 </p>
                 <Login
                   show={show}

@@ -47,16 +47,16 @@ const Home = () => {
                 }}
               >
                 <div className="inner">
-                  <h1>{item.lugar}</h1>
-                  <p>{item.descripcion}</p>
+                  <h1>{item.lugar.toUpperCase()}</h1>
+                  <p>{item.descripcion.toUpperCase()}</p>
                   <div className="div-see-more-btn">
-                    <Link to={`/lugar/${item.id}`}>Ver Mas</Link>
+                    <Link to={`/lugar/${item.id}`}>VER MÁS</Link>
                   </div>
                 </div>
                 <section>
-                  <img src={item.userProfile} alt={item.user} />
+                  <img src="/logo-RollingTravel.png" alt={item.user} />
                   <span>
-                    Recomendado por <strong>{item.user}</strong>
+                    DESTACADO POR <strong>ROLLING TRAVEL</strong>
                   </span>
                 </section>
               </div>
@@ -246,6 +246,16 @@ const Home = () => {
                 </h1>
               </Link>
             ))}
+          </div>
+        </div>
+
+        <div className="my-5">
+          <div className="div-more-place-home d-flex flex-column align-items-center justify-content-center">
+            <p className="text-center text-more-place fs-1">
+              TODOS LOS LUGARES
+            </p>
+
+            <Link to={`/lugares/todas/todas`}>EXPLORAR MÁS</Link>
           </div>
         </div>
 
