@@ -1,11 +1,17 @@
 import { React } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../Styles/aboutUs.css";
 
 const AboutUs = () => {
   return (
     <>
       <h1 className="mt-3 d-flex justify-content-center">Acerca de Nosotros</h1>
+      <p className="mx-4 p-anchor-head-links">
+        <Link to="/">Home</Link>
+        <b className="mx-2">/</b>
+        <Link to="/nosotros">Nosotros</Link>
+      </p>
       <div className="mb-3">
         <Container>
           <Row>

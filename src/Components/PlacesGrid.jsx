@@ -95,6 +95,11 @@ const PlacesGrid = () => {
   return (
     <>
       <h1 className="text-center">LUGARES DE PROVINCIA</h1>
+      <p className="mx-2 p-anchor-head-links">
+        <Link to="/">Home</Link>
+        <b className="mx-2">/</b>
+        <Link to="/lugares/todas/todas">Lugares</Link>
+      </p>
       <div className="d-flex flex-column">
         <div className="row m-0">
           <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center mt-1">

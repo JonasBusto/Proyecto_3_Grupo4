@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import LikeElement from "./LikeElement";
 import content from "../arrayContent";
+import { Link } from "react-router-dom";
 import "../Styles/likesPage.css";
 
 const LikesPage = () => {
@@ -31,7 +32,12 @@ const LikesPage = () => {
 
   return (
     <>
-      <h1 className="text-center">MIS ME GUSTA</h1>
+      <h1 className="text-center mt-2">MIS ME GUSTA</h1>
+      <p className="mx-4 p-anchor-head-links">
+        <Link to="/">Home</Link>
+        <b className="mx-2">/</b>
+        <Link to="/likes">Me gusta</Link>
+      </p>
       <div className="d-flex flex-column">
         <div className="row m-0">
           <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center mt-1">

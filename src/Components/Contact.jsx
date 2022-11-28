@@ -1,14 +1,18 @@
 import React from "react";
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { Container, Form, Row, Col } from "react-bootstrap";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import "../Styles/contact.css";
 
 const Contact = () => {
-
-
   return (
     <Container fluid className="my-4">
-      <h2 className="text-center pb-2">Contactanos</h2>
+      <h2 className="text-center pb-2">CONTACTO</h2>
+      <p className="mx-4 p-anchor-head-links">
+        <Link to="/">Home</Link>
+        <b className="mx-2">/</b>
+        <Link to="/contacto">Contacto</Link>
+      </p>
       <Row className="container-color m-0 mx-auto">
         <Col md={6} className="pe-3">
           <Formik
