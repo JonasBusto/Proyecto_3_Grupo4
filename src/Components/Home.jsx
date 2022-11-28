@@ -17,10 +17,14 @@ import {
   faWater,
 } from "@fortawesome/free-solid-svg-icons";
 import provinceArray from "../arrayProvinces";
+import arrayUsers from "../arrayUsers";
 
 const Home = () => {
   if (localStorage.getItem("Lugares") === null) {
     localStorage.setItem("Lugares", JSON.stringify(content));
+  }
+  if (localStorage.getItem("Usuarios") === null) {
+    localStorage.setItem("Usuarios", JSON.stringify(arrayUsers));
   }
   const [arrayPlaces, setArrayPlaces] = useState(
     JSON.parse(localStorage.getItem("Lugares")) || []

@@ -1,19 +1,37 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import '../Styles/register.css'
+import "../Styles/register.css";
 import { Link } from "react-router-dom";
 import {
   faEnvelope,
   faLockKeyHoleOpen,
   faLock,
   faUser,
-
 } from "@fortawesome/free-solid-svg-icons";
-import "../Styles/register.css"
-import { Formik } from 'formik';
+import "../Styles/register.css";
+import { Formik } from "formik";
 
-const Register = ({handleCloseRegister, showRegister, handleShow}) => {
+const Register = ({
+  handleCloseRegister,
+  showRegister,
+  handleShow,
+  users,
+  setUsers,
+}) => {
+  const validateRegister = (valores, resetForm) => {
+    let indexFound = JSON.parse(localStorage.getItem("Usuarios")).findIndex(
+      (e) => e.email === valores.email
+    );
+
+    if (indexFound === -1) {
+      setUsers([...users, valores]);
+      resetForm();
+      handleCloseRegister();
+    } else {
+      alert("El email ya pertence a otro usuario");
+    }
+  };
 
   return (
     <>
@@ -25,7 +43,11 @@ const Register = ({handleCloseRegister, showRegister, handleShow}) => {
           <div className="d-flex justify-content-center">
             <p className="fs-2 text-center">
               <b className="title-white">Bienvenido a</b>{" "}
-              <Link onClick={handleCloseRegister} to="/" style={{textDecoration:"none"}}>
+              <Link
+                onClick={handleCloseRegister}
+                to="/"
+                style={{ textDecoration: "none" }}
+              >
                 <b className="title-black cursor-pointer-custom">Rolling</b>
                 <b className="title-orange cursor-pointer-custom">Travel</b>
               </Link>
@@ -223,6 +245,6 @@ const Register = ({handleCloseRegister, showRegister, handleShow}) => {
       </Modal>
     </>
   );
-}
+};
 
-export default Register
+export default Register;
