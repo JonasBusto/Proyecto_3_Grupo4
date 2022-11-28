@@ -5,11 +5,5 @@
 }
 
 .div-app {
-  /* background-image: linear-gradient(
-      rgba(189, 188, 188, 0.541),
-      rgba(0, 0, 0, 0.342)
-    ),
-    url("https://wallpaperaccess.com/full/1431622.jpg");
-  background-color: rgba(29, 28, 28, 0.842); */
   background: linear-gradient(-45deg, #ffffff, #dfdfdf, #ebe5e5, #fff2e7);
 }

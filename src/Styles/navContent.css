@@ -5,8 +5,7 @@
   }
 
   .offcanvas-header {
-    background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
-    /* background-color: #497174; */
+    background: linear-gradient(-45deg, #317696, #2c6e8d, #134f6b, #4288a8);
     box-shadow: 0 9px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
@@ -33,12 +32,10 @@
 
 .navbar-offcanvas {
   background-color: #d6e4e5 !important;
-  /* background: linear-gradient(-45deg, #8c9899, #b0bfc0, #c5d5d6, #d6e4e5); */
 }
 
 .navbar {
-  /* background-color: #d6e4e5; */
-  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #8ad6db);
+  background: linear-gradient(-45deg, #317696, #2c6e8d, #134f6b, #4288a8);
   display: flex;
 }
 .navbar-bottom {
@@ -59,12 +56,13 @@
   padding-left: 1rem;
   padding-right: 1rem;
   font-weight: bold;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 .nav-link-custom a:hover,
 .nav-link-custom p:hover {
-  background: linear-gradient(-45deg, #5b9ba0, #5a9499, #477174, #497174);
+  background: linear-gradient(-45deg, #3c97c1, #30789a, #15658a, #376d86);
+
   color: white;
 }
 
@@ -83,9 +81,4 @@
   background-color: white;
   color: #eb6440;
   border: 3px solid #eb6440;
-}
-
-@media (max-width: 400px) {
-  .form-search input {
-  }
 }

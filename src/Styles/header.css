@@ -1,6 +1,4 @@
 .header-color {
-  /* background-color: #eb6440; */
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
 }
 
@@ -10,9 +8,6 @@
   padding-bottom: 0.3rem;
 }
 
-/* .container-icon-social img {
-  width: 4.2rem;
-} */
 .anchor-facebook {
   background-color: #3b5998;
   color: white;

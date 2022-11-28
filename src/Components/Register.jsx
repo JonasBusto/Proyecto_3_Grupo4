@@ -71,14 +71,6 @@ const Register = ({handleCloseRegister, showRegister, handleShow}) => {
                 errors.pass = "La contraseña no puede tener espacios.";
               }
 
-              // else if (
-              //     !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){6,15}$/.test(
-              //       valores.pass
-              //     )
-              //   ){
-              //   errors.pass = "Debe contener al menos: un caracter especial, una mayuscula, un numero y tener 8-15 caract. (sin espacios)";
-              // }
-
               if (!valores.checkPass) {
                 errors.checkPass = "Por favor confirme su contraseña.";
               } else if (valores.pass !== valores.checkPass) {
