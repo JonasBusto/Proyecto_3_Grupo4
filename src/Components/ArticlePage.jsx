@@ -5,6 +5,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { useParams } from "react-router";
 import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
+import { Link } from "react-router-dom";
 import {
   faCheck,
   faBookAtlas,
@@ -122,8 +123,14 @@ const ArticlePage = () => {
             </div>
           </div>
         </div>
-
-        <div className="mx-auto mt-5" style={{ maxWidth: "1300px" }}>
+        <p className="mx-2 p-anchor-head-links mt-3">
+          <Link to="/">Home</Link>
+          <b className="mx-2">/</b>
+          <Link to="/lugares/todas/todas">Lugares</Link>
+          <b className="mx-2">/</b>
+          <span>{objetoPrueba.lugar}</span>
+        </p>
+        <div className="mx-auto" style={{ maxWidth: "1300px" }}>
           <div className="btns-admin">
             <h1 className="text-orange">Modificar atributos:</h1>
             <p>

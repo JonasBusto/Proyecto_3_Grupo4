@@ -4,7 +4,7 @@
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 3rem;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   background-color: #d6e4e5;
 }
 
@@ -80,10 +80,12 @@ main {
     font-size: 1rem;
   }
 }
-/* 
-#000000
-#FFFFFF
-#D6E4E5
-#497174
-#EB6440
-*/
+
+.p-anchor-head-links a {
+  text-decoration: none;
+  color: grey;
+}
+
+.p-anchor-head-links a:hover {
+  color: black;
+}

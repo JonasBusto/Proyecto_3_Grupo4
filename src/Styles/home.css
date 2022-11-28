@@ -135,6 +135,9 @@
 .div-advertising img {
   height: 65%;
   border-radius: 5px;
+  object-fit: cover;
+  margin-left: 2rem;
+  margin-right: 4rem;
 }
 
 .div-provinces {

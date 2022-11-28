@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import FeatureElement from "./FeatureElement";
 import TablePlaces from "../Components/TablePlaces";
-import content from "../arrayContent";
+import { Link } from "react-router-dom";
 import "../Styles/featuredPage.css";
 
 const FeaturedPage = () => {
@@ -48,7 +48,12 @@ const FeaturedPage = () => {
   return (
     <>
       <div>
-        <h1 className="text-center">Lugares destacados</h1>
+        <h1 className="text-center mt-2">DESTACADOS</h1>
+        <p className="mx-4 p-anchor-head-links">
+          <Link to="/">Home</Link>
+          <b className="mx-2">/</b>
+          <Link to="/destacados">Destacados</Link>
+        </p>
         <div className="div-admin-featured">
           <h2 className="text-center title-admin-featured">
             Administrar destacados

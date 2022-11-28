@@ -25,7 +25,7 @@ const Home = () => {
     <>
       <div>
         <div className="mt-0">
-          <Slider className="slider-wrapper">
+          <Slider autoplay className="slider-wrapper">
             {arrayFeatured.map((item) => (
               <div
                 key={item.id}
