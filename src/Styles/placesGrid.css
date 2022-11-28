@@ -1,5 +1,5 @@
 .btn-add-place button {
-  background-color: #eb6440;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   color: white;
   border: 3px solid transparent;
   border-radius: 5px;
@@ -8,9 +8,9 @@
 }
 
 .btn-add-place button:hover {
-  background-color: white;
-  color: #eb6440;
-  border: 3px solid #eb6440;
+  color: #ff7b00;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  border: 3px solid #ff7b00;
 }
 
 .div-card img {
@@ -56,7 +56,7 @@
 }
 
 .card-body {
-  background-color: white;
+  background: linear-gradient(-45deg, #cbd5d6, #c0d0d1, #c5d5d6, #b2d1d3);
   width: 80%;
 }
 
@@ -162,7 +162,7 @@
   top: 12rem;
   left: 81%;
   border: 0px;
-  background-color: #eb6440;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50px;
@@ -171,7 +171,7 @@
 }
 
 .liked {
-  background-color: #497174;
+  background: linear-gradient(-45deg, #4f9297, #55969c, #477174, #497174);
 }
 .liked:hover {
   border: 3px solid #497174 !important;
@@ -183,7 +183,7 @@
   top: 12rem;
   left: 65%;
   border: 0px;
-  background-color: #d12d2d;
+  background: linear-gradient(-45deg, #e75555, #eb3232, #d62a2a, #d12d2d);
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 50px;

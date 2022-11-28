@@ -1,12 +1,55 @@
-import React, {useState} from 'react'
-import { Form,Modal,Button } from 'react-bootstrap'
-import '../Styles/login.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope , faLockKeyHoleOpen , faLock } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useEffect } from "react";
+import { Form, Modal, Button } from "react-bootstrap";
+import "../Styles/login.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faLockKeyHoleOpen,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 
-const Login = ({show, handleClose, handleShowRegister}) => {
+const Login = ({
+  show,
+  handleClose,
+  handleShowRegister,
+  authUser,
+  setAuthUser,
+}) => {
+  const validateLogin = (valores, resetForm) => {
+    let indexFound = JSON.parse(localStorage.getItem("Usuarios")).findIndex(
+      (e) => e.email === valores.email && e.pass === valores.pass
+    );
+
+    if (indexFound >= 0) {
+      if (
+        JSON.parse(localStorage.getItem("Usuarios"))[indexFound].email !==
+          valores.email ||
+        JSON.parse(localStorage.getItem("Usuarios"))[indexFound].pass !==
+          valores.pass
+      ) {
+        alert("Usuario o contraseña invalidos");
+      } else {
+        localStorage.setItem(
+          "Autenticado",
+          JSON.stringify({
+            email: JSON.parse(localStorage.getItem("Usuarios"))[indexFound]
+              .email,
+            nombre: JSON.parse(localStorage.getItem("Usuarios"))[indexFound]
+              .nombre,
+            rol: JSON.parse(localStorage.getItem("Usuarios"))[indexFound].rol,
+          })
+        );
+        setAuthUser(JSON.parse(localStorage.getItem("Autenticado")));
+        handleClose();
+        resetForm({});
+      }
+    }
+  };
+
+  useEffect(() => {}, [authUser]);
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -45,7 +88,6 @@ const Login = ({show, handleClose, handleShowRegister}) => {
                   valores.email
                 )
               ) {
-                console.log("correo no valido");
                 errors.email = "Ingrese un correo electrónico válido";
               }
 
@@ -56,9 +98,8 @@ const Login = ({show, handleClose, handleShowRegister}) => {
 
               return errors;
             }}
-            onSubmit={(valores) => {
-              console.log(valores);
-              console.log("Formulario enviado");
+            onSubmit={(valores, { resetForm }) => {
+              validateLogin(valores, resetForm);
             }}
           >
             {({
@@ -111,7 +152,13 @@ const Login = ({show, handleClose, handleShowRegister}) => {
                   )}
                   <div className="container-aux">
                     <div className="d-flex mt-1 justify-content-end mb-1">
-                      <Link onClick={handleClose} to="/recuperarContraseña" style={{textDecoration: 'none', color:'black'}}>Olivé mi contraseña</Link>
+                      <Link
+                        onClick={handleClose}
+                        to="/recuperarContraseña"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        Olivé mi contraseña
+                      </Link>
                     </div>
                   </div>
                 </Form.Group>
@@ -143,7 +190,6 @@ const Login = ({show, handleClose, handleShowRegister}) => {
       </Modal>
     </>
   );
-}
+};
 
-export default Login
-
+export default Login;

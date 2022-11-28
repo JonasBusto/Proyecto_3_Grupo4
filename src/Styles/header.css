@@ -1,6 +1,4 @@
 .header-color {
-  /* background-color: #eb6440; */
-  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
 }
 
@@ -10,15 +8,12 @@
   padding-bottom: 0.3rem;
 }
 
-/* .container-icon-social img {
-  width: 4.2rem;
-} */
 .anchor-facebook {
   background-color: #3b5998;
   color: white;
-  font-size: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  font-size: 2.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -35,9 +30,9 @@
 .anchor-twitter {
   background-color: #00aced;
   color: white;
-  font-size: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  font-size: 2.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -79,9 +74,9 @@
       #fec66d 100%
     );
   color: white;
-  font-size: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  font-size: 2.75rem;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -91,6 +86,16 @@
 .anchor-instagram:hover {
   color: #ffffff;
   border: 3px solid white;
+}
+
+@media (max-width: 991px) {
+  .anchor-instagram,
+  .anchor-facebook,
+  .anchor-twitter {
+    font-size: 2rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 .container-seeker div {

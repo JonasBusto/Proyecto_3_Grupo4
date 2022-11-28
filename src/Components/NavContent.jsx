@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Container,
@@ -15,7 +15,14 @@ import Register from "./Register";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const NavContent = ({ search, setSearch }) => {
+const NavContent = ({
+  search,
+  setSearch,
+  authUser,
+  setAuthUser,
+  users,
+  setUsers,
+}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,6 +30,11 @@ const NavContent = ({ search, setSearch }) => {
   const [showRegister, setShowRegister] = useState(false);
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
+
+  const logout = () => {
+    localStorage.removeItem("Autenticado");
+    setAuthUser(JSON.parse(localStorage.getItem("Autenticado")));
+  };
 
   return (
     <Navbar
@@ -74,34 +86,52 @@ const NavContent = ({ search, setSearch }) => {
             <Offcanvas.Body>
               <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
                 <Link to="/" onClick={() => setSearch("")}>
-                  Home
+                  HOME
                 </Link>
-                <Link to="/destacados" onClick={() => setSearch("")}>
-                  Destacado
-                </Link>
-                <Link to="/likes" onClick={() => setSearch("")}>
-                  Me Gusta
-                </Link>
+                {authUser !== null && authUser.rol === "admin" && (
+                  <Link to="/destacados" onClick={() => setSearch("")}>
+                    DESTACADO
+                  </Link>
+                )}
+                {authUser === null ? (
+                  <p className="m-0" onClick={handleShow}>
+                    ME GUSTA
+                  </p>
+                ) : (
+                  <Link to="/likes" onClick={() => setSearch("")}>
+                    ME GUSTA
+                  </Link>
+                )}
                 <Link to="/contacto" onClick={() => setSearch("")}>
-                  Contacto
+                  CONTACTO
                 </Link>
                 <Link to="/nosotros" onClick={() => setSearch("")}>
-                  Nosotros
+                  NOSOTROS
                 </Link>
-                <p className="m-0" onClick={handleShow}>
-                  Iniciar Sesion
-                </p>
+                {authUser === null ? (
+                  <p className="m-0" onClick={handleShow}>
+                    INICIAR SESIÓN
+                  </p>
+                ) : (
+                  <p className="m-0" onClick={logout}>
+                    CERRAR SESIÓN
+                  </p>
+                )}
                 <Login
                   show={show}
                   handleClose={handleClose}
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
+                  authUser={authUser}
+                  setAuthUser={setAuthUser}
                 />
                 <Register
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
                   handleCloseRegister={handleCloseRegister}
                   showRegister={showRegister}
+                  setUsers={setUsers}
+                  users={users}
                 />
               </Nav>
               <Form className="d-flex d-sm-none d-xl-none justify-content-center form-search">

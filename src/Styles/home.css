@@ -12,124 +12,243 @@
   color: #ffa600;
 }
 
-/*  */
-.div-categoria {
-  margin-bottom: 4rem;
+.div-category-custom-bg {
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #e7e7e7, #eeeeee);
+  border-radius: 15px;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.col-icon-category a {
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  height: 6.5rem !important;
+  width: 6.5rem !important;
+  color: white;
+  border-radius: 100px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  border: 3px solid transparent;
+  transition: ease-in-out 0.7s;
 }
 
-.div-category-advertising {
-  margin-top: 2rem;
+.col-icon-category p {
+  font-weight: bold;
+  color: #ff7b00;
+  transition: ease-in-out 0.7s;
 }
 
-.div-container-category {
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.075),
-      rgba(255, 255, 255, 0.308)
-    ),
-    url("https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg");
+.col-icon-category a:hover {
+  color: #ff7b00;
+  border: 3px solid #ff7b00;
+  background: linear-gradient(
+    -45deg,
+    #ffffffff,
+    #ffffffff,
+    #ffffffff,
+    #ffffffff
+  );
+}
+
+@media (max-width: 1000px) {
+  .col-icon-category a {
+    height: 5rem !important;
+    width: 5rem !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .col-icon-category a {
+    height: 4rem !important;
+    width: 4rem !important;
+    font-size: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  .col-icon-category a {
+    height: 6rem !important;
+    width: 6rem !important;
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .col-icon-category a {
+    height: 7.6rem !important;
+    width: 7.6rem !important;
+    font-size: 2.5rem;
+  }
+  .col-icon-category {
+    width: 33.3% !important;
+  }
+}
+@media (max-width: 410px) {
+  .col-icon-category {
+    width: 50% !important;
+  }
+}
+@media (max-width: 310px) {
+  .col-icon-category a {
+    height: 5.5rem !important;
+    width: 5.5rem !important;
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1900px) {
+  .col-icon-category a {
+    height: 8.5rem !important;
+    width: 8.5rem !important;
+    font-size: 3.5rem;
+  }
+  .col-icon-category p {
+    font-size: 2rem;
+  }
+}
+
+.div-place-more-liked {
+  overflow-x: auto;
+}
+
+.div-img-more-liked {
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.div-img-more-liked:hover {
+  opacity: 1;
+}
+
+.title-place-more-liked {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  color: black;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 8px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.title-place-more-liked b {
+  font-size: 0.85rem;
+  background-color: #ff7b00;
+  min-width: 6rem;
+  color: white;
+  font-weight: normal !important;
+  border-radius: 10px;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.div-img-more-liked img {
+  object-fit: cover;
+  width: 20rem;
+  height: 28rem;
+  border-radius: 15px;
+  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.div-more-place-home {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.466), rgba(0, 0, 0, 0.555)),
+    url("https://www.catamarcaonline.com/u/fotografias/m/2020/11/8/f608x342-5052_34775_4.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  object-fit: cover;
-  width: 90%;
-  min-height: 28rem;
-  margin-left: auto;
-  margin-right: auto;
+  background-attachment: fixed;
+  height: 20rem;
+}
+
+.text-more-place {
+  color: white;
+}
+
+.div-about-us-home {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("https://wallpaperaccess.com/full/1431610.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 25rem;
+}
+
+.div-about-us-home a,
+.div-more-place-home a {
+  color: white;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  padding: 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 3px solid transparent;
+  transition: 0.3s ease-in-out;
+}
+.div-about-us-home a:hover,
+.div-more-place-home a:hover {
+  color: #ff7b00;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  border: 3px solid #ff7b00;
+}
+
+.div-about-us-home p {
+  background-color: white;
+  width: 65%;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+
+@media (max-width: 904px) {
+  .div-about-us-home p {
+    width: 80%;
+  }
+  .text-about-us {
+    font-size: 1.3rem !important;
+  }
+}
+@media (max-width: 490px) {
+  .div-about-us-home p {
+    width: 80%;
+  }
+  .text-about-us {
+    font-size: 1rem !important;
+    width: 10rem !important;
+  }
+  .text-about-us2 {
+    font-size: 1.2rem !important;
+  }
+}
+@media (max-width: 290px) {
+  .div-about-us-home p {
+    width: 80%;
+  }
+  .text-about-us {
+    font-size: 0.6rem !important;
+    width: 10rem !important;
+  }
+  .text-about-us2 {
+    font-size: 1rem !important;
+  }
+}
+
+.text-about-us {
+  font-weight: bold;
+  width: 25%;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border: 0px !important;
 }
-
-.link-center a {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.div-link-category {
-  width: 90%;
-}
-
-.div-link-category a,
-.div-seeMore a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  margin-top: 0.7rem;
-  padding: 0.5rem;
-  width: 13rem;
-  height: 5rem;
-  text-align: center;
-  border-radius: 5px;
+.text-about-us2 {
   font-size: 1.5rem;
-  font-family: "Times New Roman", Times, serif;
-  border: 3px solid transparent;
-}
-
-.div-link-category > div {
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  width: 49%;
-  border-radius: 4px;
-  margin-top: 1rem;
-  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border: 0px !important;
-}
-
-@media (max-width: 515px) {
-  .div-link-category > div {
-    width: 100%;
-  }
-
-  .div-row-col > div {
-    width: 100% !important;
-  }
-}
-
-.div-link-category > div:hover {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
-  box-shadow: 0 13px 10px rgba(0, 0, 0, 0.507), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border: 0px !important;
-}
-
-.div-link-category a {
-  padding: 0%;
-  height: 7.5rem;
-  margin: 0px;
-  transition: ease-in 0.3ms;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  color: black;
-  font-weight: bold;
-}
-
-.div-link-category a:hover {
-  -webkit-transform: scale(1.3);
-  transform: scale(1.6);
-  color: white;
-}
-
-.div-seeMore {
-  margin-top: 1.5rem;
-}
-
-.div-seeMore a {
-  background-color: #eb6440;
-}
-
-.div-seeMore a:hover {
-  color: #eb6440;
-  background-color: white;
-  border: 3px solid #eb6440;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .div-advertising img {
@@ -138,108 +257,5 @@
   object-fit: cover;
   margin-left: 2rem;
   margin-right: 4rem;
-}
-
-.div-provinces {
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 1320px) {
-  .div-provinces > div > .row > div {
-    width: 97%;
-  }
-}
-
-@media (min-width: 551px) {
-  .div-sm-provinces-none {
-    display: flex;
-    justify-content: center;
-  }
-  .div-sm-display-block {
-    display: none;
-  }
-}
-
-.div-sm-display-block > .row {
-  display: flex;
-  justify-content: center;
-}
-.div-sm-display-block > .row > div {
-  height: 11rem !important;
-  margin-bottom: 0.1rem;
-}
-
-@media (max-width: 650px) {
-  .div-sm-provinces-none {
-    display: none !important;
-  }
-  .div-sm-display-block {
-    display: block;
-  }
-}
-
-.div-img-provinces {
-  margin: 0.5rem;
-}
-
-.div-img-provinces {
-  object-fit: cover;
-  border-radius: 4px;
-  padding: 0.2rem;
   box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  border: 0px !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
 }
-
-.div-img-provinces a {
-  text-decoration: none;
-  width: 65%;
-  height: 65%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: ease-in 0.3ms;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  color: white;
-  font-weight: bold;
-}
-.div-img-provinces a:hover {
-  transform: scale(3);
-  -webkit-transform: scale(1.6);
-  color: black;
-}
-
-.div-img-provinces:hover {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(100%);
-}
-/* 
-.div-link-category > div:hover {
-  -webkit-filter: grayscale(0);
-  filter: grayscale(0);
-  box-shadow: 3px 3px #4d2d2486;
-}
-
-.div-link-category a {
-  padding: 0%;
-  height: 7.5rem;
-  margin: 0px;
-  transition: ease-in 0.3ms;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-  color: black;
-  font-weight: bold;
-}
-
-.div-link-category a:hover {
-  -webkit-transform: scale(1.3);
-  transform: scale(1.6);
-  color: white;
-} */

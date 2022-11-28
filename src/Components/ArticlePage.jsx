@@ -792,7 +792,7 @@ const ArticlePage = () => {
                   <div className="d-flex">
                     <b>{c.nombreUsuario}</b>
                     <p className="mx-1 mb-0">-</p>
-                    <p className="mb-0">07/12/2019</p>
+                    <p className="mb-0">{c.fechaComentario}</p>
                   </div>
                   <div>
                     <p>{c.reseñaRealizada}</p>
@@ -850,6 +850,10 @@ const ArticlePage = () => {
                     reseñaRealizada: valuesInput.reseña,
                     nombreUsuario: valuesInput.nombre,
                     valoracionRealizada: valuesInput.valoracion,
+                    fechaComentario: new Date()
+                      .toJSON()
+                      .slice(0, 10)
+                      .replace(/-/g, "/"),
                   },
                 ]);
                 resetForm({});
