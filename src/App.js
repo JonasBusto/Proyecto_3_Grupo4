@@ -34,6 +34,18 @@ const App = () => {
       });
   }, []);
 
+  const [placesDb, setPlacesDb] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/consultPlace")
+      .then((res) => res.json())
+      .then((json) => setPlacesDb(json));
+  }, []);
+
+  useEffect(() => {
+    console.log("array:", placesDb);
+  }, [placesDb]);
+
   return (
     <div className="d-flex flex-column min-vh-100 div-app">
       <Header search={search} setSearch={setSearch} />
@@ -48,7 +60,7 @@ const App = () => {
         userLDb={userLDb}
         setUserLDb={setUserLDb}
       />
-      <Main authUser={authUser} setAuthUser={setAuthUser} />
+      <Main placesDb={placesDb} authUser={authUser} setAuthUser={setAuthUser} />
       <Footer search={search} setSearch={setSearch} />
     </div>
   );

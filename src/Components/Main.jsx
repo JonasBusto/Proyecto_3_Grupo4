@@ -11,17 +11,25 @@ import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
 import Contact from "./Contact";
 import AboutUs from "./AboutUs";
-import ArticlePageDb from "./ArticlePageDb";
+import ArticlePageDBres from "./ArticlePageDBres";
 
-const Main = () => {
+const Main = ({ placesDb }) => {
   return (
     <>
       <main className="mx-auto w-100" style={{ maxWidth: "1300px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lugar/:id" element={<ArticlePage />} />
-          <Route path="/lugarDb/:id" element={<ArticlePageDb />} />
-          <Route path="/lugares/:province/:category" element={<PlacesGrid />} />
+          <Route
+            path="/lugarDb/:id"
+            placesDb={placesDb}
+            element={<ArticlePageDBres />}
+          />
+          <Route
+            path="/lugares/:province/:category"
+            placesDb={placesDb}
+            element={<PlacesGrid />}
+          />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/likes" element={<LikesPage />} />
           <Route path="/search=:resultado" element={<SearchResult />} />

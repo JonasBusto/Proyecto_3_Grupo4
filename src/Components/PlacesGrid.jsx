@@ -399,12 +399,7 @@ const PlacesGrid = () => {
                 />
               ))}
           {placesDb &&
-            placesDb.map((p, i) => (
-              <PlaceDb
-                key={p._id}
-                objeto={p}
-              />
-            ))}
+            placesDb.map((p, i) => <PlaceDb key={p._id} objeto={p} />)}
         </div>
         {category === "" && province === "" && (
           <ReactPaginate
