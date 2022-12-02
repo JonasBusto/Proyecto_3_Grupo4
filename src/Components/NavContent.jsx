@@ -56,10 +56,6 @@ const NavContent = ({
       });
   };
 
-  useEffect(() => {
-    console.log("user en nav: ", userLDb);
-  }, [userLDb]);
-
   return (
     <Navbar
       collapseOnSelect
