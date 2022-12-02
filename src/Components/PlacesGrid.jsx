@@ -20,6 +20,7 @@ import "../Styles/placesGrid.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
 import { useParams } from "react-router";
+import PlaceDb from "./PlaceDb";
 
 const PlacesGrid = () => {
   const provinceDate = useParams().province;
@@ -35,6 +36,18 @@ const PlacesGrid = () => {
   const [arrayPlaces, setArrayPlaces] = useState(
     JSON.parse(localStorage.getItem("Lugares"))
   );
+
+  const [placesDb, setPlacesDb] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/consultPlace")
+      .then((res) => res.json())
+      .then((json) => setPlacesDb(json));
+  }, []);
+
+  useEffect(() => {
+    console.log(placesDb);
+  }, [placesDb]);
 
   const addPlace = (objectPlace) => {
     setArrayPlaces([
@@ -385,6 +398,13 @@ const PlacesGrid = () => {
                   likeP={() => giveLike(p)}
                 />
               ))}
+          {placesDb &&
+            placesDb.map((p, i) => (
+              <PlaceDb
+                key={p._id}
+                objeto={p}
+              />
+            ))}
         </div>
         {category === "" && province === "" && (
           <ReactPaginate

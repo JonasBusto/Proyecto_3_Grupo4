@@ -11,6 +11,7 @@ import ArticlePage from "./ArticlePage";
 import FeaturedPage from "./FeaturedPage";
 import Contact from "./Contact";
 import AboutUs from "./AboutUs";
+import ArticlePageDb from "./ArticlePageDb";
 
 const Main = () => {
   return (
@@ -19,6 +20,7 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/lugar/:id" element={<ArticlePage />} />
+          <Route path="/lugarDb/:id" element={<ArticlePageDb />} />
           <Route path="/lugares/:province/:category" element={<PlacesGrid />} />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/likes" element={<LikesPage />} />
