@@ -15,7 +15,6 @@ const App = () => {
   );
   const lstg = localStorage.getItem("token");
   const [userLDb, setUserLDb] = useState({});
-  console.log("lstg json: ", JSON.parse(lstg));
   useEffect(() => {
     fetch("https://proyecto-3-backend.vercel.app/userLog", {
       method: "POST",
@@ -34,10 +33,6 @@ const App = () => {
         setUserLDb(json);
       });
   }, []);
-
-  useEffect(() => {
-    console.log("Usuario logueado: ", userLDb);
-  }, [userLDb]);
 
   return (
     <div className="d-flex flex-column min-vh-100 div-app">

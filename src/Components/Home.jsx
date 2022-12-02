@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Slider from "react-animated-slider";
 import content from "../arrayContent";
 import "../Styles/home.css";
-import "react-animated-slider/build/horizontal.css";
-import "../Styles/slider-animations.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChampagneGlasses,
@@ -18,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import provinceArray from "../arrayProvinces";
 import arrayUsers from "../arrayUsers";
+import Carousel from "react-bootstrap/Carousel";
 
 const Home = () => {
   if (localStorage.getItem("Lugares") === null) {
@@ -41,7 +39,29 @@ const Home = () => {
     <>
       <div>
         <div className="mt-0">
-          <Slider autoplay className="slider-wrapper">
+          <Carousel>
+            {arrayFeatured.map((item) => (
+              <Carousel.Item
+                className="carousel-item-custom"
+                key={item.id + "place"}
+                interval={2000000000}
+              >
+                <img
+                  className="d-block w-100"
+                  src={item.img.img1}
+                  alt="First slide"
+                />
+                <Carousel.Caption className="carousel-caption-custom">
+                  <h1>{item.lugar.toUpperCase()}</h1>
+                  <p>{item.descripcion.toUpperCase()}</p>
+                  <div className="div-see-more-btn">
+                    <Link to={`/lugar/${item.id}`}>VER MÁS</Link>
+                  </div>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+          {/* <Slider autoplay className="slider-wrapper">
             {arrayFeatured.map((item) => (
               <div
                 key={item.id}
@@ -65,7 +85,7 @@ const Home = () => {
                 </section>
               </div>
             ))}
-          </Slider>
+          </Slider> */}
         </div>
 
         <div className="mt-5">

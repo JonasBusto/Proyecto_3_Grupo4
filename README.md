@@ -7,5 +7,5 @@
 2- Garcia, Mario David <b>(SCRUM MASTER)</b>.</br>
 3- Giuliani, Valentina.</br>
 
-# Link de la pagina: 
+# Link de la pagina: https://rolling-travel-2022.vercel.app/
 # Link de Trello: https://trello.com/b/waXiGwRT/grupo-4-proyecto-final-rolling
