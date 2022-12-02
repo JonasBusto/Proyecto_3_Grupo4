@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import LikeElement from "./LikeElement";
 import content from "../arrayContent";
@@ -29,6 +29,18 @@ const LikesPage = () => {
     }
     setArrayPlaces(arrayAux);
   };
+
+  const [dbPlaces, setDbPlaces] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/consultPlace`)
+      .then((res) => res.json())
+      .then((json) => setDbPlaces(json));
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(dbPlaces);
+  // }, [dbPlaces]);
 
   return (
     <>

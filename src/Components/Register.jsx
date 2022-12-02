@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Styles/register.css";
@@ -19,18 +19,42 @@ const Register = ({
   users,
   setUsers,
 }) => {
-  const validateRegister = (valores, resetForm) => {
-    let indexFound = JSON.parse(localStorage.getItem("Usuarios")).findIndex(
-      (e) => e.email === valores.email
-    );
+  const [dbUsers, setDbUsers] = useState([]);
+  useEffect(() => {
+    fetch(`https://proyecto-3-backend.vercel.app/consultUsers`)
+      .then((res) => res.json())
+      .then((json) => setDbUsers(json));
+  }, []);
+
+  const validateRegister = (values, resetForm) => {
+    let indexFound = dbUsers.findIndex((e) => e.email === values.email);
 
     if (indexFound === -1) {
-      setUsers([...users, valores]);
+      handleSubmitRegister(values);
       resetForm();
-      handleCloseRegister();
+      alert("Registro exitoso");
     } else {
       alert("El email ya pertence a otro usuario");
     }
+  };
+
+  const handleSubmitRegister = (values) => {
+    fetch("https://proyecto-3-backend.vercel.app/register", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-type": "application/json",
+        Accept: "aplication/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        name: values.name,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.pass,
+        confirmPassword: values.checkPass,
+      }),
+    }).then((res) => res.json());
   };
 
   return (
@@ -89,22 +113,31 @@ const Register = ({
               if (!valores.pass) {
                 errors.pass = "Por favor ingrese un contraseña.";
               } else if (/\s/.test(valores.pass)) {
-                console.log(/\s/.test(valores.pass));
                 errors.pass = "La contraseña no puede tener espacios.";
+              } else if (
+                valores.pass.split("").length < 8 ||
+                valores.pass.split("").length > 14
+              ) {
+                errors.pass =
+                  "La contraseña debe tener entre 8 y 14 caracteres.";
               }
 
               if (!valores.checkPass) {
                 errors.checkPass = "Por favor confirme su contraseña.";
               } else if (valores.pass !== valores.checkPass) {
                 errors.checkPass = "Las contraseñas no coinciden.";
+              } else if (
+                valores.checkPass.split("").length < 8 ||
+                valores.checkPass.split("").length > 14
+              ) {
+                errors.checkPass =
+                  "La confirmación de la contraseña debe tener entre 8 y 14 caracteres.";
               }
 
               return errors;
             }}
-            onSubmit={(valores, { resetForm }) => {
-              console.log(valores);
-              console.log("formulario enviado.");
-              resetForm();
+            onSubmit={(values, { resetForm }) => {
+              validateRegister(values, resetForm);
             }}
           >
             {({
