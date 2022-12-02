@@ -17,38 +17,45 @@ const Login = ({
   authUser,
   setAuthUser,
 }) => {
-  const validateLogin = (valores, resetForm) => {
-    let indexFound = JSON.parse(localStorage.getItem("Usuarios")).findIndex(
-      (e) => e.email === valores.email && e.pass === valores.pass
-    );
+  const [dbUsers, setDbUsers] = useState([]);
+  const token = JSON.parse(localStorage.getItem("token"));
 
-    if (indexFound >= 0) {
-      if (
-        JSON.parse(localStorage.getItem("Usuarios"))[indexFound].email !==
-          valores.email ||
-        JSON.parse(localStorage.getItem("Usuarios"))[indexFound].pass !==
-          valores.pass
-      ) {
-        alert("Usuario o contraseña invalidos");
-      } else {
-        localStorage.setItem(
-          "Autenticado",
-          JSON.stringify({
-            email: JSON.parse(localStorage.getItem("Usuarios"))[indexFound]
-              .email,
-            nombre: JSON.parse(localStorage.getItem("Usuarios"))[indexFound]
-              .nombre,
-            rol: JSON.parse(localStorage.getItem("Usuarios"))[indexFound].rol,
-          })
-        );
-        setAuthUser(JSON.parse(localStorage.getItem("Autenticado")));
-        handleClose();
-        resetForm({});
-      }
+  useEffect(() => {
+    fetch(`https://proyecto-3-backend.vercel.app/consultUsers`)
+      .then((res) => res.json())
+      .then((json) => setDbUsers(json));
+  }, []);
+
+  const validateLogin = (values, resetForm) => {
+    let indexFound = dbUsers.findIndex((e) => e.email === values.email);
+
+    if (indexFound !== -1) {
+      handleSubmitLogin(values);
+      handleClose();
+      resetForm();
+      alert("Login exitoso");
+    } else {
+      alert("El usuario y/o contraseña son invalidos");
     }
   };
-
-  useEffect(() => {}, [authUser]);
+  const handleSubmitLogin = (values) => {
+    fetch("https://proyecto-3-backend.vercel.app/login", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        token,
+      },
+      body: JSON.stringify({
+        email: values.email,
+        password: values.pass,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("token", JSON.stringify(res.token));
+      });
+  };
 
   return (
     <>
@@ -98,8 +105,9 @@ const Login = ({
 
               return errors;
             }}
-            onSubmit={(valores, { resetForm }) => {
-              validateLogin(valores, resetForm);
+            onSubmit={(values, { resetForm }) => {
+              validateLogin(values, resetForm);
+              // validateLogin(valores, resetForm);
             }}
           >
             {({
@@ -157,7 +165,7 @@ const Login = ({
                         to="/recuperarContraseña"
                         style={{ textDecoration: "none", color: "black" }}
                       >
-                        Olivé mi contraseña
+                        Olvidé mi contraseña
                       </Link>
                     </div>
                   </div>

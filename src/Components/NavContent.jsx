@@ -22,6 +22,8 @@ const NavContent = ({
   setAuthUser,
   users,
   setUsers,
+  userLDb,
+  setUserLDb,
 }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -34,6 +36,24 @@ const NavContent = ({
   const logout = () => {
     localStorage.removeItem("Autenticado");
     setAuthUser(JSON.parse(localStorage.getItem("Autenticado")));
+  };
+
+  const handleLogout = () => {
+    fetch("https://proyecto-3-backend.vercel.app/logout", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token: JSON.parse(localStorage.getItem("token")),
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.removeItem("token");
+        setUserLDb({});
+      });
   };
 
   return (
@@ -88,12 +108,13 @@ const NavContent = ({
                 <Link to="/" onClick={() => setSearch("")}>
                   HOME
                 </Link>
-                {authUser !== null && authUser.rol === "admin" && (
-                  <Link to="/destacados" onClick={() => setSearch("")}>
-                    DESTACADO
-                  </Link>
-                )}
-                {authUser === null ? (
+                {Object.keys(userLDb).length !== 0 &&
+                  userLDb.rol === "admin" && (
+                    <Link to="/destacados" onClick={() => setSearch("")}>
+                      DESTACADO
+                    </Link>
+                  )}
+                {Object.keys(userLDb).length === 0 ? (
                   <p className="m-0" onClick={handleShow}>
                     ME GUSTA
                   </p>
@@ -108,12 +129,12 @@ const NavContent = ({
                 <Link to="/nosotros" onClick={() => setSearch("")}>
                   NOSOTROS
                 </Link>
-                {authUser === null ? (
+                {Object.keys(userLDb).length === 0 ? (
                   <p className="m-0" onClick={handleShow}>
                     INICIAR SESIÓN
                   </p>
                 ) : (
-                  <p className="m-0" onClick={logout}>
+                  <p className="m-0" onClick={handleLogout}>
                     CERRAR SESIÓN
                   </p>
                 )}

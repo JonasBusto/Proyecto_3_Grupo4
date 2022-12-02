@@ -51,8 +51,7 @@ main {
 .image-gallery-icon:hover {
   color: #eb6440 !important;
 }
-.image-gallery-thumbnail:hover,
-.active {
+.image-gallery-thumbnail:hover {
   border: 3px solid #eb6440 !important;
 }
 
