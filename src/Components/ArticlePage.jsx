@@ -59,6 +59,25 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     ).then((res) => res.json());
     window.location.reload();
   };
+
+  const handleSubmitModDescription = (valueDescription) => {
+    console.log(valueDescription);
+    console.log(objectPlace._id);
+    fetch(`http://localhost:3001/modPlaceDescription/${objectPlace._id}`, {
+      method: "PUT",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        description: valueDescription.descripcion,
+      }),
+    }).then((res) => res.json());
+    // window.location.reload();
+  };
+
   //
   return (
     <>
@@ -310,7 +329,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            changeDescription(valuesInput.descripcion);
+                            handleSubmitModDescription(valuesInput);
                             // handleCloseDescription();
                             resetForm({});
                           }}
@@ -613,7 +632,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                 <div className="col-12 col-lg-5 d-flex flex-column">
                   <div className="mt-4 mt-lg-0">
                     <h1 className="text-orange">Descripcion</h1>
-                    <p>{objetoPrueba.descripcion}</p>
+                    <p>{objectPlace.description}</p>
                   </div>
                 </div>
               </div>
