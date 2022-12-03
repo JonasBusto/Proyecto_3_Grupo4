@@ -33,6 +33,7 @@ const Register = ({
       handleSubmitRegister(values);
       resetForm();
       alert("Registro exitoso");
+      window.location.reload();
     } else {
       alert("El email ya pertence a otro usuario");
     }
