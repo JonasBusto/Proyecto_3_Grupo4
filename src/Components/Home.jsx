@@ -17,7 +17,7 @@ import provinceArray from "../arrayProvinces";
 import arrayUsers from "../arrayUsers";
 import Carousel from "react-bootstrap/Carousel";
 
-const Home = () => {
+const Home = ({ placesDb }) => {
   if (localStorage.getItem("Lugares") === null) {
     localStorage.setItem("Lugares", JSON.stringify(content));
   }
@@ -44,7 +44,7 @@ const Home = () => {
               <Carousel.Item
                 className="carousel-item-custom"
                 key={item.id + "place"}
-                interval={2000000000}
+                interval={2000}
               >
                 <img
                   className="d-block w-100"
@@ -61,31 +61,6 @@ const Home = () => {
               </Carousel.Item>
             ))}
           </Carousel>
-          {/* <Slider autoplay className="slider-wrapper">
-            {arrayFeatured.map((item) => (
-              <div
-                key={item.id}
-                className="slider-content"
-                style={{
-                  background: `url('${item.img.img1}') no-repeat center center`,
-                }}
-              >
-                <div className="inner">
-                  <h1>{item.lugar.toUpperCase()}</h1>
-                  <p>{item.descripcion.toUpperCase()}</p>
-                  <div className="div-see-more-btn">
-                    <Link to={`/lugar/${item.id}`}>VER MÁS</Link>
-                  </div>
-                </div>
-                <section>
-                  <img src="/logo-RollingTravel.png" alt={item.user} />
-                  <span>
-                    DESTACADO POR <strong>ROLLING TRAVEL</strong>
-                  </span>
-                </section>
-              </div>
-            ))}
-          </Slider> */}
         </div>
 
         <div className="mt-5">
@@ -156,19 +131,23 @@ const Home = () => {
         <div className="mt-5">
           <p className="text-center fs-1">LUGARES CON MAS LIKES</p>
           <div className="div-place-more-liked d-flex">
-            {arrayPlaces.map((l) => (
-              <Link
-                key={l.id}
-                to={`/lugar/${l.id}`}
-                className="div-img-more-liked"
-              >
-                <img src={l.img.img1} alt="" />
-                <h1 className="title-place-more-liked d-flex flex-column align-items-center">
-                  {l.lugar.toUpperCase()}
-                  <b>{l.provincia.toUpperCase()}</b>
-                </h1>
-              </Link>
-            ))}
+            {placesDb.length !== 0 ? (
+              placesDb.map((l) => (
+                <Link
+                  key={l._id}
+                  to={`/lugar/${l._id}`}
+                  className="div-img-more-liked"
+                >
+                  <img src={l.img.img1} alt="" />
+                  <h1 className="title-place-more-liked d-flex flex-column align-items-center">
+                    {l.namePlace.toUpperCase()}
+                    <b>{l.province.toUpperCase()}</b>
+                  </h1>
+                </Link>
+              ))
+            ) : (
+              <h1>Cargando</h1>
+            )}
           </div>
         </div>
 

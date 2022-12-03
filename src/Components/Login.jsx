@@ -34,6 +34,7 @@ const Login = ({
       handleClose();
       resetForm();
       alert("Login exitoso");
+      window.location.reload();
     } else {
       alert("El usuario y/o contraseña son invalidos");
     }

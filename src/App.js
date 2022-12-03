@@ -15,6 +15,8 @@ const App = () => {
   );
   const lstg = localStorage.getItem("token");
   const [userLDb, setUserLDb] = useState({});
+  const [placesDb, setPlacesDb] = useState([]);
+
   useEffect(() => {
     fetch("https://proyecto-3-backend.vercel.app/userLog", {
       method: "POST",
@@ -34,6 +36,12 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("https://proyecto-3-backend.vercel.app/consultPlace")
+      .then((res) => res.json())
+      .then((json) => setPlacesDb(json));
+  }, []);
+
   return (
     <div className="d-flex flex-column min-vh-100 div-app">
       <Header search={search} setSearch={setSearch} />
@@ -48,7 +56,12 @@ const App = () => {
         userLDb={userLDb}
         setUserLDb={setUserLDb}
       />
-      <Main authUser={authUser} setAuthUser={setAuthUser} />
+      <Main
+        authUser={authUser}
+        setAuthUser={setAuthUser}
+        placesDb={placesDb}
+        userLDb={userLDb}
+      />
       <Footer search={search} setSearch={setSearch} />
     </div>
   );

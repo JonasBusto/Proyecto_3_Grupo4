@@ -33,11 +33,6 @@ const NavContent = ({
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
-  const logout = () => {
-    localStorage.removeItem("Autenticado");
-    setAuthUser(JSON.parse(localStorage.getItem("Autenticado")));
-  };
-
   const handleLogout = () => {
     fetch("https://proyecto-3-backend.vercel.app/logout", {
       method: "POST",
