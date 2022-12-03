@@ -59,7 +59,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     ).then((res) => res.json());
     window.location.reload();
   };
-
+  //
   return (
     <>
       {objectPlace !== null ? (
