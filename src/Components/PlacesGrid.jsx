@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Card from "react-bootstrap/Card";
-import Pagination from "react-bootstrap/Pagination";
 import ProvincePlace from "./ProvincePlace";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
@@ -12,16 +10,13 @@ import {
   faLocationDot,
   faMapPin,
   faMountainCity,
-  faR,
-  faThumbsUp,
-  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/placesGrid.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
 import { useParams } from "react-router";
 
-const PlacesGrid = () => {
+const PlacesGrid = ({ placesDb, userLDb }) => {
   const provinceDate = useParams().province;
   const categoryDate = useParams().category;
   const [province, setProvince] = useState(provinceDate);
@@ -32,39 +27,65 @@ const PlacesGrid = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const validateAddPlace = (values, resetForm) => {
+    let indexFound = placesDb.findIndex(
+      (e) =>
+        e.namePlace.toLowerCase().trim() ===
+        values.namePlace.toLowerCase().trim()
+    );
+    if (indexFound === -1) {
+      handleSubmitAddPlace(values);
+      resetForm();
+      alert("Lugar cargado exitosamente");
+    } else {
+      alert("El lugar ya existe");
+    }
+  };
+
+  const handleSubmitAddPlace = (values) => {
+    fetch("https://proyecto-3-backend.vercel.app/addPlace", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-type": "application/json",
+        Accept: "aplication/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        namePlace: values.namePlace,
+        province: values.province,
+        category: values.category,
+        description: values.description,
+        img: {
+          img1: values.url1,
+          img2: values.url2,
+          img3: values.url3,
+          img4: values.url4,
+          img5: values.url5,
+        },
+      }),
+    }).then((res) => res.json());
+  };
+
+  const handleSubmitDeletePlace = (object) => {
+    let indexFound = placesDb.findIndex(
+      (e) => e._id.toLowerCase().trim() === object._id.toLowerCase().trim()
+    );
+
+    if (indexFound === -1) {
+      alert("El lugar que intenta eliminar no existe");
+    } else {
+      fetch(`https://proyecto-3-backend.vercel.app/deletePlace/${object._id}`, {
+        method: "DELETE",
+      }).then((res) => res.json());
+      alert("Lugar eliminado exitosamente");
+      window.location.reload();
+    }
+  };
+
   const [arrayPlaces, setArrayPlaces] = useState(
     JSON.parse(localStorage.getItem("Lugares"))
   );
-
-  const addPlace = (objectPlace) => {
-    setArrayPlaces([
-      ...arrayPlaces,
-      {
-        id: arrayPlaces.length,
-        lugar: objectPlace.lugar,
-        provincia: objectPlace.provincia,
-        categoria: objectPlace.categoria,
-        descripcion: objectPlace.descripcion,
-        img: {
-          img1: objectPlace.url,
-          img2: "",
-          img3: "",
-          img4: "",
-          img5: "",
-        },
-        servicios: ["", "", "", "", ""],
-        tips: ["", "", "", "", ""],
-        liked: false,
-        destacado: false,
-        user: "",
-        userProfile: "",
-      },
-    ]);
-  };
-
-  const deletePlace = (objectPlace) => {
-    setArrayPlaces(arrayPlaces.filter((p) => p.id !== objectPlace.id));
-  };
 
   const giveLike = (objectPlace) => {
     let arrayAux = [...arrayPlaces];
@@ -80,17 +101,13 @@ const PlacesGrid = () => {
   const [itemOffset, setItemOffset] = useState(0);
   let itemsPerPage = 12;
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = arrayPlaces.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(arrayPlaces.length / itemsPerPage);
+  const currentItems = placesDb.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(placesDb.length / itemsPerPage);
 
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % arrayPlaces.length;
+    const newOffset = (event.selected * itemsPerPage) % placesDb.length;
     setItemOffset(newOffset);
   };
-
-  useEffect(() => {
-    localStorage.setItem("Lugares", JSON.stringify(arrayPlaces));
-  }, [arrayPlaces]);
 
   return (
     <>
@@ -141,9 +158,11 @@ const PlacesGrid = () => {
             </Form.Select>
           </div>
         </div>
-        <div className="btn-add-place d-flex justify-content-center">
-          <button onClick={handleShow}>Añadir Lugar</button>
-        </div>
+        {Object.keys(userLDb).length !== 0 && userLDb.rol === "admin" && (
+          <div className="btn-add-place d-flex justify-content-center">
+            <button onClick={handleShow}>Añadir Lugar</button>
+          </div>
+        )}
         <div>
           <Modal show={show} onHide={handleClose} backdrop="static">
             <Modal.Header className="modal-header-place justify-content-center">
@@ -159,58 +178,71 @@ const PlacesGrid = () => {
               </div>
               <Formik
                 initialValues={{
-                  lugar: "",
-                  url: "",
-                  provincia: "",
-                  categoria: "",
-                  descripcion: "",
+                  namePlace: "",
+                  url1: "",
+                  url2: "",
+                  url3: "",
+                  url4: "",
+                  url5: "",
+                  province: "",
+                  category: "",
+                  description: "",
                 }}
                 validate={(valuesInput) => {
                   let errors = {};
 
-                  if (valuesInput.lugar.trim() === "") {
-                    errors.lugar = "Campo 'Lugar' vacio.";
-                  } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valuesInput.lugar)) {
-                    errors.lugar = "Lugar invalido.";
+                  if (valuesInput.namePlace.trim() === "") {
+                    errors.namePlace = "Campo 'Lugar' vacio.";
                   } else if (
-                    valuesInput.lugar.trim().split("").length < 5 ||
-                    valuesInput.lugar.trim().split("").length > 30
+                    !/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valuesInput.namePlace)
                   ) {
-                    errors.lugar =
+                    errors.namePlace = "Lugar invalido.";
+                  } else if (
+                    valuesInput.namePlace.trim().split("").length < 5 ||
+                    valuesInput.namePlace.trim().split("").length > 30
+                  ) {
+                    errors.namePlace =
                       "El lugar debe tener entre 5 y 30 caracteres.";
                   }
 
-                  if (valuesInput.descripcion.trim() === "") {
-                    errors.descripcion = "Campo 'Descripción' vacio.";
+                  if (valuesInput.description.trim() === "") {
+                    errors.description = "Campo 'Descripción' vacio.";
                   } else if (
-                    valuesInput.descripcion.trim().split("").length < 1 ||
-                    valuesInput.descripcion.trim().split("").length > 300
+                    valuesInput.description.trim().split("").length < 1 ||
+                    valuesInput.description.trim().split("").length > 300
                   ) {
-                    errors.descripcion =
+                    errors.description =
                       "La descripción debe tener entre 1 y 300 caracteres.";
                   }
 
-                  if (valuesInput.url.trim() === "") {
-                    errors.url = "Campo 'URL' vacio.";
+                  if (valuesInput.url1.trim() === "") {
+                    errors.url1 = "Campo 'URL 1' vacio.";
+                  }
+                  if (valuesInput.url2.trim() === "") {
+                    errors.url2 = "Campo 'URL 2' vacio.";
+                  }
+                  if (valuesInput.url3.trim() === "") {
+                    errors.url3 = "Campo 'URL 3' vacio.";
+                  }
+                  if (valuesInput.url4.trim() === "") {
+                    errors.url4 = "Campo 'URL 4' vacio.";
+                  }
+                  if (valuesInput.url5.trim() === "") {
+                    errors.url5 = "Campo 'URL 5' vacio.";
                   }
 
-                  if (valuesInput.provincia === "") {
-                    errors.provincia = "Elija una provincia.";
+                  if (valuesInput.province === "") {
+                    errors.province = "Elija una provincia.";
                   }
 
-                  if (valuesInput.categoria === "") {
-                    errors.categoria = "Elija una categoria.";
+                  if (valuesInput.category === "") {
+                    errors.category = "Elija una categoria.";
                   }
 
                   return errors;
                 }}
                 onSubmit={(valuesInput, { resetForm }) => {
-                  addPlace(valuesInput);
-                  resetForm({});
-                  setFormEnviado(true);
-                  setTimeout(() => {
-                    setFormEnviado(false);
-                  }, 2000);
+                  validateAddPlace(valuesInput, resetForm);
                 }}
               >
                 {({
@@ -229,16 +261,16 @@ const PlacesGrid = () => {
                         </div>
                         <Form.Control
                           type="text"
-                          name="lugar"
+                          name="namePlace"
                           placeholder="Ingresar lugar"
-                          value={values.lugar}
+                          value={values.namePlace}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
                       </div>
-                      {errors.lugar && touched.lugar && (
+                      {errors.namePlace && touched.namePlace && (
                         <Form.Text className="text-muted">
-                          {errors.lugar}
+                          {errors.namePlace}
                         </Form.Text>
                       )}
                     </Form.Group>
@@ -250,16 +282,16 @@ const PlacesGrid = () => {
                         <Form.Control
                           as="textarea"
                           rows={3}
-                          name="descripcion"
+                          name="description"
                           placeholder="Ingresar descripción"
-                          value={values.descripcion}
+                          value={values.description}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
                       </div>
-                      {errors.descripcion && touched.descripcion && (
+                      {errors.description && touched.description && (
                         <Form.Text className="text-muted">
-                          {errors.descripcion}
+                          {errors.description}
                         </Form.Text>
                       )}
                     </Form.Group>
@@ -270,16 +302,96 @@ const PlacesGrid = () => {
                         </div>
                         <Form.Control
                           type="text"
-                          name="url"
-                          placeholder="Ingresar URL imagen"
-                          value={values.url}
+                          name="url1"
+                          placeholder="Ingresar URL 1 imagen"
+                          value={values.url1}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
                       </div>
-                      {errors.url && touched.url && (
+                      {errors.url1 && touched.url1 && (
                         <Form.Text className="text-muted">
-                          {errors.url}
+                          {errors.url1}
+                        </Form.Text>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <div className="div-input-form">
+                        <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                          <FontAwesomeIcon icon={faImage} />
+                        </div>
+                        <Form.Control
+                          type="text"
+                          name="url2"
+                          placeholder="Ingresar URL 2 imagen"
+                          value={values.url2}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </div>
+                      {errors.url2 && touched.url2 && (
+                        <Form.Text className="text-muted">
+                          {errors.url2}
+                        </Form.Text>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <div className="div-input-form">
+                        <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                          <FontAwesomeIcon icon={faImage} />
+                        </div>
+                        <Form.Control
+                          type="text"
+                          name="url3"
+                          placeholder="Ingresar URL 3 imagen"
+                          value={values.url3}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </div>
+                      {errors.url3 && touched.url3 && (
+                        <Form.Text className="text-muted">
+                          {errors.url3}
+                        </Form.Text>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <div className="div-input-form">
+                        <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                          <FontAwesomeIcon icon={faImage} />
+                        </div>
+                        <Form.Control
+                          type="text"
+                          name="url4"
+                          placeholder="Ingresar URL 4 imagen"
+                          value={values.url4}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </div>
+                      {errors.url4 && touched.url4 && (
+                        <Form.Text className="text-muted">
+                          {errors.url4}
+                        </Form.Text>
+                      )}
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <div className="div-input-form">
+                        <div className="div-input-form-icon d-flex justify-content-center align-items-center">
+                          <FontAwesomeIcon icon={faImage} />
+                        </div>
+                        <Form.Control
+                          type="text"
+                          name="url5"
+                          placeholder="Ingresar URL 5 imagen"
+                          value={values.url5}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                      </div>
+                      {errors.url5 && touched.url5 && (
+                        <Form.Text className="text-muted">
+                          {errors.url5}
                         </Form.Text>
                       )}
                     </Form.Group>
@@ -291,8 +403,8 @@ const PlacesGrid = () => {
                         <Form.Select
                           className="mx-auto"
                           aria-label="Default select example"
-                          name="provincia"
-                          value={values.provincia}
+                          name="province"
+                          value={values.province}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         >
@@ -308,9 +420,9 @@ const PlacesGrid = () => {
                           <option value="la pampa">La Pampa</option>
                         </Form.Select>
                       </div>
-                      {errors.provincia && touched.provincia && (
+                      {errors.province && touched.province && (
                         <Form.Text className="text-muted">
-                          {errors.provincia}
+                          {errors.province}
                         </Form.Text>
                       )}
                     </div>
@@ -323,8 +435,8 @@ const PlacesGrid = () => {
                         <Form.Select
                           className="mx-auto"
                           aria-label="Default select example"
-                          name="categoria"
-                          value={values.categoria}
+                          name="category"
+                          value={values.category}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         >
@@ -340,9 +452,9 @@ const PlacesGrid = () => {
                           <option value="rural">Rural</option>
                         </Form.Select>
                       </div>
-                      {errors.categoria && touched.categoria && (
+                      {errors.category && touched.category && (
                         <Form.Text className="text-muted">
-                          {errors.categoria}
+                          {errors.category}
                         </Form.Text>
                       )}
                     </div>
@@ -365,28 +477,28 @@ const PlacesGrid = () => {
         </div>
         <div className="row m-0 row-places-grid-width mb-5">
           {currentItems && category === "todas" && province === "todas"
-            ? currentItems.map((p, i) => (
+            ? placesDb.map((p, i) => (
                 <ProvincePlace
-                  key={p.id}
-                  objeto={p}
+                  key={p._id}
+                  object={p}
                   catSelect={category}
                   provSelect={province}
-                  deleteP={() => deletePlace(p)}
+                  deleteP={() => handleSubmitDeletePlace(p)}
                   likeP={() => giveLike(p)}
                 />
               ))
-            : arrayPlaces.map((p, i) => (
+            : placesDb.map((p, i) => (
                 <ProvincePlace
-                  key={p.id}
-                  objeto={p}
+                  key={p._id}
+                  object={p}
                   catSelect={category}
                   provSelect={province}
-                  deleteP={() => deletePlace(p)}
+                  deleteP={() => handleSubmitDeletePlace(p)}
                   likeP={() => giveLike(p)}
                 />
               ))}
         </div>
-        {category === "" && province === "" && (
+        {category === "todas" && province === "todas" && (
           <ReactPaginate
             className="pagination-custom"
             breakLabel="..."

@@ -21,7 +21,7 @@ function ProvincePlace(props) {
   const handleShow = () => setShow(true);
 
   if (
-    props.catSelect.toLowerCase() === props.objeto.categoria.toLowerCase() ||
+    props.catSelect.toLowerCase() === props.object.category.toLowerCase() ||
     props.catSelect === "todas"
   ) {
     encontrado1 = true;
@@ -30,7 +30,7 @@ function ProvincePlace(props) {
   }
 
   if (
-    props.provSelect.toLowerCase() === props.objeto.provincia.toLowerCase() ||
+    props.provSelect.toLowerCase() === props.object.province.toLowerCase() ||
     props.provSelect === "todas"
   ) {
     encontrado2 = true;
@@ -50,11 +50,11 @@ function ProvincePlace(props) {
         <div className="col-12 mt-2 mt-sm-0 col-sm-6 col-md-4 col-lg-3 col-xxl-2 div-card p-0">
           <Card className="card m-2">
             <div className="d-flex div-img-card">
-              <Link to={`/lugar/${props.objeto.id}`} className="w-100">
+              <Link to={`/lugar/${props.object._id}`} className="w-100">
                 <Card.Img
                   className="img-fluid"
                   variant="top"
-                  src={props.objeto.img.img1}
+                  src={props.object.img.img1}
                 />
               </Link>
               <button
@@ -68,14 +68,14 @@ function ProvincePlace(props) {
                   <Modal.Title>Eliminar Lugar</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className="modal-body-place">
-                  ¿Esta seguro de eliminar el lugar '{props.objeto.lugar}'?
+                  ¿Esta seguro de eliminar el lugar '{props.object.namePlace}'?
                   <div className="d-flex justify-content-between mx-5 mt-3 div-btn-modal-place">
                     <button onClick={handleClose}>Cancelar</button>
                     <button onClick={props.deleteP}>Aceptar</button>
                   </div>
                 </Modal.Body>
               </Modal>
-              {props.objeto.liked ? (
+              {/* {props.object.liked ? (
                 <button
                   className="btn-like liked d-flex align-items-center justify-content-center"
                   onClick={props.likeP}
@@ -89,17 +89,17 @@ function ProvincePlace(props) {
                 >
                   <FontAwesomeIcon icon={faThumbsUp} />
                 </button>
-              )}
+              )} */}
             </div>
 
             <Card.Body className="card-body">
-              <p>{props.objeto.lugar}</p>
+              <p>{props.object.namePlace}</p>
               <div className="div-details">
-                <p>{props.objeto.categoria.toUpperCase()}</p>
-                <p>{props.objeto.provincia.toUpperCase()}</p>
+                <p>{props.object.category.toUpperCase()}</p>
+                <p>{props.object.province.toUpperCase()}</p>
               </div>
             </Card.Body>
-            <Link className="card-cta mb-3" to={`/lugar/${props.objeto.id}`}>
+            <Link className="card-cta mb-3" to={`/lugar/${props.object._id}`}>
               Ver mas
             </Link>
           </Card>
