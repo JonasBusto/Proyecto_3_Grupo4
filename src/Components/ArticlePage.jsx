@@ -51,7 +51,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
         crossDomain: true,
         headers: {
           "Content-Type": "application/json",
-          Accept: "aplication/json",
+          Accept: "application/json",
           "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
@@ -85,12 +85,8 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                       <b className="text-orange">{objectPlace.namePlace}</b>
                     </h1>
                     <p className="welcome-place">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Molestias adipisci eum sint nihil, recusandae, impedit,
+                      Conoce más sobre {objectPlace.namePlace} a continuación.
                     </p>
-                    <div className="d-flex justify-content-center div-btn-see-more">
-                      <button>Ver más</button>
-                    </div>
                   </div>
                 </div>
                 <div className="col-12 col-md-4 d-none d-md-flex flex-column align-items-center justify-content-center div-detail-hero">
@@ -670,7 +666,6 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                 <Formik
                   initialValues={{
                     infoComment: "",
-                    valoracion: "",
                   }}
                   validate={(valuesInput) => {
                     let errors = {};
@@ -684,18 +679,9 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                         "El comentarios debe tener entre minimamente 5 caracteres";
                     }
 
-                    if (valuesInput.valoracion === "") {
-                      errors.valoracion = "Debe realizar una valoración.";
-                    }
-
                     return errors;
                   }}
                   onSubmit={(valuesInput, { resetForm }) => {
-                    // console.log("comment: ", valuesInput);
-                    // console.log(
-                    //   "fecha: ",
-                    //   new Date().toJSON().slice(0, 10).replace(/-/g, "/")
-                    // );
                     handleSubmitComment(valuesInput);
                     resetForm({});
                   }}
@@ -725,27 +711,6 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                           </Form.Text>
                         )}
                       </Form.Group>
-
-                      <Form.Select
-                        className="mx-auto"
-                        aria-label="Default select example"
-                        name="valoracion"
-                        value={values.valoracion}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      >
-                        <option value="">Seleccione Valoración</option>
-                        <option value="1">1 Estrella</option>
-                        <option value="2">2 Estrella</option>
-                        <option value="3">3 Estrella</option>
-                        <option value="4">4 Estrella</option>
-                        <option value="5">5 Estrella</option>
-                      </Form.Select>
-                      {errors.valoracion && touched.valoracion && (
-                        <Form.Text className="text-muted">
-                          {errors.valoracion}
-                        </Form.Text>
-                      )}
                       <div className="mt-3 d-flex justify-content-end mx-2">
                         <button className="btn-add-review" type="submit">
                           Añadir
