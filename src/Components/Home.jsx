@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import content from "../arrayContent";
 import "../Styles/home.css";
@@ -34,6 +34,18 @@ const Home = ({ placesDb }) => {
     }
   }
   const [arrayFeatured, setArrayFeatured] = useState(arrayFeaturedAux);
+
+  const [arrayProvince, setArrayProvince] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/showProvince")
+      .then((res) => res.json())
+      .then((data) => setArrayProvince(data));
+  }, [])
+  
+  useEffect(() => {
+    console.log(arrayProvince);
+  }, [arrayProvince]);
 
   return (
     <>
@@ -166,15 +178,15 @@ const Home = ({ placesDb }) => {
         <div className="mt-5">
           <p className="text-center fs-1">PROVINCIAS</p>
           <div className="div-place-more-liked d-flex">
-            {provinceArray.map((p) => (
+            {arrayProvince.map((p) => (
               <Link
-                key={p.idProvince}
-                to={`/lugares/${p.tipo}/todas`}
+                key={p._id}
+                to={`/lugares/${p.type}/todas`}
                 className="div-img-more-liked"
               >
                 <img src={p.img} alt="img_province" />
                 <h1 className="title-place-more-liked d-flex flex-column align-items-center">
-                  {p.nombre.toUpperCase()}
+                  {p.nameProvince.toUpperCase()}
                 </h1>
               </Link>
             ))}
