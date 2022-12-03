@@ -48,7 +48,12 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       `https://proyecto-3-backend.vercel.app/addComment/${objectPlace._id}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "aplication/json",
+          "Access-Control-Allow-Origin": "*",
+        },
         body: JSON.stringify({
           user: userLDb.name + " " + userLDb.lastName,
           userProfile: userLDb.photoProfile,
