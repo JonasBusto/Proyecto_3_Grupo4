@@ -47,7 +47,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     fetch(
       `https://proyecto-3-backend.vercel.app/addComment/${objectPlace._id}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           user: userLDb.name + " " + userLDb.lastName,
@@ -59,7 +59,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     ).then((res) => res.json());
     window.location.reload();
   };
-
+  //
   return (
     <>
       {objectPlace !== null ? (
