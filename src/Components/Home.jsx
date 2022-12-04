@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import content from "../arrayContent";
 import "../Styles/home.css";
@@ -34,6 +34,14 @@ const Home = ({ placesDb }) => {
     }
   }
   const [arrayFeatured, setArrayFeatured] = useState(arrayFeaturedAux);
+
+  const [arrayProvincesDB, setArrayProvincesDB] = useState([]);
+
+  useEffect(() => {
+    fetch("https://proyecto-3-backend.vercel.app/showProvince")
+      .then((res) => res.json())
+      .then((data) => setArrayProvincesDB(data));
+  }, []);
 
   return (
     <>
@@ -166,18 +174,22 @@ const Home = ({ placesDb }) => {
         <div className="mt-5">
           <p className="text-center fs-1">PROVINCIAS</p>
           <div className="div-place-more-liked d-flex">
-            {provinceArray.map((p) => (
-              <Link
-                key={p.idProvince}
-                to={`/lugares/${p.tipo}/todas`}
-                className="div-img-more-liked"
-              >
-                <img src={p.img} alt="img_province" />
-                <h1 className="title-place-more-liked d-flex flex-column align-items-center">
-                  {p.nombre.toUpperCase()}
-                </h1>
-              </Link>
-            ))}
+            {arrayProvincesDB.length !== 0 ? (
+              arrayProvincesDB.map((p) => (
+                <Link
+                  key={p._id}
+                  to={`/lugares/${p.type}/todas`}
+                  className="div-img-more-liked"
+                >
+                  <img src={p.img} alt="img_province" />
+                  <h1 className="title-place-more-liked d-flex flex-column align-items-center">
+                    {p.nameProvince.toUpperCase()}
+                  </h1>
+                </Link>
+              ))
+            ) : (
+              <h1>cargando</h1>
+            )}
           </div>
         </div>
 

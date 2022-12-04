@@ -45,14 +45,14 @@ main {
   text-shadow: 0 0 2px white;
 }
 .text-orange {
-  color: #eb6440;
+  color: #ffa600;
 }
 
 .image-gallery-icon:hover {
-  color: #eb6440 !important;
+  color: #ffa600 !important;
 }
 .image-gallery-thumbnail:hover {
-  border: 3px solid #eb6440 !important;
+  border: 3px solid #ffa600 !important;
 }
 
 .welcome-place {
@@ -140,7 +140,7 @@ main {
 }
 
 .btn-add-review {
-  background-color: #eb6440;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   color: white;
   border: 3px solid transparent;
   padding: 0.5rem 1rem;
@@ -148,9 +148,9 @@ main {
 }
 
 .btn-add-review:hover {
-  background-color: white;
-  border: 3px solid #eb6440;
-  color: #eb6440;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  color: #ffa600;
+  border: 3px solid #ffa600;
 }
 
 .form-review input,
@@ -171,17 +171,17 @@ main {
 .div-btn-admin-color > button {
   border: 3px solid transparent;
   border-radius: 7px;
-  background-color: #eb6440;
-  color: #ffffff;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  color: white;
   padding: 0.4rem;
   margin: 0.5rem;
 }
 
 .btn-admin-place:hover,
 .div-btn-admin-color > button:hover {
-  border: 3px solid #eb6440;
-  background-color: white;
-  color: #eb6440;
+  border: 3px solid #ffa600;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  color: #ffa600;
 }
 
 .btns-admin {
