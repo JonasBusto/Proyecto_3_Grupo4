@@ -1,0 +1,113 @@
+.col-img-user-page {
+  padding: 0px !important;
+  box-shadow: 3px 8px 5px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-end-end-radius: 8px;
+  border-bottom-left-radius: 8px;
+  width: 14rem;
+}
+
+.col-img-user-page img {
+  width: 14rem;
+  height: 14rem;
+  object-fit: cover;
+  transition: ease-in-out 0.7s;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.div-content-user button {
+  border: 0px;
+  background-color: transparent;
+  color: #ffa600;
+  transition: ease-in-out 0.7s;
+}
+
+.div-content-user button:hover {
+  color: #ff7b00;
+}
+
+.btn-edit-img {
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
+  color: white;
+  border: 3px solid transparent;
+  transition: ease-in-out 0.7s;
+  border-end-end-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.btn-edit-img:hover {
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  border: 3px solid #ffa600;
+  color: #ffa600;
+}
+
+.btn-logout-custom {
+  background: linear-gradient(-45deg, #e75555, #eb3232, #d62a2a, #d12d2d);
+  color: white !important;
+  border: 3px solid transparent;
+  width: 9rem;
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+@media (max-width: 760px) {
+  .div-content-user {
+    max-width: 300px !important;
+  }
+  .row-user-profile {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 575px) {
+  .col-img-user-page img {
+    width: 24rem;
+    height: 24rem;
+  }
+  .col-img-user-page {
+    width: 24rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .row-user-profile {
+    display: flex;
+    justify-content: center;
+  }
+  .div-content-user {
+    margin-top: 3rem !important;
+  }
+}
+@media (max-width: 450px) {
+  .col-img-user-page img {
+    width: 19rem;
+    height: 19rem;
+  }
+  .col-img-user-page {
+    width: 19rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 355px) {
+  .col-img-user-page img {
+    width: 15rem;
+    height: 15rem;
+  }
+  .col-img-user-page {
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 300px) {
+  .col-img-user-page img {
+    width: 12rem;
+    height: 12rem;
+  }
+  .col-img-user-page {
+    width: 12rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

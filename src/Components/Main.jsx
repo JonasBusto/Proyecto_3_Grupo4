@@ -11,8 +11,9 @@ import ArticlePageDB from "./ArticlePageDB";
 import FeaturedPage from "./FeaturedPage";
 import Contact from "./Contact";
 import AboutUs from "./AboutUs";
+import UserProfile from "./UserProfile";
 
-const Main = ({ placesDb, userLDb }) => {
+const Main = ({ placesDb, userLDb, setUserLDb }) => {
   return (
     <>
       <main className="mx-auto w-100" style={{ maxWidth: "1300px" }}>
@@ -41,6 +42,10 @@ const Main = ({ placesDb, userLDb }) => {
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/nosotros" element={<AboutUs />} />
+          <Route
+            path="/usuario"
+            element={<UserProfile userLDb={userLDb} setUserLDb={setUserLDb} />}
+          />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </main>

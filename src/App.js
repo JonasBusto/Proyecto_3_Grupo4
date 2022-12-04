@@ -61,6 +61,7 @@ const App = () => {
         setAuthUser={setAuthUser}
         placesDb={placesDb}
         userLDb={userLDb}
+        setUserLDb={setUserLDb}
       />
       <Footer search={search} setSearch={setSearch} />
     </div>
