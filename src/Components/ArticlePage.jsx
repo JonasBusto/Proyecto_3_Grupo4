@@ -61,10 +61,72 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
           infoComment: values.infoComment,
         }),
       }
-    ).then((res) => res.json());
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data.comments))
+      .catch((error) => console.log("error: ", error));
     window.location.reload();
   };
-  //
+
+  const handleSubmitChangeDetails = (values) => {
+    fetch(`https://proyecto-3-backend.vercel.app/modPlace/${objectPlace._id}`, {
+      method: "PUT",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        province: values.province,
+        category: values.category,
+      }),
+    });
+    window.location.reload();
+  };
+
+  const handleSubmitChangeDescription = (values) => {
+    fetch(
+      `https://proyecto-3-backend.vercel.app/modPlaceDescription/${objectPlace._id}`,
+      {
+        method: "PUT",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          description: values.description,
+        }),
+      }
+    );
+    window.location.reload();
+  };
+
+  const handleSubmitChangeIMG = (values) => {
+    fetch(
+      `https://proyecto-3-backend.vercel.app/modPlaceImg/${objectPlace._id}`,
+      {
+        method: "PUT",
+        crossDomain: true,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          img1: values.urlImg1,
+          img2: values.urlImg2,
+          img3: values.urlImg3,
+          img4: values.urlImg4,
+          img5: values.urlImg5,
+        }),
+      }
+    );
+    window.location.reload();
+  };
+
   return (
     <>
       {objectPlace !== null ? (
@@ -84,7 +146,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                       <b className="text-black">sobre</b>{" "}
                       <b className="text-orange">{objectPlace.namePlace}</b>
                     </h1>
-                    <p className="welcome-place">
+                    <p className="welcome-place text-center">
                       Conoce más sobre {objectPlace.namePlace} a continuación.
                     </p>
                   </div>
@@ -154,29 +216,25 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                       <Modal.Body className="modal-b-admin">
                         <Formik
                           initialValues={{
-                            categoria: objectPlace.category,
-                            provincia: objectPlace.province,
+                            category: objectPlace.category,
+                            province: objectPlace.province,
                           }}
                           validate={(valuesInput) => {
                             let errors = {};
 
-                            if (valuesInput.categoria === "") {
-                              errors.categoria =
+                            if (valuesInput.category === "") {
+                              errors.category =
                                 "Por favor, seleccione una categoria.";
                             }
-                            if (valuesInput.provincia === "") {
-                              errors.provincia =
+                            if (valuesInput.province === "") {
+                              errors.category =
                                 "Por favor, seleccione una provincia.";
                             }
 
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            changeDetails(
-                              valuesInput.categoria,
-                              valuesInput.provincia
-                            );
-                            // resetForm({});
+                            handleSubmitChangeDetails(valuesInput);
                           }}
                         >
                           {({
@@ -202,8 +260,8 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                     <h5 className="m-0">Categoria:</h5>
                                     <Form.Select
                                       aria-label="Default select example"
-                                      name="categoria"
-                                      value={values.categoria}
+                                      name="category"
+                                      value={values.category}
                                       onChange={handleChange}
                                       onBlur={handleBlur}
                                     >
@@ -223,9 +281,9 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                       <option value="rural">Rural</option>
                                     </Form.Select>
                                   </div>
-                                  {errors.categoria && touched.categoria && (
+                                  {errors.category && touched.category && (
                                     <Form.Text className="text-muted">
-                                      {errors.categoria}
+                                      {errors.category}
                                     </Form.Text>
                                   )}
                                 </div>
@@ -234,8 +292,8 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                     <h5 className="m-0">Provincia:</h5>
                                     <Form.Select
                                       aria-label="Default select example"
-                                      name="provincia"
-                                      value={values.provincia}
+                                      name="province"
+                                      value={values.province}
                                       onChange={handleChange}
                                       onBlur={handleBlur}
                                     >
@@ -253,9 +311,9 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                       <option value="la pampa">La Pampa</option>
                                     </Form.Select>
                                   </div>
-                                  {errors.provincia && touched.provincia && (
+                                  {errors.province && touched.province && (
                                     <Form.Text className="text-muted">
-                                      {errors.provincia}
+                                      {errors.province}
                                     </Form.Text>
                                   )}
                                 </div>
@@ -291,29 +349,27 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                       <Modal.Body className="modal-b-admin">
                         <Formik
                           initialValues={{
-                            descripcion: objectPlace.description,
+                            description: objectPlace.description,
                           }}
                           validate={(valuesInput) => {
                             let errors = {};
 
-                            if (valuesInput.descripcion.trim() === "") {
-                              errors.descripcion = "Campo 'Descripción' vacio.";
+                            if (valuesInput.description.trim() === "") {
+                              errors.description = "Campo 'Descripción' vacio.";
                             } else if (
-                              valuesInput.descripcion.trim().split("").length <
+                              valuesInput.description.trim().split("").length <
                                 1 ||
-                              valuesInput.descripcion.trim().split("").length >
+                              valuesInput.description.trim().split("").length >
                                 300
                             ) {
-                              errors.descripcion =
+                              errors.description =
                                 "La descripción debe tener entre 1 y 300 caracteres.";
                             }
 
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            changeDescription(valuesInput.descripcion);
-                            // handleCloseDescription();
-                            resetForm({});
+                            handleSubmitChangeDescription(valuesInput);
                           }}
                         >
                           {({
@@ -332,16 +388,16 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                 <Form.Control
                                   as="textarea"
                                   rows={3}
-                                  name="descripcion"
+                                  name="description"
                                   placeholder="Ingresar descripción"
-                                  value={values.descripcion}
+                                  value={values.description}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                                 />
                               </div>
-                              {errors.descripcion && touched.descripcion && (
+                              {errors.description && touched.description && (
                                 <Form.Text className="text-muted">
-                                  {errors.descripcion}
+                                  {errors.description}
                                 </Form.Text>
                               )}
                               <div className="mt-3 d-flex justify-content-between w-75 mx-auto div-btn-admin-color">
@@ -406,7 +462,8 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            resetForm();
+                            console.log("aaa");
+                            handleSubmitChangeIMG(valuesInput);
                           }}
                         >
                           {({
@@ -417,7 +474,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             handleChange,
                             handleBlur,
                           }) => (
-                            <Form onClick={handleSubmit}>
+                            <Form onSubmit={handleSubmit}>
                               <div className="d-flex flex-column mt-2">
                                 <p>Url Imagen 1: </p>
                                 <div className="div-input-form">
@@ -426,7 +483,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                   </div>
                                   <Form.Control
                                     type="text"
-                                    name="lugar"
+                                    name="urlImg1"
                                     placeholder="Ingresar lugar"
                                     value={values.urlImg1}
                                     onChange={handleChange}
@@ -460,7 +517,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                   </div>
                                   <Form.Control
                                     type="text"
-                                    name="lugar"
+                                    name="urlImg2"
                                     placeholder="Ingresar lugar"
                                     value={values.urlImg2}
                                     onChange={handleChange}
@@ -494,7 +551,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                   </div>
                                   <Form.Control
                                     type="text"
-                                    name="lugar"
+                                    name="urlImg3"
                                     placeholder="Ingresar lugar"
                                     value={values.urlImg3}
                                     onChange={handleChange}
@@ -528,7 +585,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                   </div>
                                   <Form.Control
                                     type="text"
-                                    name="lugar"
+                                    name="urlImg4"
                                     placeholder="Ingresar lugar"
                                     value={values.urlImg4}
                                     onChange={handleChange}
@@ -562,7 +619,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                   </div>
                                   <Form.Control
                                     type="text"
-                                    name="lugar"
+                                    name="urlImg5"
                                     placeholder="Ingresar lugar"
                                     value={values.urlImg5}
                                     onChange={handleChange}
@@ -614,7 +671,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                 <div className="col-12 col-lg-5 d-flex flex-column">
                   <div className="mt-4 mt-lg-0">
                     <h1 className="text-orange">Descripcion</h1>
-                    <p>{objetoPrueba.descripcion}</p>
+                    <p>{objectPlace.description}</p>
                   </div>
                 </div>
               </div>
@@ -635,7 +692,69 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                   han reservado con nosotros.
                 </p>
               </div>
+              <div className="p-2 div-box">
+                <h1 className="text-orange">Escribe tu reseña</h1>
+                {Object.keys(userLDb).length !== 0 ? (
+                  <Formik
+                    initialValues={{
+                      infoComment: "",
+                    }}
+                    validate={(valuesInput) => {
+                      let errors = {};
 
+                      if (valuesInput.infoComment.trim() === "") {
+                        errors.infoComment = "Campo 'Reseña' vacio.";
+                      } else if (
+                        valuesInput.infoComment.trim().split("").length < 5
+                      ) {
+                        errors.infoComment =
+                          "El comentarios debe tener entre minimamente 5 caracteres";
+                      }
+
+                      return errors;
+                    }}
+                    onSubmit={(valuesInput, { resetForm }) => {
+                      handleSubmitComment(valuesInput);
+                      resetForm({});
+                    }}
+                  >
+                    {({
+                      handleSubmit,
+                      errors,
+                      touched,
+                      values,
+                      handleChange,
+                      handleBlur,
+                    }) => (
+                      <Form onSubmit={handleSubmit} className="form-review">
+                        <Form.Group className="mb-3">
+                          <Form.Control
+                            as="textarea"
+                            rows={3}
+                            name="infoComment"
+                            placeholder="Ingresa tu comentario"
+                            value={values.infoComment}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                          />
+                          {errors.infoComment && touched.infoComment && (
+                            <Form.Text className="text-muted">
+                              {errors.infoComment}
+                            </Form.Text>
+                          )}
+                        </Form.Group>
+                        <div className="mt-3 d-flex justify-content-end mx-2">
+                          <button className="btn-add-review" type="submit">
+                            Añadir
+                          </button>
+                        </div>
+                      </Form>
+                    )}
+                  </Formik>
+                ) : (
+                  <h2>Debe iniciar sesión para comentar</h2>
+                )}
+              </div>
               {objectPlace.comments.length !== 0 ? (
                 objectPlace.comments.map((c, i) => (
                   <div className="mt-3 comment-box-custom" key={i + "comment"}>
@@ -658,69 +777,6 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                   No se realizaron comentarios. Haz uno, y se el primero en
                   hacerlo.
                 </h6>
-              )}
-            </div>
-            <div className="p-2 div-box">
-              <h1 className="text-orange">Escribe tu reseña</h1>
-              {Object.keys(userLDb).length !== 0 ? (
-                <Formik
-                  initialValues={{
-                    infoComment: "",
-                  }}
-                  validate={(valuesInput) => {
-                    let errors = {};
-
-                    if (valuesInput.infoComment.trim() === "") {
-                      errors.infoComment = "Campo 'Reseña' vacio.";
-                    } else if (
-                      valuesInput.infoComment.trim().split("").length < 5
-                    ) {
-                      errors.infoComment =
-                        "El comentarios debe tener entre minimamente 5 caracteres";
-                    }
-
-                    return errors;
-                  }}
-                  onSubmit={(valuesInput, { resetForm }) => {
-                    handleSubmitComment(valuesInput);
-                    resetForm({});
-                  }}
-                >
-                  {({
-                    handleSubmit,
-                    errors,
-                    touched,
-                    values,
-                    handleChange,
-                    handleBlur,
-                  }) => (
-                    <Form onSubmit={handleSubmit} className="form-review">
-                      <Form.Group className="mb-3">
-                        <Form.Control
-                          as="textarea"
-                          rows={3}
-                          name="infoComment"
-                          placeholder="Ingresa tu comentario"
-                          value={values.infoComment}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                        {errors.infoComment && touched.infoComment && (
-                          <Form.Text className="text-muted">
-                            {errors.infoComment}
-                          </Form.Text>
-                        )}
-                      </Form.Group>
-                      <div className="mt-3 d-flex justify-content-end mx-2">
-                        <button className="btn-add-review" type="submit">
-                          Añadir
-                        </button>
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
-              ) : (
-                <h2>Debe iniciar sesión para comentar</h2>
               )}
             </div>
           </div>

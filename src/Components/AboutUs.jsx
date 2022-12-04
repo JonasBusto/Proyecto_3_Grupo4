@@ -89,7 +89,7 @@ const AboutUs = () => {
                     aprender todos los dias y comerme el mundo.
                     <br /> <br />
                     <b style={{ color: "#eb6440" }}>Puesto: </b>
-                    EMPLEADA
+                    DEV FULLSTACK
                   </p>
                 </div>
               </Card>

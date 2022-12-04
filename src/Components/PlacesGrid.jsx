@@ -48,7 +48,7 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
       crossDomain: true,
       headers: {
         "Content-type": "application/json",
-        Accept: "aplication/json",
+        Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
@@ -65,6 +65,7 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
         },
       }),
     }).then((res) => res.json());
+    window.location.reload();
   };
 
   const handleSubmitDeletePlace = (object) => {
@@ -78,7 +79,6 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
       fetch(`https://proyecto-3-backend.vercel.app/deletePlace/${object._id}`, {
         method: "DELETE",
       }).then((res) => res.json());
-      alert("Lugar eliminado exitosamente");
       window.location.reload();
     }
   };

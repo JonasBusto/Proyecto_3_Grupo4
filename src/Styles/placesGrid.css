@@ -243,23 +243,23 @@ select {
 }
 
 .div-input-form-icon {
-  background-color: #eb6440;
-  width: 2.7rem;
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   color: white;
+  width: 2.7rem;
 }
 
 .div-btn-modal-place button {
+  background: linear-gradient(-45deg, #e47959, #e78f3c, #ffa600, #ff7b00);
   color: white;
-  background-color: #eb6440;
   border: 3px solid transparent;
   border-radius: 5px;
   padding: 0.3rem 0.8rem;
 }
 
 .div-btn-modal-place button:hover {
-  background-color: white;
-  color: #eb6440;
-  border: 3px solid #eb6440;
+  background: linear-gradient(-45deg, #ffffff, #ffffff, #d4d4d4, #e0e0e0);
+  color: #ffa600;
+  border: 3px solid #ffa600;
 }
 
 .text-muted {
