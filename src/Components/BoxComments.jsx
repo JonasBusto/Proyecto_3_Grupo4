@@ -26,7 +26,7 @@ const BoxComments = ({ userLDb }) => {
       .then((data) => console.log(data.comments))
       .catch((error) => console.log("error: ", error));
     resetForm();
-    alert("Gracias por comentar!");
+    alert("Gracias por comentar!!");
     window.location.reload();
   };
 
