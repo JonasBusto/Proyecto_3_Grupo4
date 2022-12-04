@@ -82,3 +82,10 @@
   color: #eb6440;
   border: 3px solid #eb6440;
 }
+
+.logout-photo {
+  object-fit: cover;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+}

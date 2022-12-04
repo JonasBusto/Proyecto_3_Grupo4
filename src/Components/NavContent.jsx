@@ -33,24 +33,6 @@ const NavContent = ({
   const handleCloseRegister = () => setShowRegister(false);
   const handleShowRegister = () => setShowRegister(true);
 
-  const handleLogout = () => {
-    fetch("https://proyecto-3-backend.vercel.app/logout", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        token: JSON.parse(localStorage.getItem("token")),
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        localStorage.removeItem("token");
-        setUserLDb({});
-      });
-  };
-
   return (
     <Navbar
       collapseOnSelect
@@ -129,9 +111,13 @@ const NavContent = ({
                     INICIAR SESIÓN
                   </p>
                 ) : (
-                  <p className="m-0" onClick={handleLogout}>
-                    CERRAR SESIÓN
-                  </p>
+                  <Link to="/usuario" className="m-0">
+                    <img
+                      className="logout-photo"
+                      src={userLDb.photoProfile}
+                      alt=""
+                    />
+                  </Link>
                 )}
                 <Login
                   show={show}
