@@ -54,7 +54,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     window.location.reload();
   };
 
-  const handleSubmitChangeDetails = (values) => {
+  const handleSubmitChangeDetails = (values, resetForm) => {
     fetch(`https://proyecto-3-backend.vercel.app/modPlace/${objectPlace._id}`, {
       method: "PUT",
       crossDomain: true,
@@ -72,7 +72,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     window.location.reload();
   };
 
-  const handleSubmitChangeDescription = (values) => {
+  const handleSubmitChangeDescription = (values, resetForm) => {
     fetch(
       `https://proyecto-3-backend.vercel.app/modPlaceDescription/${objectPlace._id}`,
       {
@@ -93,7 +93,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     window.location.reload();
   };
 
-  const handleSubmitChangeIMG = (values) => {
+  const handleSubmitChangeIMG = (values, resetForm) => {
     fetch(
       `https://proyecto-3-backend.vercel.app/modPlaceImg/${objectPlace._id}`,
       {
