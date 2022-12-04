@@ -31,8 +31,8 @@ const Register = ({
 
     if (indexFound === -1) {
       handleSubmitRegister(values);
-      resetForm();
-      alert("Registro exitoso");
+      // resetForm();
+      // alert("Registro exitoso");
       window.location.reload();
     } else {
       alert("El email ya pertence a otro usuario");
