@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import { Formik } from "formik";
 
 const BoxComments = ({ userLDb }) => {
-  const handleSubmitComment = (values) => {
+  const handleSubmitComment = (values, resetForm) => {
     const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
     const dateTimeHAux =
       Number(new Date().toJSON().slice(11, 13).replace(/-/g, "/")) - 3;
@@ -25,6 +25,8 @@ const BoxComments = ({ userLDb }) => {
       .then((res) => res.json())
       .then((data) => console.log(data.comments))
       .catch((error) => console.log("error: ", error));
+    resetForm();
+    alert("Comentario agregado");
     window.location.reload();
   };
 
@@ -50,8 +52,7 @@ const BoxComments = ({ userLDb }) => {
               return errors;
             }}
             onSubmit={(valuesInput, { resetForm }) => {
-              handleSubmitComment(valuesInput);
-              resetForm({});
+              handleSubmitComment(valuesInput, resetForm);
             }}
           >
             {({
