@@ -54,7 +54,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
     window.location.reload();
   };
 
-  const handleSubmitChangeDetails = (values) => {
+  const handleSubmitChangeDetails = (values, resetForm) => {
     fetch(`https://proyecto-3-backend.vercel.app/modPlace/${objectPlace._id}`, {
       method: "PUT",
       crossDomain: true,
@@ -68,10 +68,11 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
         category: values.category,
       }),
     });
+    resetForm();
     window.location.reload();
   };
 
-  const handleSubmitChangeDescription = (values) => {
+  const handleSubmitChangeDescription = (values, resetForm) => {
     fetch(
       `https://proyecto-3-backend.vercel.app/modPlaceDescription/${objectPlace._id}`,
       {
@@ -87,10 +88,12 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
         }),
       }
     );
+    resetForm();
+    alert("Descripción modificada");
     window.location.reload();
   };
 
-  const handleSubmitChangeIMG = (values) => {
+  const handleSubmitChangeIMG = (values, resetForm) => {
     fetch(
       `https://proyecto-3-backend.vercel.app/modPlaceImg/${objectPlace._id}`,
       {
@@ -110,6 +113,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
         }),
       }
     );
+    resetForm();
     window.location.reload();
   };
 
@@ -220,7 +224,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            handleSubmitChangeDetails(valuesInput);
+                            handleSubmitChangeDetails(valuesInput, resetForm);
                           }}
                         >
                           {({
@@ -355,7 +359,10 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            handleSubmitChangeDescription(valuesInput);
+                            handleSubmitChangeDescription(
+                              valuesInput,
+                              resetForm
+                            );
                           }}
                         >
                           {({
@@ -449,7 +456,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
                             console.log("aaa");
-                            handleSubmitChangeIMG(valuesInput);
+                            handleSubmitChangeIMG(valuesInput, resetForm);
                           }}
                         >
                           {({
