@@ -28,8 +28,14 @@ const Main = ({ placesDb, userLDb }) => {
           />
           <Route path="/recuperarContraseña" element={<RecoverPass />} />
           <Route path="/likes" element={<LikesPage />} />
-          <Route path="/search=:resultado" element={<SearchResult />} />
-          <Route path="/destacados" element={<FeaturedPage />} />
+          <Route
+            path="/search=:resultado"
+            element={<SearchResult placesDb={placesDb} />}
+          />
+          <Route
+            path="/destacados"
+            element={<FeaturedPage placesDb={placesDb} />}
+          />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/nosotros" element={<AboutUs />} />
           <Route path="*" element={<Error404 />} />

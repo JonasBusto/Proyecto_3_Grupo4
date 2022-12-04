@@ -49,6 +49,7 @@ const NavContent = ({
         localStorage.removeItem("token");
         setUserLDb({});
       });
+    window.location.reload();
   };
 
   return (
