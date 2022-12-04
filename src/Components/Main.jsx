@@ -17,7 +17,10 @@ const Main = ({ placesDb, userLDb }) => {
     <>
       <main className="mx-auto w-100" style={{ maxWidth: "1300px" }}>
         <Routes>
-          <Route path="/" element={<Home placesDb={placesDb} />} />
+          <Route
+            path="/"
+            element={<Home placesDb={placesDb} userLDb={userLDb} />}
+          />
           <Route
             path="/lugar/:id"
             element={<ArticlePageDB placesDb={placesDb} userLDb={userLDb} />}
