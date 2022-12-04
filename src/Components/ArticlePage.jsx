@@ -12,10 +12,6 @@ import "../Styles/placesGrid.css";
 import SpinnerLoad from "./SpinnerLoad";
 
 const ArticlePage = ({ objectPlace, images, userLDb }) => {
-  const [objetoPrueba, setObjetoPrueba] = useState(
-    JSON.parse(localStorage.getItem("Lugares"))[0]
-  );
-
   const [showDetails, setShowDetails] = useState(false);
   const handleCloseDetails = () => setShowDetails(false);
   const handleShowDetails = () => setShowDetails(true);
@@ -27,16 +23,6 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
   const [showImages, setShowImages] = useState(false);
   const handleCloseImages = () => setShowImages(false);
   const handleShowImages = () => setShowImages(true);
-
-  const changeDetails = (cat, prov) => {
-    let objAux = { ...objetoPrueba, categoria: cat, provincia: prov };
-    setObjetoPrueba(objAux);
-  };
-
-  const changeDescription = (desc) => {
-    let objAux = { ...objetoPrueba, descripcion: desc };
-    setObjetoPrueba(objAux);
-  };
 
   const handleSubmitComment = (values) => {
     const date = new Date().toJSON().slice(0, 10).replace(/-/g, "/");

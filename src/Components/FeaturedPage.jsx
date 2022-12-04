@@ -6,39 +6,52 @@ import TablePlaces from "../Components/TablePlaces";
 import { Link } from "react-router-dom";
 import "../Styles/featuredPage.css";
 
-const FeaturedPage = () => {
+const FeaturedPage = ({ placesDb }) => {
   const [province, setProvince] = useState("");
   const [category, setCategory] = useState("");
-  const [arrayPlaces, setArrayPlaces] = useState(
-    JSON.parse(localStorage.getItem("Lugares")) || []
-  );
   const [alert, setAlert] = useState(false);
 
+  const fetchFeatured = (id, verifyFeatured) => {
+    fetch(`https://proyecto-3-backend.vercel.app/featuredPlace/${id}`, {
+      method: "PUT",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        featured: verifyFeatured,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log("error: ", error));
+
+    window.location.reload();
+  };
+
   const defineFeatured = (objectPlace) => {
-    let arrayAux = [...arrayPlaces];
-    let indexFound = arrayAux.findIndex((l) => l.id === objectPlace.id);
+    let verifyFeatured;
+
     let counterFeatured = 0;
-    for (let i = 0; i < arrayPlaces.length; i++) {
-      if (arrayPlaces[i].destacado === true) {
+    for (let i = 0; i < placesDb.length; i++) {
+      if (placesDb[i].featured === true) {
         counterFeatured++;
       }
     }
 
-    if (arrayAux[indexFound].destacado) {
+    if (objectPlace.featured === false) {
+      verifyFeatured = true;
+      fetchFeatured(objectPlace._id, verifyFeatured);
+    } else {
       if (counterFeatured <= 1) {
         setAlert(true);
       } else {
-        arrayAux[indexFound].destacado = false;
+        verifyFeatured = false;
+        fetchFeatured(objectPlace._id, verifyFeatured);
       }
-    } else {
-      arrayAux[indexFound].destacado = true;
     }
-    setArrayPlaces(arrayAux);
   };
-
-  useEffect(() => {
-    localStorage.setItem("Lugares", JSON.stringify(arrayPlaces));
-  }, [arrayPlaces]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -116,15 +129,16 @@ const FeaturedPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {arrayPlaces.map((l) => (
-                    <TablePlaces
-                      key={l.id}
-                      object={l}
-                      catSelect={category}
-                      provSelect={province}
-                      highlight={() => defineFeatured(l)}
-                    />
-                  ))}
+                  {placesDb.length !== 0 &&
+                    placesDb.map((p) => (
+                      <TablePlaces
+                        key={p._id}
+                        object={p}
+                        catSelect={category}
+                        provSelect={province}
+                        highlight={() => defineFeatured(p)}
+                      />
+                    ))}
                 </tbody>
               </Table>
             </div>
@@ -132,10 +146,10 @@ const FeaturedPage = () => {
         </div>
 
         <div className="row m-0">
-          {arrayPlaces.length !== 0 &&
-            arrayPlaces.map(
-              (p, i) =>
-                p.destacado === true && <FeatureElement key={p.id} objeto={p} />
+          {placesDb.length !== 0 &&
+            placesDb.map(
+              (p) =>
+                p.featured === true && <FeatureElement key={p._id} object={p} />
             )}
         </div>
       </div>

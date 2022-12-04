@@ -9,14 +9,14 @@ const TablePlaces = (props) => {
   let verifySearch = false;
 
   if (
-    props.catSelect.toLowerCase() === props.object.categoria.toLowerCase() ||
+    props.catSelect.toLowerCase() === props.object.category.toLowerCase() ||
     props.catSelect === ""
   ) {
     foundByCategory = true;
   }
 
   if (
-    props.provSelect.toLowerCase() === props.object.provincia.toLowerCase() ||
+    props.provSelect.toLowerCase() === props.object.province.toLowerCase() ||
     props.provSelect === ""
   ) {
     foundByProvince = true;
@@ -30,12 +30,12 @@ const TablePlaces = (props) => {
     <>
       {verifySearch && (
         <tr>
-          <td>{props.object.id}</td>
-          <td style={{ width: "25rem" }}>{props.object.lugar}</td>
-          <td>{props.object.provincia}</td>
-          <td>{props.object.categoria}</td>
+          <td>{props.object._id}</td>
+          <td style={{ width: "25rem" }}>{props.object.namePlace}</td>
+          <td>{props.object.province}</td>
+          <td>{props.object.category}</td>
           <td className="d-flex justify-content-center">
-            {props.object.destacado === true ? (
+            {props.object.featured === true ? (
               <FontAwesomeIcon
                 className="icon-color-custom"
                 icon={fasStar}

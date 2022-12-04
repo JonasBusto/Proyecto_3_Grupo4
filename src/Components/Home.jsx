@@ -16,25 +16,9 @@ import {
 import provinceArray from "../arrayProvinces";
 import arrayUsers from "../arrayUsers";
 import Carousel from "react-bootstrap/Carousel";
+import SpinnerLoad from "./SpinnerLoad";
 
 const Home = ({ placesDb }) => {
-  if (localStorage.getItem("Lugares") === null) {
-    localStorage.setItem("Lugares", JSON.stringify(content));
-  }
-  if (localStorage.getItem("Usuarios") === null) {
-    localStorage.setItem("Usuarios", JSON.stringify(arrayUsers));
-  }
-  const [arrayPlaces, setArrayPlaces] = useState(
-    JSON.parse(localStorage.getItem("Lugares")) || []
-  );
-  let arrayFeaturedAux = [];
-  for (let i = 0; i < arrayPlaces.length; i++) {
-    if (arrayPlaces[i].destacado === true) {
-      arrayFeaturedAux.push(arrayPlaces[i]);
-    }
-  }
-  const [arrayFeatured, setArrayFeatured] = useState(arrayFeaturedAux);
-
   const [arrayProvincesDB, setArrayProvincesDB] = useState([]);
 
   useEffect(() => {
@@ -48,26 +32,33 @@ const Home = ({ placesDb }) => {
       <div>
         <div className="mt-0">
           <Carousel>
-            {arrayFeatured.map((item) => (
-              <Carousel.Item
-                className="carousel-item-custom"
-                key={item.id + "place"}
-                interval={2000}
-              >
-                <img
-                  className="d-block w-100"
-                  src={item.img.img1}
-                  alt="First slide"
-                />
-                <Carousel.Caption className="carousel-caption-custom">
-                  <h1>{item.lugar.toUpperCase()}</h1>
-                  <p>{item.descripcion.toUpperCase()}</p>
-                  <div className="div-see-more-btn">
-                    <Link to={`/lugar/${item.id}`}>VER MÁS</Link>
-                  </div>
-                </Carousel.Caption>
-              </Carousel.Item>
-            ))}
+            {placesDb.length !== 0 ? (
+              placesDb.map(
+                (item) =>
+                  item.featured === true && (
+                    <Carousel.Item
+                      className="carousel-item-custom"
+                      key={item._id + "place"}
+                      interval={2000}
+                    >
+                      <img
+                        className="d-block w-100"
+                        src={item.img.img1}
+                        alt="First slide"
+                      />
+                      <Carousel.Caption className="carousel-caption-custom">
+                        <h1>{item.namePlace.toUpperCase()}</h1>
+                        <p>{item.description.toUpperCase()}</p>
+                        <div className="div-see-more-btn">
+                          <Link to={`/lugar/${item._id}`}>VER MÁS</Link>
+                        </div>
+                      </Carousel.Caption>
+                    </Carousel.Item>
+                  )
+              )
+            ) : (
+              <SpinnerLoad />
+            )}
           </Carousel>
         </div>
 
