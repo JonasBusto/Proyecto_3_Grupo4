@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import content from "../arrayContent";
 import "../Styles/home.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,18 +12,21 @@ import {
   faUmbrellaBeach,
   faWater,
 } from "@fortawesome/free-solid-svg-icons";
-import provinceArray from "../arrayProvinces";
-import arrayUsers from "../arrayUsers";
 import Carousel from "react-bootstrap/Carousel";
 import SpinnerLoad from "./SpinnerLoad";
+import BoxComments from "./BoxComments";
 
-const Home = ({ placesDb }) => {
+const Home = ({ placesDb, userLDb }) => {
   const [arrayProvincesDB, setArrayProvincesDB] = useState([]);
-
+  const [commentsDB, setCommentsDB] = useState([]);
   useEffect(() => {
     fetch("https://proyecto-3-backend.vercel.app/showProvince")
       .then((res) => res.json())
       .then((data) => setArrayProvincesDB(data));
+
+    fetch("https://proyecto-3-backend.vercel.app/showComments")
+      .then((res) => res.json())
+      .then((data) => setCommentsDB(data));
   }, []);
 
   return (
@@ -191,6 +193,37 @@ const Home = ({ placesDb }) => {
             </p>
             <Link to={`/lugares/todas/todas`}>EXPLORAR MÁS</Link>
           </div>
+        </div>
+
+        <div className="mt-5">
+          <p className="text-center fs-1">COMENTARIOS</p>
+          <p className="px-2">
+            Puede aportar un feedback acerca de la pagina en comentarios, o lo
+            que deseé. Muchas gracias
+          </p>
+          <BoxComments userLDb={userLDb} />
+          {commentsDB.length !== 0 ? (
+            commentsDB.map((c, i) => (
+              <div className="mt-3 comment-box-custom" key={i + "comment"}>
+                <div className="row m-0">
+                  <div className="col-2 div-user-comment p-0">
+                    <img src={c.userProfile} alt="" />
+                  </div>
+                  <div className="col-10 d-flex flex-column div-comment-name p-0">
+                    <div className="d-flex div-name-date">
+                      <b className="title-name-user">{c.user}</b>
+                      <b className="title-date-user">{c.date}</b>
+                    </div>
+                    <p className="m-0">{c.infoComment}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <h6>
+              No se realizaron comentarios. Haz uno, y se el primero en hacerlo.
+            </h6>
+          )}
         </div>
       </div>
     </>

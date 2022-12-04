@@ -483,6 +483,7 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
                   object={p}
                   catSelect={category}
                   provSelect={province}
+                  userLDb={userLDb}
                   deleteP={() => handleSubmitDeletePlace(p)}
                   likeP={() => giveLike(p)}
                 />
@@ -493,6 +494,7 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
                   object={p}
                   catSelect={category}
                   provSelect={province}
+                  userLDb={userLDb}
                   deleteP={() => handleSubmitDeletePlace(p)}
                   likeP={() => giveLike(p)}
                 />

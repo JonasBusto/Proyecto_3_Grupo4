@@ -57,12 +57,15 @@ function ProvincePlace(props) {
                   src={props.object.img.img1}
                 />
               </Link>
-              <button
-                className="btn-delete d-flex align-items-center justify-content-center"
-                onClick={handleShow}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+              {Object.keys(props.userLDb).length !== 0 &&
+                props.userLDb.rol === "admin" && (
+                  <button
+                    className="btn-delete d-flex align-items-center justify-content-center"
+                    onClick={handleShow}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                )}
               <Modal show={show} onHide={handleClose} backdrop="static">
                 <Modal.Header className="modal-header-place justify-content-center">
                   <Modal.Title>Eliminar Lugar</Modal.Title>
