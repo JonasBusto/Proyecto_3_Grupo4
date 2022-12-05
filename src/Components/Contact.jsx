@@ -47,6 +47,7 @@ const Contact = () => {
               return errors;
             }}
             onSubmit={(valuesAux, { resetForm }) => {
+              window.location.href="rollingtravel/error"
               resetForm();
             }}
           >
