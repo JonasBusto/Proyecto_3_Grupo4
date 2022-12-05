@@ -78,21 +78,6 @@ function ProvincePlace(props) {
                   </div>
                 </Modal.Body>
               </Modal>
-              {/* {props.object.liked ? (
-                <button
-                  className="btn-like liked d-flex align-items-center justify-content-center"
-                  onClick={props.likeP}
-                >
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-              ) : (
-                <button
-                  className="btn-like d-flex align-items-center justify-content-center"
-                  onClick={props.likeP}
-                >
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-              )} */}
             </div>
 
             <Card.Body className="card-body">

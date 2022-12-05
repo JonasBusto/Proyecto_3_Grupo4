@@ -138,7 +138,7 @@ const Home = ({ placesDb, userLDb }) => {
         </div>
 
         <div className="mt-5">
-          <p className="text-center fs-1">LUGARES CON MAS LIKES</p>
+          <p className="text-center fs-1">LUGARES</p>
           <div className="div-place-more-liked d-flex">
             {placesDb.length !== 0 ? (
               placesDb.map((l) => (
@@ -148,10 +148,10 @@ const Home = ({ placesDb, userLDb }) => {
                   className="div-img-more-liked"
                 >
                   <img src={l.img.img1} alt="" />
-                  <h1 className="title-place-more-liked d-flex flex-column align-items-center">
+                  <h2 className="title-place-more-liked d-flex flex-column align-items-center">
                     {l.namePlace.toUpperCase()}
                     <b>{l.province.toUpperCase()}</b>
-                  </h1>
+                  </h2>
                 </Link>
               ))
             ) : (

@@ -13,13 +13,7 @@ import {
 import "../Styles/register.css";
 import { Formik } from "formik";
 
-const Register = ({
-  handleCloseRegister,
-  showRegister,
-  handleShow,
-  users,
-  setUsers,
-}) => {
+const Register = ({ handleCloseRegister, showRegister, handleShow }) => {
   const [dbUsers, setDbUsers] = useState([]);
   const [contraseñaVisible, setContraseñaVisible] = useState(false);
   const [confirmarContraseñaVisible, setConfirmarContraseñaVisible] =

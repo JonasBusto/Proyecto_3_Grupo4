@@ -1,42 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import LikeElement from "./LikeElement";
-import content from "../arrayContent";
 import { Link } from "react-router-dom";
 import "../Styles/likesPage.css";
 
 const LikesPage = () => {
   const [province, setProvince] = useState("");
   const [category, setCategory] = useState("");
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [arrayPlaces, setArrayPlaces] = useState(content);
-
-  const deletePlace = (objectPlace) => {
-    setArrayPlaces(arrayPlaces.filter((p) => p.id !== objectPlace.id));
-  };
-
-  const giveLike = (objectPlace) => {
-    let arrayAux = [...arrayPlaces];
-    let indexFound = arrayAux.findIndex((l) => l.id === objectPlace.id);
-    if (arrayAux[indexFound].liked) {
-      arrayAux[indexFound].liked = false;
-    } else {
-      arrayAux[indexFound].liked = true;
-    }
-    setArrayPlaces(arrayAux);
-  };
-
-  const [dbPlaces, setDbPlaces] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/consultPlace`)
-      .then((res) => res.json())
-      .then((json) => setDbPlaces(json));
-  }, []);
 
   return (
     <>
@@ -85,30 +55,19 @@ const LikesPage = () => {
             </Form.Select>
           </div>
         </div>
-
-        <div className="row m-0">
-          {arrayPlaces && category === "" && province === ""
-            ? arrayPlaces.map((p, i) => (
-                <LikeElement
-                  key={p.id}
-                  objeto={p}
-                  catSelect={category}
-                  provSelect={province}
-                  deleteP={() => deletePlace(p)}
-                  likeP={() => giveLike(p)}
-                />
-              ))
-            : arrayPlaces.map((p, i) => (
-                <LikeElement
-                  key={p.id}
-                  objeto={p}
-                  catSelect={category}
-                  provSelect={province}
-                  deleteP={() => deletePlace(p)}
-                  likeP={() => giveLike(p)}
-                />
-              ))}
-        </div>
+      </div>
+      <div className="d-flex flex-column align-items-center mb-3 mt-4 img-like-error">
+        <h3>ESTA FUNCIONALIDAD LLEGARA PROXIMAMENTE</h3>
+        <img
+          src="https://media.tenor.com/ilPf7Nnj5CAAAAAC/computer-drinking.gif"
+          alt=""
+        />
+        <p
+          className="mt-1 p-1"
+          style={{ backgroundColor: "#ff7b00", color: "white" }}
+        >
+          El pajaro de homero esta trabajando en ello
+        </p>
       </div>
     </>
   );
