@@ -26,7 +26,15 @@ const BoxComments = ({ userLDb }) => {
       .then((data) => console.log(data.comments))
       .catch((error) => console.log("error: ", error));
     resetForm();
-    alert("Gracias por comentar!!");
+    Swal.fire({
+      title: "Gracias por comentar!!👏👏",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
     window.location.reload();
   };
 
