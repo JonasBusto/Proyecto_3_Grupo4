@@ -45,8 +45,6 @@ const Register = ({
       crossDomain: true,
       headers: {
         "Content-type": "application/json",
-        Accept: "aplication/json",
-        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         name: values.name,
@@ -55,7 +53,9 @@ const Register = ({
         password: values.pass,
         confirmPassword: values.checkPass,
       }),
-    }).then((res) => res.json());
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log("error: ", error));
   };
 
   return (
