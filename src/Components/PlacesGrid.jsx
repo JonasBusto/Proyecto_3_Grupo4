@@ -36,9 +36,21 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
     if (indexFound === -1) {
       handleSubmitAddPlace(values);
       resetForm();
-      alert("Lugar cargado exitosamente");
+      Swal.fire({
+        title: "Lugar cargado exitosamente ✔👌",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp",
+        },
+      });
     } else {
-      alert("El lugar ya existe");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El lugar ya existe! 🤷‍♀️",
+      });
     }
   };
 

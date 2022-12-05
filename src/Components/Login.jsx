@@ -11,6 +11,8 @@ import {
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+
+
 const Login = ({
   show,
   handleClose,
@@ -38,7 +40,7 @@ const Login = ({
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Login Exitoso",
+        title: "Login Exitoso! 👌👏",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -47,7 +49,7 @@ const Login = ({
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "El usuario y/o contraseña son invalidos",
+        text: "El usuario y/o contraseña son invalidos ❌",
       });
     }
   };
