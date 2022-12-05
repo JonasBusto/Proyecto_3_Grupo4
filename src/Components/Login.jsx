@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Login = ({
   show,
   handleClose,
@@ -38,7 +38,11 @@ const Login = ({
       alert("Login exitoso");
       window.location.reload();
     } else {
-      alert("El usuario y/o contraseña son invalidos");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El usuario y/o contraseña son invalidos",
+      });
     }
   };
   const handleSubmitLogin = (values) => {
