@@ -33,6 +33,7 @@ const AboutUs = () => {
                 <div className="m-2 d-flex justify-content-center">
                   <p>
                     <b style={{ color: "#eb6440" }}>Descripcion: </b>
+                    Me gusta programar en equipo buscando siempre un mejor resultado para mis proyectos.
                     <br /> <br />
                     <b style={{ color: "#eb6440" }}>Puesto: </b>
                     SCRUM MASTER
