@@ -51,7 +51,13 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         photoProfile: values.photoProfile,
       }),
     }).then((res) => res.json());
-    alert("Foto de perfil modificada");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Foto de perfil modificada",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
