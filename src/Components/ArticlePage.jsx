@@ -137,7 +137,13 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       }
     );
     resetForm();
-    alert("Imagenes modificadas");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Imagenes modificadas 👌",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
