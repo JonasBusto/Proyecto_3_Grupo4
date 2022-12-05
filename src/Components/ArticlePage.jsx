@@ -79,7 +79,13 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       }),
     });
     resetForm();
-    alert("Detalles de lugar modificado");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Detalles de lugar modificado ✔",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
@@ -100,7 +106,13 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       }
     );
     resetForm();
-    alert("Descripción modificada");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Descripcion modificada ✔",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
