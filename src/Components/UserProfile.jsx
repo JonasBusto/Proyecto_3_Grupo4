@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Styles/userProfile.css";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import SpinnerLoad from "./SpinnerLoad";
+import Swal from "sweetalert2";
 
 const UserProfile = ({ userLDb, setUserLDb }) => {
   const [showEditName, setShowEditName] = useState(false);
@@ -33,7 +34,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         localStorage.removeItem("token");
         setUserLDb({});
       });
-    alert("Gracias!");
+    Swal.fire("Sesión Cerrada");
     window.location.reload();
     window.location.href = "https://rolling-travel-2022.vercel.app/";
   };
