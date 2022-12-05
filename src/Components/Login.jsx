@@ -35,7 +35,13 @@ const Login = ({
       handleSubmitLogin(values);
       handleClose();
       resetForm();
-      alert("Login exitoso");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login Exitoso",
+        showConfirmButton: false,
+        timer: 1000,
+      });
       window.location.reload();
     } else {
       Swal.fire({
