@@ -33,7 +33,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         localStorage.removeItem("token");
         setUserLDb({});
       });
-    alert("gracias");
+    alert("Gracias!");
     window.location.reload();
     window.location.href = "https://rolling-travel-2022.vercel.app/";
   };
