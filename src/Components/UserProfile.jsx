@@ -74,7 +74,13 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         lastName: values.lastName,
       }),
     }).then((res) => res.json());
-    alert("Nombre modificado");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Nombre Modificado",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
