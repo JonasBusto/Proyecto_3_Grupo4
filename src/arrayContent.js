@@ -92,7 +92,7 @@ const content = [
       "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
       "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
     ],
-    liked: true,
+    liked: false,
     destacado: false,
     user: "El Zorro",
     userProfile:
@@ -256,7 +256,7 @@ const content = [
       "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
       "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
     ],
-    liked: true,
+    liked: false,
     destacado: true,
     user: "El Zorro",
     userProfile:
@@ -322,7 +322,7 @@ const content = [
       "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
       "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
     ],
-    liked: true,
+    liked: false,
     destacado: false,
     user: "El Zorro",
     userProfile:
@@ -388,7 +388,7 @@ const content = [
       "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
       "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
     ],
-    liked: true,
+    liked: false,
     destacado: false,
     user: "Chapulin Colorado",
     userProfile: "https://pbs.twimg.com/media/EVcjT-JXQAIq0Yy.jpg",
@@ -485,7 +485,7 @@ const content = [
       "Las excursiones pueden brindarse en buses de hasta 45 personas, en ese caso se coordinara punto de encuentro.",
       "La salida para las excursiones puede ser con búsqueda por su hotel, en distintos puntos de encuentro a consultar o desde la oficina del operador local en pleno centro.",
     ],
-    liked: true,
+    liked: false,
     destacado: false,
     user: "Don Ramon",
     userProfile:
