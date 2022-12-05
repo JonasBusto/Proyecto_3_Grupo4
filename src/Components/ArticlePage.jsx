@@ -51,6 +51,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       .then((res) => res.json())
       .then((data) => console.log(data.comments))
       .catch((error) => console.log("error: ", error));
+    alert("Gracias por comentar!");
     window.location.reload();
   };
 
@@ -69,6 +70,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       }),
     });
     resetForm();
+    alert("Detalles de lugar modificado");
     window.location.reload();
   };
 
@@ -114,6 +116,7 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       }
     );
     resetForm();
+    alert("Imagenes modificadas");
     window.location.reload();
   };
 
@@ -262,12 +265,13 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                       <option value="cataratas">
                                         Cataratas
                                       </option>
-                                      <option value="llanura">Llanura</option>
                                       <option value="llamativo">
                                         Llamativo
                                       </option>
-                                      <option value="campo">Campo</option>
-                                      <option value="ciudad">Ciudad</option>
+                                      <option value="senderismo">
+                                        Senderismo
+                                      </option>
+                                      <option value="historia">Historia</option>
                                       <option value="rural">Rural</option>
                                     </Form.Select>
                                   </div>

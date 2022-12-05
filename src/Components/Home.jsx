@@ -13,7 +13,7 @@ import {
   faWater,
 } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-bootstrap/Carousel";
-import SpinnerLoad from "./SpinnerLoad";
+import Spinner from "react-bootstrap/Spinner";
 import BoxComments from "./BoxComments";
 
 const Home = ({ placesDb, userLDb }) => {
@@ -59,7 +59,11 @@ const Home = ({ placesDb, userLDb }) => {
                   )
               )
             ) : (
-              <SpinnerLoad />
+              <div className="d-flex align-items-center justify-content-center my-5">
+                <Spinner animation="border" className="sp" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              </div>
             )}
           </Carousel>
         </div>
@@ -94,10 +98,10 @@ const Home = ({ placesDb, userLDb }) => {
                   <p>CATARATAS</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
-                  <Link to={`/lugares/todas/festival`}>
+                  <Link to={`/lugares/todas/llamativo`}>
                     <FontAwesomeIcon icon={faChampagneGlasses} />
                   </Link>
-                  <p>FESTIVALES</p>
+                  <p>LLAMATIVO</p>
                 </div>
                 <div className="col-3 col-icon-category d-flex flex-column align-items-center">
                   <Link to={`/lugares/todas/senderismo`}>
@@ -119,13 +123,17 @@ const Home = ({ placesDb, userLDb }) => {
                 </div>
               </div>
             </div>
-            <div className="col-4 col-md-6 d-none d-md-flex div-advertising justify-content-center align-items-center">
+            <a
+              href="https://paninitienda.com/collections/fifa-world-cup-qatar-2022"
+              target="_blank"
+              className="col-4 col-md-6 d-none d-md-flex div-advertising justify-content-center align-items-center"
+            >
               <img
                 className="img-fluid"
                 src="https://media.rpctv.com/p/bd46d329195159a20a773a02e983e540/adjuntos/314/imagenes/017/976/0017976660/1200x675/smart/panini-1jpg.jpg"
                 alt=""
               />
-            </div>
+            </a>
           </div>
         </div>
 

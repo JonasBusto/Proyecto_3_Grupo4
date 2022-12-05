@@ -150,10 +150,9 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
               <option value="montaña">Montaña</option>
               <option value="selva">Selva</option>
               <option value="cataratas">Cataratas</option>
-              <option value="llanura">Llanura</option>
               <option value="llamativo">Llamativo</option>
-              <option value="campo">Campo</option>
-              <option value="ciudad">Ciudad</option>
+              <option value="senderismo">Senderismo</option>
+              <option value="historia">Historia</option>
               <option value="rural">Rural</option>
             </Form.Select>
           </div>
@@ -445,10 +444,9 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
                           <option value="montaña">Montaña</option>
                           <option value="selva">Selva</option>
                           <option value="cataratas">Cataratas</option>
-                          <option value="llanura">Llanura</option>
                           <option value="llamativo">Llamativo</option>
-                          <option value="campo">Campo</option>
-                          <option value="ciudad">Ciudad</option>
+                          <option value="senderismo">Senderismo</option>
+                          <option value="historia">Historia</option>
                           <option value="rural">Rural</option>
                         </Form.Select>
                       </div>
