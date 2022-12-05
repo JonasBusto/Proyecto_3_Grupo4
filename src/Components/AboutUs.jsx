@@ -14,7 +14,7 @@ const AboutUs = () => {
       </p>
       <div className="mb-3">
         <Container>
-          <Row>
+          <Row className="row-custom-about-us">
             <Col className="d-flex justify-content-center align-items-center m-4">
               <Card
                 style={{
@@ -51,7 +51,7 @@ const AboutUs = () => {
                 <Card.Img
                   className="img-about"
                   variant="top"
-                  src="/paisaje-recoverPass.jpg"
+                  src="/fotoJonas.jpeg"
                 />
                 <h3 className="mb-2 d-flex justify-content-center text-name-about-us">
                   Kevin Jonas, Busto
@@ -59,6 +59,7 @@ const AboutUs = () => {
                 <div className="m-2 d-flex justify-content-center">
                   <p>
                     <b style={{ color: "#eb6440" }}>Descripcion: </b>
+                    Me gusta la programación y las matematicas.
                     <br /> <br />
                     <b style={{ color: "#eb6440" }}>Puesto: </b>
                     TECH LEAD

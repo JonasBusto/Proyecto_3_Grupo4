@@ -38,7 +38,7 @@ const Main = ({ placesDb, userLDb, setUserLDb }) => {
           />
           <Route
             path="/destacados"
-            element={<FeaturedPage placesDb={placesDb} />}
+            element={<FeaturedPage placesDb={placesDb} userLDb={userLDb} />}
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/nosotros" element={<AboutUs />} />

@@ -6,6 +6,7 @@ import {
   faEnvelope,
   faLockKeyHoleOpen,
   faLock,
+  faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ const Login = ({
   setAuthUser,
 }) => {
   const [dbUsers, setDbUsers] = useState([]);
+  const [contraseñaVisible, setContraseñaVisible] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"));
 
   useEffect(() => {
@@ -108,7 +110,6 @@ const Login = ({
             }}
             onSubmit={(values, { resetForm }) => {
               validateLogin(values, resetForm);
-              // validateLogin(valores, resetForm);
             }}
           >
             {({
@@ -143,11 +144,17 @@ const Login = ({
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
-                    <div className="d-flex align-items-center justify-content-center color-icon">
-                      <FontAwesomeIcon icon={faLock} />
+                    <div
+                      className="d-flex align-items-center justify-content-center color-icon"
+                      onClick={() => setContraseñaVisible(!contraseñaVisible)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <FontAwesomeIcon
+                        icon={contraseñaVisible ? faLockOpen : faLock}
+                      />
                     </div>
                     <Form.Control
-                      type="password"
+                      type={contraseñaVisible ? "text" : "password"}
                       placeholder="Ingrese su contraseña."
                       id="pass"
                       value={values.pass}

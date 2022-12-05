@@ -8,6 +8,7 @@ import {
   faLockKeyHoleOpen,
   faLock,
   faUser,
+  faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/register.css";
 import { Formik } from "formik";
@@ -20,6 +21,9 @@ const Register = ({
   setUsers,
 }) => {
   const [dbUsers, setDbUsers] = useState([]);
+  const [contraseñaVisible, setContraseñaVisible] = useState(false);
+  const [confirmarContraseñaVisible, setConfirmarContraseñaVisible] =
+    useState(false);
   useEffect(() => {
     fetch(`https://proyecto-3-backend.vercel.app/consultUsers`)
       .then((res) => res.json())
@@ -31,8 +35,8 @@ const Register = ({
 
     if (indexFound === -1) {
       handleSubmitRegister(values);
-      // resetForm();
-      // alert("Registro exitoso");
+      resetForm();
+      alert("Registro exitoso");
       window.location.reload();
     } else {
       alert("El email ya pertence a otro usuario");
@@ -213,11 +217,17 @@ const Register = ({
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
-                    <div className="d-flex align-items-center justify-content-center color-icon">
-                      <FontAwesomeIcon icon={faLock} />
+                    <div
+                      className="d-flex align-items-center justify-content-center color-icon"
+                      onClick={() => setContraseñaVisible(!contraseñaVisible)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <FontAwesomeIcon
+                        icon={contraseñaVisible ? faLockOpen : faLock}
+                      />
                     </div>
                     <Form.Control
-                      type="text"
+                      type={contraseñaVisible ? "text" : "password"}
                       placeholder="Ingrese su contraseña."
                       id="pass"
                       value={values.pass}
@@ -232,11 +242,21 @@ const Register = ({
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <div className="d-flex">
-                    <div className="d-flex align-items-center justify-content-center color-icon">
-                      <FontAwesomeIcon icon={faLock} />
+                    <div
+                      className="d-flex align-items-center justify-content-center color-icon"
+                      onClick={() =>
+                        setConfirmarContraseñaVisible(
+                          !confirmarContraseñaVisible
+                        )
+                      }
+                      style={{ cursor: "pointer" }}
+                    >
+                      <FontAwesomeIcon
+                        icon={confirmarContraseñaVisible ? faLockOpen : faLock}
+                      />
                     </div>
                     <Form.Control
-                      type="text"
+                      type={confirmarContraseñaVisible ? "text" : "password"}
                       placeholder="Confirme su contraseña."
                       id="checkPass"
                       value={values.checkPass}
