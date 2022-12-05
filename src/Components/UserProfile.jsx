@@ -35,7 +35,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         setUserLDb({});
       });
     Swal.fire({
-      title: "Sesión Cerrada",
+      title: "Sesión Cerrada 👍",
       showClass: {
         popup: "animate__animated animate__fadeInDown",
       },
@@ -62,7 +62,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Foto de perfil modificada",
+      title: "Foto de perfil modificada ✔👍",
       showConfirmButton: false,
       timer: 1500,
     });
@@ -85,7 +85,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Nombre Modificado",
+      title: "Nombre Modificado ✔👍",
       showConfirmButton: false,
       timer: 1500,
     });
