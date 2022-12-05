@@ -165,7 +165,7 @@ const Home = ({ placesDb, userLDb }) => {
           <div className="div-about-us-home d-flex flex-column align-items-center justify-content-center">
             <p className="text-center text-about-us fs-1">GRUPO 4.JSX</p>
             <p className="text-about-us2">
-              Somos un grupo que le gusta trabajar en equipo y le apasiciona la
+              Somos un grupo que le gusta trabajar en equipo y le apasiona la
               programación, buscando el mejor resultado para todos.
             </p>
             <Link to="/nosotros">CONOCENOS</Link>
