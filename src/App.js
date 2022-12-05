@@ -7,12 +7,6 @@ import "./Styles/app.css";
 
 const App = () => {
   const [search, setSearch] = useState("");
-  const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem("Autenticado"))
-  );
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("Usuarios")) || []
-  );
   const lstg = localStorage.getItem("token");
   const [userLDb, setUserLDb] = useState({});
   const [placesDb, setPlacesDb] = useState([]);
@@ -47,22 +41,12 @@ const App = () => {
       <Header search={search} setSearch={setSearch} />
       <NavContent
         sticky="top"
-        authUser={authUser}
-        setAuthUser={setAuthUser}
         search={search}
         setSearch={setSearch}
-        users={users}
-        setUsers={setUsers}
         userLDb={userLDb}
         setUserLDb={setUserLDb}
       />
-      <Main
-        authUser={authUser}
-        setAuthUser={setAuthUser}
-        placesDb={placesDb}
-        userLDb={userLDb}
-        setUserLDb={setUserLDb}
-      />
+      <Main placesDb={placesDb} userLDb={userLDb} setUserLDb={setUserLDb} />
       <Footer search={search} setSearch={setSearch} />
     </div>
   );

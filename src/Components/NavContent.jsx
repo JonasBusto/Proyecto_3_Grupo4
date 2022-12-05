@@ -15,16 +15,7 @@ import Register from "./Register";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const NavContent = ({
-  search,
-  setSearch,
-  authUser,
-  setAuthUser,
-  users,
-  setUsers,
-  userLDb,
-  setUserLDb,
-}) => {
+const NavContent = ({ search, setSearch, userLDb }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -91,11 +82,7 @@ const NavContent = ({
                       DESTACADO
                     </Link>
                   )}
-                {Object.keys(userLDb).length === 0 ? (
-                  <p className="m-0" onClick={handleShow}>
-                    ME GUSTA
-                  </p>
-                ) : (
+                {Object.keys(userLDb).length !== 0 && (
                   <Link to="/likes" onClick={() => setSearch("")}>
                     ME GUSTA
                   </Link>
@@ -124,16 +111,12 @@ const NavContent = ({
                   handleClose={handleClose}
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
-                  authUser={authUser}
-                  setAuthUser={setAuthUser}
                 />
                 <Register
                   handleShow={handleShow}
                   handleShowRegister={handleShowRegister}
                   handleCloseRegister={handleCloseRegister}
                   showRegister={showRegister}
-                  setUsers={setUsers}
-                  users={users}
                 />
               </Nav>
               <Form className="d-flex d-sm-none d-xl-none justify-content-center form-search">

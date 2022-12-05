@@ -1,0 +1,13 @@
+@media (max-width: 375px) {
+  .img-like-error img {
+    width: 17rem;
+  }
+  .img-like-error h3 {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 290px) {
+  .img-like-error img {
+    width: 15rem;
+  }
+}

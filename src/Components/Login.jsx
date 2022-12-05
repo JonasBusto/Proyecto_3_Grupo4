@@ -11,13 +11,7 @@ import {
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 
-const Login = ({
-  show,
-  handleClose,
-  handleShowRegister,
-  authUser,
-  setAuthUser,
-}) => {
+const Login = ({ show, handleClose, handleShowRegister }) => {
   const [dbUsers, setDbUsers] = useState([]);
   const [contraseñaVisible, setContraseñaVisible] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"));
@@ -170,7 +164,7 @@ const Login = ({
                     <div className="d-flex mt-1 justify-content-end mb-1">
                       <Link
                         onClick={handleClose}
-                        to="/recuperarContraseña"
+                        to="/errorNoEncontrado"
                         style={{ textDecoration: "none", color: "black" }}
                       >
                         Olvidé mi contraseña
