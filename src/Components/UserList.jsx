@@ -22,7 +22,7 @@ const UserList = ({ placesDb, userLDb }) => {
           <b className="mx-2">/</b>
           <Link to="/usuariosLista">Usuarios</Link>
         </p>
-        {Object.keys(userLDb).length !== 0 && userLDb.rol === "admin" && (
+        {Object.keys(userLDb).length !== 0 && userLDb.rol === "admin" ? (
           <div className="div-admin-featured">
             <h2 className="text-center title-admin-featured">
               Ver usuarios del sistema
@@ -40,16 +40,15 @@ const UserList = ({ placesDb, userLDb }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {usersDb.length !== 0 ? (
-                      usersDb.map((p) => <TableUsers key={p._id} object={p} />)
-                    ) : (
-                      <h1>cargando</h1>
-                    )}
+                    {usersDb.length !== 0 &&
+                      usersDb.map((p) => <TableUsers key={p._id} object={p} />)}
                   </tbody>
                 </Table>
               </div>
             </div>
           </div>
+        ) : (
+          <h1>Buen intento, pero no eres el Administrador</h1>
         )}
       </div>
     </>
