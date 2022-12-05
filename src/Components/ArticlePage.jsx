@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "react-bootstrap/Modal";
 import "../Styles/placesGrid.css";
 import SpinnerLoad from "./SpinnerLoad";
+import Swal from "sweetalert2";
 
 const ArticlePage = ({ objectPlace, images, userLDb }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -51,7 +52,15 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
       .then((res) => res.json())
       .then((data) => console.log(data.comments))
       .catch((error) => console.log("error: ", error));
-    alert("Gracias por comentar!");
+    Swal.fire({
+      title: "Gracias por comentar!!👏👏",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
     window.location.reload();
   };
 

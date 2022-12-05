@@ -40,7 +40,7 @@ const Login = ({
         icon: "success",
         title: "Login Exitoso",
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
       });
       window.location.reload();
     } else {

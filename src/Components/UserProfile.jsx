@@ -34,7 +34,15 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         localStorage.removeItem("token");
         setUserLDb({});
       });
-    Swal.fire("Sesión Cerrada");
+    Swal.fire({
+      title: "Sesión Cerrada",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown",
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp",
+      },
+    });
     window.location.reload();
     window.location.href = "https://rolling-travel-2022.vercel.app/";
   };
@@ -56,7 +64,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
       icon: "success",
       title: "Foto de perfil modificada",
       showConfirmButton: false,
-      timer: 1000,
+      timer: 1500,
     });
     window.location.reload();
   };
@@ -79,7 +87,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
       icon: "success",
       title: "Nombre Modificado",
       showConfirmButton: false,
-      timer: 1000,
+      timer: 1500,
     });
     window.location.reload();
   };
