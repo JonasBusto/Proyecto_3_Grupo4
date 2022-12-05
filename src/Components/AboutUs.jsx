@@ -25,7 +25,7 @@ const AboutUs = () => {
                 <Card.Img
                   className="img-about"
                   variant="top"
-                  src="/paisaje-recoverPass.jpg"
+                  src="/fotoMario.jpeg"
                 />
                 <h3 className="d-flex mb-2 justify-content-center text-name-about-us">
                   Mario David, Garcia
