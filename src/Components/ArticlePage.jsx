@@ -303,6 +303,8 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                                       <option value="mendoza">Mendoza</option>
                                       <option value="la rioja">La Rioja</option>
                                       <option value="la pampa">La Pampa</option>
+                                      <option value="salta">Salta</option>
+                                      <option value="cordoba">Cordoba</option>
                                     </Form.Select>
                                   </div>
                                   {errors.province && touched.province && (

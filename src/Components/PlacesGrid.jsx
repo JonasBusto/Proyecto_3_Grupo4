@@ -136,6 +136,8 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
               <option value="mendoza">Mendoza</option>
               <option value="la rioja">La Rioja</option>
               <option value="la pampa">La Pampa</option>
+              <option value="salta">Salta</option>
+              <option value="cordoba">Cordoba</option>
             </Form.Select>
           </div>
           <div className="col-12 col-sm-6 col-lg-4 d-flex align-items-center mt-1">
@@ -417,6 +419,8 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
                           <option value="mendoza">Mendoza</option>
                           <option value="la rioja">La Rioja</option>
                           <option value="la pampa">La Pampa</option>
+                          <option value="salta">Salta</option>
+                          <option value="cordoba">Cordoba</option>
                         </Form.Select>
                       </div>
                       {errors.province && touched.province && (
