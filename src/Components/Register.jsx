@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../Styles/register.css";
 import { Formik } from "formik";
+import Swal from "sweetalert2";
+
 
 const Register = ({
   handleCloseRegister,
@@ -36,10 +38,21 @@ const Register = ({
     if (indexFound === -1) {
       handleSubmitRegister(values);
       resetForm();
-      alert("Registro exitoso");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Registro Exitoso 👍",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       window.location.reload();
     } else {
-      alert("El email ya pertence a otro usuario");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El email ya pertenece a otro usuario ❌",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     }
   };
 

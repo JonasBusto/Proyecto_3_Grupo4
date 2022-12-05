@@ -15,6 +15,7 @@ import "../Styles/placesGrid.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from "react-paginate";
 import { useParams } from "react-router";
+import Swal from "sweetalert2";
 
 const PlacesGrid = ({ placesDb, userLDb }) => {
   const provinceDate = useParams().province;
