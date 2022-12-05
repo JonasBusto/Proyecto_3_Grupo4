@@ -86,7 +86,11 @@ const PlacesGrid = ({ placesDb, userLDb }) => {
     );
 
     if (indexFound === -1) {
-      alert("El lugar que intenta eliminar no existe");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El lugar que intenta eliminar no existe ❌",
+      });
     } else {
       fetch(`https://proyecto-3-backend.vercel.app/deletePlace/${object._id}`, {
         method: "DELETE",
