@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Styles/userProfile.css";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import SpinnerLoad from "./SpinnerLoad";
+import Swal from "sweetalert2";
 
 const UserProfile = ({ userLDb, setUserLDb }) => {
   const [showEditName, setShowEditName] = useState(false);
@@ -33,7 +34,10 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         localStorage.removeItem("token");
         setUserLDb({});
       });
-    alert("gracias");
+    Swal.fire({
+      icon: "error",
+      text: "Sesión Cerrada! 👋",
+    });
     window.location.reload();
     window.location.href = "https://rolling-travel-2022.vercel.app/";
   };
@@ -50,7 +54,13 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         photoProfile: values.photoProfile,
       }),
     }).then((res) => res.json());
-    alert("Foto de perfil modificada");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Foto de perfil modificada! 👍",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
@@ -67,7 +77,13 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
         lastName: values.lastName,
       }),
     }).then((res) => res.json());
-    alert("Nombre modificado");
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Nombre modificado! 👍",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
 
