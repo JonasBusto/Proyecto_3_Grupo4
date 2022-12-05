@@ -47,8 +47,6 @@ const Contact = () => {
               return errors;
             }}
             onSubmit={(valuesAux, { resetForm }) => {
-              console.log(valuesAux);
-              console.log("Mensaje enviado.");
               resetForm();
             }}
           >

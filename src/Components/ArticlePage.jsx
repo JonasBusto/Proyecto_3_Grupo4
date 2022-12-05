@@ -461,7 +461,6 @@ const ArticlePage = ({ objectPlace, images, userLDb }) => {
                             return errors;
                           }}
                           onSubmit={(valuesInput, { resetForm }) => {
-                            console.log("aaa");
                             handleSubmitChangeIMG(valuesInput, resetForm);
                           }}
                         >

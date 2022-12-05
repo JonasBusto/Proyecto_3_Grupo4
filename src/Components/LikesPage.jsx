@@ -38,10 +38,6 @@ const LikesPage = () => {
       .then((json) => setDbPlaces(json));
   }, []);
 
-  // useEffect(() => {
-  //   console.log(dbPlaces);
-  // }, [dbPlaces]);
-
   return (
     <>
       <h1 className="text-center mt-2">MIS ME GUSTA</h1>
