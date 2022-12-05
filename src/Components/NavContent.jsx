@@ -82,6 +82,12 @@ const NavContent = ({ search, setSearch, userLDb }) => {
                       DESTACADO
                     </Link>
                   )}
+                {Object.keys(userLDb).length !== 0 &&
+                  userLDb.rol === "admin" && (
+                    <Link to="/usuariosLista" onClick={() => setSearch("")}>
+                      USUARIOS
+                    </Link>
+                  )}
                 {Object.keys(userLDb).length !== 0 && (
                   <Link to="/likes" onClick={() => setSearch("")}>
                     ME GUSTA

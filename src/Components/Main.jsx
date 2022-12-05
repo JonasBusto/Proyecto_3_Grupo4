@@ -12,6 +12,7 @@ import FeaturedPage from "./FeaturedPage";
 import Contact from "./Contact";
 import AboutUs from "./AboutUs";
 import UserProfile from "./UserProfile";
+import UserList from "./UserList";
 
 const Main = ({ placesDb, userLDb, setUserLDb }) => {
   return (
@@ -39,6 +40,10 @@ const Main = ({ placesDb, userLDb, setUserLDb }) => {
           <Route
             path="/destacados"
             element={<FeaturedPage placesDb={placesDb} userLDb={userLDb} />}
+          />
+          <Route
+            path="/usuariosLista"
+            element={<UserList userLDb={userLDb} />}
           />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/nosotros" element={<AboutUs />} />
