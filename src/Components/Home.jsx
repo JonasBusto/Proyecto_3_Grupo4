@@ -166,7 +166,7 @@ const Home = ({ placesDb, userLDb }) => {
             <p className="text-center text-about-us fs-1">GRUPO 4.JSX</p>
             <p className="text-about-us2">
               Somos un grupo que le gusta trabajar en equipo y le apasiciona la
-              programación, buscando el mejor resultado para todos.
+              programación, creciendo cada dia más.
             </p>
             <Link to="/nosotros">CONOCENOS</Link>
           </div>

@@ -38,9 +38,6 @@ const LikesPage = () => {
       .then((json) => setDbPlaces(json));
   }, []);
 
-  // useEffect(() => {
-  //   console.log(dbPlaces);
-  // }, [dbPlaces]);
 
   return (
     <>
