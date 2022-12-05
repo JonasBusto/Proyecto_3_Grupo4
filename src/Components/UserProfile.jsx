@@ -56,7 +56,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
       icon: "success",
       title: "Foto de perfil modificada",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1000,
     });
     window.location.reload();
   };
@@ -79,7 +79,7 @@ const UserProfile = ({ userLDb, setUserLDb }) => {
       icon: "success",
       title: "Nombre Modificado",
       showConfirmButton: false,
-      timer: 1500,
+      timer: 1000,
     });
     window.location.reload();
   };
