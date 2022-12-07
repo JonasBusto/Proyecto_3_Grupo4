@@ -15,10 +15,26 @@ import {
 import Carousel from "react-bootstrap/Carousel";
 import Spinner from "react-bootstrap/Spinner";
 import BoxComments from "./BoxComments";
+import DeleteComment from "./DeleteComment";
 
 const Home = ({ placesDb, userLDb }) => {
   const [arrayProvincesDB, setArrayProvincesDB] = useState([]);
   const [commentsDB, setCommentsDB] = useState([]);
+
+  const deteleComment = (index) => {
+    fetch("https://proyecto-3-backend.vercel.app/deleteComment", {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: index,
+      }),
+    }).then((res) => res.json());
+    alert("Comentario borrado");
+    window.location.reload();
+  };
+
   useEffect(() => {
     fetch("https://proyecto-3-backend.vercel.app/showProvince")
       .then((res) => res.json())
@@ -217,12 +233,21 @@ const Home = ({ placesDb, userLDb }) => {
                   <div className="col-2 div-user-comment p-0">
                     <img src={c.userProfile} alt="" />
                   </div>
-                  <div className="col-10 d-flex flex-column div-comment-name p-0">
+                  <div className="col-9 d-flex flex-column div-comment-name p-0">
                     <div className="d-flex div-name-date">
                       <b className="title-name-user">{c.user}</b>
                       <b className="title-date-user">{c.date}</b>
                     </div>
                     <p className="m-0">{c.infoComment}</p>
+                  </div>
+                  <div className="col-1 d-flex align-items-center">
+                    {Object.keys(userLDb).length !== 0 &&
+                      userLDb.rol === "admin" && (
+                        <DeleteComment
+                          object={c}
+                          deteleComment={deteleComment}
+                        />
+                      )}
                   </div>
                 </div>
               </div>
