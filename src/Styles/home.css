@@ -288,3 +288,23 @@
   margin-right: 4rem;
   box-shadow: 0 13px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
+.btn-delete-comments {
+  top: 12rem;
+  left: 65%;
+  border: 0px;
+  background: linear-gradient(-45deg, #e75555, #eb3232, #d62a2a, #d12d2d);
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50px;
+  border: 3px solid transparent;
+}
+
+.btn-delete-comments:hover {
+  border: 3px solid #d12d2d;
+  background-color: #d33939;
+}
+
+.btn-delete-comments path {
+  color: white;
+}
