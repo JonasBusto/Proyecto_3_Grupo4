@@ -22,25 +22,12 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
       .then((json) => setDbUsers(json));
   }, []);
 
-  const validateLogin = (values, resetForm) => {
-    let indexFound = dbUsers.findIndex((e) => e.email === values.email);
-
-    if (indexFound !== -1) {
-      handleSubmitLogin(values);
-      handleClose();
-      resetForm();
-      alert("Login exitoso");
-      window.location.reload();
-    } else {
-      alert("El usuario y/o contraseña son invalidos");
-    }
-  };
   const handleSubmitLogin = (values) => {
     fetch("https://proyecto-3-backend.vercel.app/login", {
       method: "POST",
-      crossDomain: true,
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         token,
       },
       body: JSON.stringify({
@@ -50,7 +37,13 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        localStorage.setItem("token", JSON.stringify(res.token));
+        if (res.status === "ok") {
+          localStorage.setItem("token", JSON.stringify(res.user.token));
+          alert("Login exitoso");
+          window.location.reload();
+        } else {
+          alert("El usuario y/o contraseña son invalidos");
+        }
       });
   };
 
@@ -96,14 +89,21 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
               }
 
               if (!valores.pass) {
+                errors.pass = "Por favor ingrese un contraseña.";
+              } else if (/\s/.test(valores.pass)) {
+                errors.pass = "La contraseña no puede tener espacios.";
+              } else if (
+                valores.pass.split("").length < 8 ||
+                valores.pass.split("").length > 14
+              ) {
                 errors.pass =
-                  "Ingrese la contraseña para poder acceder a su cuenta.";
+                  "La contraseña debe tener entre 8 y 14 caracteres.";
               }
 
               return errors;
             }}
             onSubmit={(values, { resetForm }) => {
-              validateLogin(values, resetForm);
+              handleSubmitLogin(values);
             }}
           >
             {({

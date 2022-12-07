@@ -125,6 +125,9 @@ const Register = ({ handleCloseRegister, showRegister, handleShow }) => {
                 errors.checkPass = "Por favor confirme su contraseña.";
               } else if (valores.pass !== valores.checkPass) {
                 errors.checkPass = "Las contraseñas no coinciden.";
+              } else if (/\s/.test(valores.checkPass)) {
+                errors.checkPass =
+                  "La confirmación de la contraseña tampoco puede tener espacios.";
               } else if (
                 valores.checkPass.split("").length < 8 ||
                 valores.checkPass.split("").length > 14
