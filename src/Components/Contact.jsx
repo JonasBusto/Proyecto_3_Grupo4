@@ -5,6 +5,18 @@ import { Link } from "react-router-dom";
 import "../Styles/contact.css";
 
 const Contact = () => {
+  const handleSubmitContact = (values) => {
+    fetch("https://proyecto-3-backend.vercel.app/addContactMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: values.name,
+        email: values.email,
+        message: values.message,
+      }),
+    }).then((res) => res.json());
+  };
+
   return (
     <Container fluid className="my-4">
       <h2 className="text-center pb-2">CONTACTO</h2>
@@ -47,7 +59,7 @@ const Contact = () => {
               return errors;
             }}
             onSubmit={(valuesAux, { resetForm }) => {
-              window.location.href="rollingtravel/error"
+              handleSubmitContact(valuesAux);
               resetForm();
             }}
           >
