@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Form, Modal, Button } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../Styles/register.css";
 import { Link } from "react-router-dom";
 import {
   faEnvelope,
-  faLockKeyHoleOpen,
   faLock,
   faUser,
   faLockOpen,
@@ -87,19 +86,19 @@ const Register = ({ handleCloseRegister, showRegister, handleShow }) => {
             validate={(valores) => {
               let errors = {};
 
-              if (!valores.name) {
+              if (valores.name.trim() === "") {
                 errors.name = "Por favor ingresa un nombre.";
               } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
                 errors.name = "Ingrese un nombre válido.";
               }
 
-              if (!valores.lastName) {
+              if (valores.lastName.trim() === "") {
                 errors.lastName = "Por favor ingrese un apellido.";
               } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.lastName)) {
                 errors.lastName = "Ingrese un apellido válido";
               }
 
-              if (!valores.email) {
+              if (valores.email.trim() === "") {
                 errors.email = "Por favor ingrese un correo electrónico.";
               } else if (
                 !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
@@ -109,8 +108,8 @@ const Register = ({ handleCloseRegister, showRegister, handleShow }) => {
                 errors.email = "Ingrese un correo electrónico válido";
               }
 
-              if (!valores.pass) {
-                errors.pass = "Por favor ingrese un contraseña.";
+              if (valores.pass.trim() === "") {
+                errors.pass = "Por favor ingrese una contraseña.";
               } else if (/\s/.test(valores.pass)) {
                 errors.pass = "La contraseña no puede tener espacios.";
               } else if (
@@ -121,7 +120,7 @@ const Register = ({ handleCloseRegister, showRegister, handleShow }) => {
                   "La contraseña debe tener entre 8 y 14 caracteres.";
               }
 
-              if (!valores.checkPass) {
+              if (valores.checkPass.trim() === "") {
                 errors.checkPass = "Por favor confirme su contraseña.";
               } else if (valores.pass !== valores.checkPass) {
                 errors.checkPass = "Las contraseñas no coinciden.";
