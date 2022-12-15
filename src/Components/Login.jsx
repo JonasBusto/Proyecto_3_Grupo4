@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Form, Modal, Button } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import "../Styles/login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
-  faLockKeyHoleOpen,
   faLock,
   faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
@@ -77,7 +76,7 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
             validate={(valores) => {
               let errors = {};
 
-              if (!valores.email) {
+              if (valores.email.trim() === "") {
                 errors.email =
                   "Por favor ingrese su correo electrónico para iniciar sesión.";
               } else if (
@@ -88,7 +87,7 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
                 errors.email = "Ingrese un correo electrónico válido";
               }
 
-              if (!valores.pass) {
+              if (valores.pass.trim() === "") {
                 errors.pass = "Por favor ingrese un contraseña.";
               } else if (/\s/.test(valores.pass)) {
                 errors.pass = "La contraseña no puede tener espacios.";
@@ -121,7 +120,7 @@ const Login = ({ show, handleClose, handleShowRegister }) => {
                       <FontAwesomeIcon icon={faEnvelope} />
                     </div>
                     <Form.Control
-                      type="email"
+                      type="text"
                       placeholder="Ingrese su correo electrónico."
                       id="email"
                       value={values.email}
