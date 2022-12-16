@@ -13,6 +13,7 @@ import Contact from "./Contact";
 import AboutUs from "./AboutUs";
 import UserProfile from "./UserProfile";
 import UserList from "./UserList";
+import Messages from "./Messages";
 
 const Main = ({ placesDb, userLDb, setUserLDb }) => {
   return (
@@ -40,6 +41,10 @@ const Main = ({ placesDb, userLDb, setUserLDb }) => {
           <Route
             path="/destacados"
             element={<FeaturedPage placesDb={placesDb} userLDb={userLDb} />}
+          />
+          <Route
+            path="/mensajes"
+            element={<Messages placesDb={placesDb} userLDb={userLDb} />}
           />
           <Route
             path="/usuariosLista"

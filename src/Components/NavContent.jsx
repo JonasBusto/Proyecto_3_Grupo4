@@ -84,6 +84,12 @@ const NavContent = ({ search, setSearch, userLDb }) => {
                   )}
                 {Object.keys(userLDb).length !== 0 &&
                   userLDb.rol === "admin" && (
+                    <Nav.Link as={Link} to="/mensajes" eventKey="7">
+                      MENSAJES
+                    </Nav.Link>
+                  )}
+                {Object.keys(userLDb).length !== 0 &&
+                  userLDb.rol === "admin" && (
                     <Nav.Link as={Link} to="/usuariosLista" eventKey="3">
                       USUARIOS
                     </Nav.Link>

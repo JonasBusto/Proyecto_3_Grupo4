@@ -36,7 +36,6 @@ const UserList = ({ placesDb, userLDb }) => {
                       <th style={{ width: "25rem" }}>Nombre</th>
                       <th>Apellido</th>
                       <th>Email</th>
-                      <th>Token</th>
                     </tr>
                   </thead>
                   <tbody>
