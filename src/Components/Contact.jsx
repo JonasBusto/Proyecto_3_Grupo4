@@ -11,7 +11,7 @@ const Contact = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name: values.name,
-        email: values.email,
+        email: values.emailContact,
         message: values.message,
       }),
     }).then((res) => res.json());
@@ -30,7 +30,7 @@ const Contact = () => {
           <Formik
             initialValues={{
               name: "",
-              email: "",
+              emailContact: "",
               message: "",
             }}
             validate={(valuesAux) => {
@@ -42,14 +42,15 @@ const Contact = () => {
                 errors.name = "Ingrese un nombre válido.";
               }
 
-              if (!valuesAux.email) {
-                errors.email = "Por favor ingrese un correo electrónico.";
+              if (!valuesAux.emailContact) {
+                errors.emailContact =
+                  "Por favor ingrese un correo electrónico.";
               } else if (
                 !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-                  valuesAux.email
+                  valuesAux.emailContact
                 )
               ) {
-                errors.email = "Ingrese un correo electrónico válido";
+                errors.emailContact = "Ingrese un correo electrónico válido";
               }
 
               if (!valuesAux.message) {
@@ -90,15 +91,15 @@ const Contact = () => {
                   <Form.Control
                     type="text"
                     placeholder="Ingrese su correo electrónico."
-                    id="email"
-                    value={values.email}
+                    id="emailContact"
+                    value={values.emailContact}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     maxLength={35}
                   />
-                  {touched.email && errors.email && (
+                  {touched.emailContact && errors.emailContact && (
                     <Form.Text className="text-danger">
-                      {errors.email}
+                      {errors.emailContact}
                     </Form.Text>
                   )}
                 </Form.Group>
