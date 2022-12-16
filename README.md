@@ -35,6 +35,7 @@ El administrador podrá:
 - Eliminar el lugar mediante una confirmación.
 - Destacar, o no, lugares para que los destacados aparezcan en Home mediante un carousel. No pueden existir 0 destacados, el sistema no lo permitirá.
 - Dar de baja comentarios que aparecen en Home.
+- Ver el listado de mensajes que los usuarios y los no usuarios hicieron en la sección de <b>CONTACTO</b>, y poder responderles en caso de ser necesario.
 - Ver el listado de usuario registrados en el sistema. </br>
 
 Funciones que comparten tanto Administrador como Usuario:
