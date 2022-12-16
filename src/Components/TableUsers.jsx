@@ -8,7 +8,6 @@ const TableUsers = (props) => {
         <td>{props.object.name}</td>
         <td>{props.object.lastName}</td>
         <td>{props.object.email}</td>
-        <td>{props.object.token}</td>
       </tr>
     </>
   );
