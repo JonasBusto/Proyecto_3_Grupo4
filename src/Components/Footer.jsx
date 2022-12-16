@@ -78,10 +78,10 @@ const Footer = () => {
                   <Card.Text>03815555555</Card.Text>
                 </li>
                 <li>
-                  <Card.Text>Rolling.Travel@gmail.com</Card.Text>
+                  <Card.Text>gruporeactfinal@gmail.com</Card.Text>
                 </li>
                 <li>
-                  <Card.Text>Ubicacion</Card.Text>
+                  <Card.Text>Tucumán, Argentina</Card.Text>
                 </li>
               </ul>
             </Col>

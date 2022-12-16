@@ -59,6 +59,9 @@
   color: white;
   cursor: pointer;
 }
+.nav-link-custom .active {
+  color: white !important;
+}
 .nav-link-custom a:hover,
 .nav-link-custom p:hover {
   background: linear-gradient(-45deg, #3c97c1, #30789a, #15658a, #376d86);

@@ -110,13 +110,18 @@ const NavContent = ({ search, setSearch, userLDb }) => {
                     INICIAR SESIÓN
                   </p>
                 ) : (
-                  <Link to="/usuario" className="m-0">
+                  <Nav.Link
+                    as={Link}
+                    to="/usuario"
+                    className="m-0"
+                    eventKey="8"
+                  >
                     <img
                       className="logout-photo"
                       src={userLDb.photoProfile}
                       alt=""
                     />
-                  </Link>
+                  </Nav.Link>
                 )}
                 <Login
                   show={show}
