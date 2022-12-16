@@ -73,32 +73,32 @@ const NavContent = ({ search, setSearch, userLDb }) => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end nav-link-custom flex-grow-1 pe-3">
-                <Link to="/" onClick={() => setSearch("")}>
+                <Nav.Link as={Link} to="/" eventKey="1">
                   HOME
-                </Link>
+                </Nav.Link>
                 {Object.keys(userLDb).length !== 0 &&
                   userLDb.rol === "admin" && (
-                    <Link to="/destacados" onClick={() => setSearch("")}>
+                    <Nav.Link as={Link} to="/destacados" eventKey="2">
                       DESTACADO
-                    </Link>
+                    </Nav.Link>
                   )}
                 {Object.keys(userLDb).length !== 0 &&
                   userLDb.rol === "admin" && (
-                    <Link to="/usuariosLista" onClick={() => setSearch("")}>
+                    <Nav.Link as={Link} to="/usuariosLista" eventKey="3">
                       USUARIOS
-                    </Link>
+                    </Nav.Link>
                   )}
                 {Object.keys(userLDb).length !== 0 && (
-                  <Link to="/likes" onClick={() => setSearch("")}>
+                  <Nav.Link as={Link} to="/likes" eventKey="4">
                     ME GUSTA
-                  </Link>
+                  </Nav.Link>
                 )}
-                <Link to="/contacto" onClick={() => setSearch("")}>
+                <Nav.Link as={Link} to="/contacto" eventKey="5">
                   CONTACTO
-                </Link>
-                <Link to="/nosotros" onClick={() => setSearch("")}>
+                </Nav.Link>
+                <Nav.Link as={Link} to="/nosotros" eventKey="6">
                   NOSOTROS
-                </Link>
+                </Nav.Link>
                 {Object.keys(userLDb).length === 0 ? (
                   <p className="m-0" onClick={handleShow}>
                     INICIAR SESIÓN
