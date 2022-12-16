@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, InputGroup, Form } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import "../Styles/header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
