@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import FeatureElement from "./FeatureElement";
-import TablePlaces from "../Components/TablePlaces";
 import { Link } from "react-router-dom";
 import "../Styles/featuredPage.css";
 
@@ -20,6 +17,7 @@ const Messages = ({ placesDb, userLDb }) => {
     <>
       <div>
         <h1 className="text-center mt-2">MENSAJES</h1>
+
         <p className="mx-4 p-anchor-head-links">
           <Link to="/">Home</Link>
           <b className="mx-2">/</b>
@@ -29,6 +27,10 @@ const Messages = ({ placesDb, userLDb }) => {
           <div className="div-admin-featured">
             <h2 className="text-center title-admin-featured">Ver mensajes</h2>
             <div>
+              <p className="px-3">
+                Lista de los mensajes que llegaron de 'Contacto'. Puede
+                responder alguno de ellos presionando en 'Responder'. Gracias.
+              </p>
               <div className="div-table-featured">
                 <Table responsive="sm" striped bordered hover size="sm">
                   <thead>

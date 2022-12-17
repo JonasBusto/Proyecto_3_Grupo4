@@ -62,6 +62,10 @@ const Contact = () => {
             onSubmit={(valuesAux, { resetForm }) => {
               handleSubmitContact(valuesAux);
               resetForm();
+              alert(
+                "Su mensaje fue enviado. Sera respondido a la brevedad. Gracias."
+              );
+              window.location.reload();
             }}
           >
             {({
@@ -135,6 +139,7 @@ const Contact = () => {
               aria-hidden="false"
               tabIndex="0"
               className="google-map"
+              title="mapGoogle"
             ></iframe>
           </div>
         </Col>
