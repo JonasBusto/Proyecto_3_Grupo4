@@ -92,3 +92,35 @@
   height: 2.5rem;
   border-radius: 50px;
 }
+
+.navbar-toggler {
+  color: black !important;
+  border: 3px solid #0d1d24 !important;
+  background-color: #4da0c7 !important;
+  width: 3.5rem !important;
+  height: 2.9rem !important;
+  margin: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-toggler > span {
+  background-color: #4da0c7 !important;
+}
+
+.navbar-toggler:hover {
+  border: 3px solid black !important;
+}
+
+.navbar-toggler:focus {
+  margin: 0px !important;
+  outline: 0 !important;
+  width: 3.5rem !important;
+  height: 2.9rem !important;
+  border: 0px solid black !important;
+  background-color: 347897 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
