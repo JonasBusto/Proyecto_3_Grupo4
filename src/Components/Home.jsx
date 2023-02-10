@@ -234,11 +234,17 @@ const Home = ({ placesDb, userLDb }) => {
                     <img src={c.userProfile} alt="" />
                   </div>
                   <div className="col-9 d-flex flex-column div-comment-name p-0">
-                    <div className="d-flex div-name-date">
-                      <b className="title-name-user">{c.user}</b>
-                      <b className="title-date-user">{c.date}</b>
+                    <div className="d-flex div-name-date ">
+                      <b className="title-name-user title-home-comments-name-user">
+                        {c.user}
+                      </b>
+                      <b className="title-date-user title-home-comments-date-user">
+                        {c.date}
+                      </b>
                     </div>
-                    <p className="m-0">{c.infoComment}</p>
+                    <p className="m-0 info-comment-custom-v2">
+                      {c.infoComment}
+                    </p>
                   </div>
                   <div className="col-1 d-flex align-items-center">
                     {Object.keys(userLDb).length !== 0 &&

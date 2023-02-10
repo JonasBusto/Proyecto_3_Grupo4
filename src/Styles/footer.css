@@ -37,3 +37,14 @@ footer {
   width: 4.2rem;
   height: 4.2rem;
 }
+
+.text-footer-about-us {
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .text-footer-about-us p {
+    font-size: 0.8rem;
+  }
+}

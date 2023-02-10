@@ -110,7 +110,19 @@
   .col-icon-category {
     width: 33.3% !important;
   }
+
+  .title-home-comments-name-user,
+  .title-home-comments-date-user {
+    font-size: 1rem !important;
+  }
 }
+
+@media (max-width: 430px) {
+  .info-comment-custom-v2 {
+    font-size: 10rem !important;
+  }
+}
+
 @media (max-width: 410px) {
   .col-icon-category {
     width: 50% !important;

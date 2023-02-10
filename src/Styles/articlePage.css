@@ -239,6 +239,9 @@ main {
   .div-name-date b {
     font-size: 0.9rem;
   }
+  .info-comment-custom-v2 {
+    font-size: 1rem !important;
+  }
 }
 @media (max-width: 500px) {
   .div-user-comment img {
@@ -258,10 +261,10 @@ main {
     height: 3.1rem;
   }
   .comment-box-custom p {
-    font-size: 0.67rem;
+    font-size: 1rem !important;
   }
   .div-name-date b {
-    font-size: 0.67rem;
+    font-size: 0.85rem !important;
   }
 }
 @media (max-width: 390px) {
@@ -270,22 +273,36 @@ main {
     height: 2.6rem;
   }
   .comment-box-custom p {
-    font-size: 0.6rem;
+    font-size: 0.95rem !important;
   }
   .div-name-date b {
     font-size: 0.6rem;
   }
 }
+
+@media (max-width: 370px) {
+  .div-user-comment img {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+  .comment-box-custom p {
+    font-size: 0.9rem !important;
+  }
+  .div-name-date b {
+    font-size: 0.7rem !important;
+  }
+}
+
 @media (max-width: 320px) {
   .div-user-comment img {
     width: 2.2rem;
     height: 2.2rem;
   }
   .comment-box-custom p {
-    font-size: 0.5rem;
+    font-size: 0.8rem !important;
   }
   .div-name-date b {
-    font-size: 0.5rem;
+    font-size: 0.6rem !important;
   }
 }
 @media (max-width: 290px) {

@@ -73,7 +73,7 @@ const Footer = () => {
             </Col>
             <Col className="d-none d-md-block text-light p-5" md={4}>
               <h2 className="text-light">SOBRE NOSOTROS</h2>
-              <ul>
+              <ul className="text-footer-about-us">
                 <li>
                   <Card.Text>03815555555</Card.Text>
                 </li>
